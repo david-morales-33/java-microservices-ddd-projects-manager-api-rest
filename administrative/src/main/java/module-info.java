@@ -1,0 +1,3 @@
+module administrative {
+    requires shared;
+}

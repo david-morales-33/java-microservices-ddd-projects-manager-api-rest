@@ -1,0 +1,3 @@
+module development {
+    requires shared;
+}

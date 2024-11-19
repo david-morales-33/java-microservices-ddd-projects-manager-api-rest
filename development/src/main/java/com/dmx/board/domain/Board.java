@@ -4,6 +4,7 @@ import com.dmx.shared.domain.AggregateRoot;
 import com.dmx.shared.domain.BoardId;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
@@ -74,7 +75,12 @@ public class Board extends AggregateRoot {
             boolean state,
             String[] projectsIds
     ) {
-        BoardProjectsId[] projectsIdList = new BoardProjectsId[]{};
+        BoardProjectsId[] projectsIdList = new BoardProjectsId[projectsIds.length];
+
+        for (int projectId = 0; projectId < projectsIdList.length; projectId++) {
+            projectsIdList[projectId] = new BoardProjectsId(projectsIds[projectId]);
+        }
+
         return new Board(
                 new BoardId(id),
                 new BoardName(name),
@@ -95,5 +101,17 @@ public class Board extends AggregateRoot {
                 this.state,
                 this.projectsId
         );
+    }
+
+    @Override
+    public String toString() {
+        return "Board{" +
+                "id=" + id +
+                ", name=" + name +
+                ", createBy=" + createBy +
+                ", creationDate=" + creationDate +
+                ", state=" + state +
+                ", projectsId=" + Arrays.toString(projectsId) +
+                '}';
     }
 }

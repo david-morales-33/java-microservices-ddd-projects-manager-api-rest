@@ -3,12 +3,10 @@ package com.dmx.board.domain;
 import com.dmx.shared.domain.AggregateRoot;
 import com.dmx.shared.domain.BoardId;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import java.util.Objects;
 
-public class Board extends AggregateRoot {
+public final class Board extends AggregateRoot {
     private final BoardId id;
     private final BoardName name;
     private final BoardCreateBy createBy;

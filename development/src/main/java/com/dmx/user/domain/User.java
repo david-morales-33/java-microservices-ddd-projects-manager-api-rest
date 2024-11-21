@@ -54,7 +54,7 @@ public final class User {
     public UserEmail getEmail() {
         return this.email;
     }
-    
+
     public static User fromPrimitives(
             String id,
             String name,

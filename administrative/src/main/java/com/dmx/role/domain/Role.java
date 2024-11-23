@@ -2,7 +2,7 @@ package com.dmx.role.domain;
 
 import com.dmx.shared.domain.RoleId;
 
-public final class Role {
+public class Role {
     private final RoleId id;
     private final RoleName name;
     private final RoleDescription description;
@@ -13,7 +13,7 @@ public final class Role {
         this.description = description;
     }
 
-    public Role fromPrimitives(RoleDTO data) {
+    public static Role fromPrimitives(RoleDTO data) {
         return new Role(
                 new RoleId(data.id()),
                 new RoleName(data.name()),

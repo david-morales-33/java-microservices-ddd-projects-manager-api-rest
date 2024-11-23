@@ -1,7 +1,12 @@
 package com.dmx.board.domain;
 
+import com.dmx.project.domain.Project;
+import com.dmx.project.domain.ProjectDTO;
+import com.dmx.project.domain.ProjectItemIdList;
+import com.dmx.project.domain.ProjectName;
 import com.dmx.shared.domain.AggregateRoot;
 import com.dmx.shared.domain.BoardId;
+import com.dmx.shared.domain.ProjectId;
 
 import java.util.Arrays;
 import java.util.Objects;
@@ -12,7 +17,7 @@ public final class Board extends AggregateRoot {
     private final BoardCreateBy createBy;
     private final BoardCreationDate creationDate;
     private final BoardState state;
-    private final BoardProjectsId[] projectsId;
+    private final Project[] projectList;
 
     public Board(
             BoardId id,
@@ -20,14 +25,14 @@ public final class Board extends AggregateRoot {
             BoardCreateBy createBy,
             BoardCreationDate creationDate,
             BoardState state,
-            BoardProjectsId[] projectsIds
+            Project[] projectList
     ) {
         this.id = id;
         this.name = name;
         this.createBy = createBy;
         this.creationDate = creationDate;
         this.state = state;
-        this.projectsId = projectsIds;
+        this.projectList = projectList;
     }
 
     public static Board create(
@@ -36,9 +41,9 @@ public final class Board extends AggregateRoot {
             BoardCreateBy createBy,
             BoardCreationDate creationDate,
             BoardState state,
-            BoardProjectsId[] projectsIds
+            Project[] projectList
     ) {
-        return new Board(id, name, createBy, creationDate, state, projectsIds);
+        return new Board(id, name, createBy, creationDate, state, projectList);
     }
 
     public BoardId getId() {
@@ -61,8 +66,8 @@ public final class Board extends AggregateRoot {
         return this.state;
     }
 
-    public BoardProjectsId[] getProjectsId() {
-        return this.projectsId;
+    public Project[] getProjectList() {
+        return this.projectList;
     }
 
     public static Board fromPrimitives(
@@ -71,12 +76,22 @@ public final class Board extends AggregateRoot {
             String createBy,
             String creationDate,
             boolean state,
-            String[] projectsIds
+            ProjectDTO[] projectList
     ) {
-        BoardProjectsId[] projectsIdList = new BoardProjectsId[projectsIds.length];
+        int projectListLength = projectList.length;
+        Project[] newProyectList = new Project[projectListLength];
 
-        for (int projectId = 0; projectId < projectsIdList.length; projectId++) {
-            projectsIdList[projectId] = new BoardProjectsId(projectsIds[projectId]);
+        for (int project = 0; project < projectListLength; project++) {
+            ProjectDTO currentProject = projectList[project];
+            ProjectItemIdList[] newProjectItemIdList = new ProjectItemIdList[currentProject.itemList().length];
+            for (int item = 0; item < currentProject.itemList().length; item++) {
+                newProjectItemIdList[item] = new ProjectItemIdList(currentProject.itemList()[item]);
+            }
+            newProyectList[project] = new Project(
+                    new ProjectId(currentProject.id()),
+                    new ProjectName(currentProject.name()),
+                    newProjectItemIdList
+            );
         }
 
         return new Board(
@@ -85,8 +100,8 @@ public final class Board extends AggregateRoot {
                 new BoardCreateBy(createBy),
                 new BoardCreationDate(creationDate),
                 new BoardState(state),
-                projectsIdList
-        );
+                newProyectList
+                );
     }
 
     @Override
@@ -96,8 +111,7 @@ public final class Board extends AggregateRoot {
                 this.name,
                 this.createBy,
                 this.creationDate,
-                this.state,
-                this.projectsId
+                this.state
         );
     }
 
@@ -109,7 +123,7 @@ public final class Board extends AggregateRoot {
                 ", createBy=" + createBy +
                 ", creationDate=" + creationDate +
                 ", state=" + state +
-                ", projectsId=" + Arrays.toString(projectsId) +
+                ", projectList=" + Arrays.toString(projectList) +
                 '}';
     }
 }

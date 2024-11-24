@@ -8,13 +8,22 @@ public final class Space {
     private final SpaceId id;
     private final SpaceName name;
     private final SpaceCreationDate creationDate;
+    private final SpaceCreateBy createBy;
     private final PostId[] postList;
     private final UserId[] memberList;
 
-    public Space(SpaceId id, SpaceName name, SpaceCreationDate creationDate, PostId[] postList, UserId[] memberList) {
+    public Space(
+            SpaceId id,
+            SpaceName name,
+            SpaceCreationDate creationDate,
+            SpaceCreateBy createBy,
+            PostId[] postList,
+            UserId[] memberList
+    ) {
         this.id = id;
         this.name = name;
         this.creationDate = creationDate;
+        this.createBy = createBy;
         this.postList = postList;
         this.memberList = memberList;
     }
@@ -37,6 +46,7 @@ public final class Space {
                 new SpaceId(data.id()),
                 new SpaceName(data.name()),
                 new SpaceCreationDate(data.creationDate()),
+                new SpaceCreateBy(data.createBy()),
                 newPostIdList,
                 newMemberIdList
         );
@@ -56,6 +66,7 @@ public final class Space {
                 this.id.value(),
                 this.name.value(),
                 this.creationDate.value(),
+                this.createBy.value(),
                 postList,
                 memberList
         );
@@ -69,8 +80,12 @@ public final class Space {
         return this.name;
     }
 
+    public SpaceCreateBy getCreateBy() {
+        return this.createBy;
+    }
+
     public PostId[] getPostList() {
-        return postList;
+        return this.postList;
     }
 
     public UserId[] getMemberList() {

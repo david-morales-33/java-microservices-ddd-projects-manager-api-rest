@@ -1,18 +1,20 @@
 package com.dmx.team.domain;
 
+import com.dmx.role.domain.Role;
 import com.dmx.shared.domain.TeamId;
 import com.dmx.shared.domain.AggregateRoot;
 import com.dmx.shared.domain.UserId;
 import com.dmx.space.domain.Space;
 import com.dmx.space.domain.SpaceDTO;
 
-public class Team extends AggregateRoot {
+public final class Team extends AggregateRoot {
     private final TeamId id;
     private final TeamName name;
     private final TeamMembersCounter membersCounter;
     private final TeamSpacesCounter spacesCounter;
     private final TeamCreationDate creationDate;
     private final TeamState state;
+    private final Role role;
     private final UserId[] memberList;
     private final Space[] spaceList;
 
@@ -23,6 +25,7 @@ public class Team extends AggregateRoot {
             TeamSpacesCounter spacesCounter,
             TeamCreationDate creationDate,
             TeamState state,
+            Role role,
             UserId[] memberList,
             Space[] spaceList
     ) {
@@ -32,6 +35,7 @@ public class Team extends AggregateRoot {
         this.spacesCounter = spacesCounter;
         this.creationDate = creationDate;
         this.state = state;
+        this.role = role;
         this.memberList = memberList;
         this.spaceList = spaceList;
     }
@@ -56,6 +60,7 @@ public class Team extends AggregateRoot {
                 new TeamSpacesCounter(data.spacesCounter()),
                 new TeamCreationDate(data.creationDate()),
                 new TeamState(data.state()),
+                Role.fromPrimitives(data.role()),
                 newMemberList,
                 newSpaceList
         );
@@ -79,6 +84,7 @@ public class Team extends AggregateRoot {
                 this.spacesCounter.value(),
                 this.creationDate.value(),
                 this.state.value(),
+                this.role.toPrimitives(),
                 memberList,
                 spaceList
         );
@@ -106,6 +112,10 @@ public class Team extends AggregateRoot {
 
     public TeamState getState() {
         return this.state;
+    }
+
+    public Role getRole() {
+        return role;
     }
 
     public UserId[] getMemberList() {

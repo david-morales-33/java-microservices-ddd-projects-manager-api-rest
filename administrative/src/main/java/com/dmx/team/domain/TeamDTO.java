@@ -1,5 +1,6 @@
 package com.dmx.team.domain;
 
+import com.dmx.role.domain.RoleDTO;
 import com.dmx.space.domain.SpaceDTO;
 
 public record TeamDTO(
@@ -9,6 +10,7 @@ public record TeamDTO(
         int spacesCounter,
         String creationDate,
         boolean state,
+        RoleDTO role,
         String[] memberList,
         SpaceDTO[] spaceList
 ) {

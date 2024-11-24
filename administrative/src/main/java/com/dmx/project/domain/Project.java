@@ -3,19 +3,22 @@ package com.dmx.project.domain;
 import com.dmx.shared.domain.AggregateRoot;
 import com.dmx.shared.domain.ProjectId;
 
-public final class Project extends AggregateRoot {
+public abstract class Project extends AggregateRoot {
     private final ProjectId id;
     private final ProjectName name;
-    private final ProjectItemIdList[] itemIdList;
+    private final ProjectCreateBy createBy;
+    private final ProjectCreationDate creationDate;
 
-    public Project(ProjectId id, ProjectName name, ProjectItemIdList[] itemIdList) {
+    public Project(
+            ProjectId id,
+            ProjectName name,
+            ProjectCreateBy createBy,
+            ProjectCreationDate creationDate
+    ) {
         this.id = id;
         this.name = name;
-        this.itemIdList = itemIdList;
-    }
-
-    public static Project create(ProjectId id, ProjectName name, ProjectItemIdList[] itemIdList) {
-        return new Project(id, name, itemIdList);
+        this.createBy = createBy;
+        this.creationDate = creationDate;
     }
 
     public ProjectId getId() {
@@ -26,23 +29,11 @@ public final class Project extends AggregateRoot {
         return this.name;
     }
 
-    public ProjectItemIdList[] getItemIdList() {
-        return this.itemIdList;
+    public ProjectCreationDate getCreationDate() {
+        return this.creationDate;
     }
 
-    public static Project fromPrimitives(ProjectDTO data) {
-        int itemIdListLength = data.itemList().length;
-
-        ProjectItemIdList[] newItemIdList = new ProjectItemIdList[itemIdListLength];
-
-        for (int itemId = 0; itemId < itemIdListLength; itemId++) {
-            String currentItemId = data.itemList()[itemId];
-            newItemIdList[itemId] = new ProjectItemIdList(currentItemId);
-        }
-        return new Project(
-                new ProjectId(data.id()),
-                new ProjectName(data.name()),
-                newItemIdList
-        );
+    public ProjectCreateBy getCreateBy() {
+        return this.createBy;
     }
 }

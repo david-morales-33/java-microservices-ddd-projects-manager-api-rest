@@ -1,14 +1,8 @@
 package com.dmx.board.domain;
 
-import com.dmx.project.domain.Project;
-import com.dmx.project.domain.ProjectDTO;
-import com.dmx.project.domain.ProjectItemIdList;
-import com.dmx.project.domain.ProjectName;
 import com.dmx.shared.domain.AggregateRoot;
 import com.dmx.shared.domain.BoardId;
-import com.dmx.shared.domain.ProjectId;
 
-import java.util.Arrays;
 import java.util.Objects;
 
 public final class Board extends AggregateRoot {

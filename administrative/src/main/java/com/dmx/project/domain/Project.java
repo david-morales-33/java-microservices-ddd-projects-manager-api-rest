@@ -1,5 +1,6 @@
 package com.dmx.project.domain;
 
+import com.dmx.card.domain.Card;
 import com.dmx.shared.domain.AggregateRoot;
 import com.dmx.shared.domain.ProjectId;
 import com.dmx.team.domain.Team;
@@ -10,7 +11,10 @@ public abstract class Project extends AggregateRoot {
     private final ProjectCreateBy createBy;
     private final ProjectCreationDate creationDate;
     private final ProjectFuncionalitiesCounter funcionalitiesCounter;
+    private final ProjectCardCounter cardCounter;
+    private final ProjectTeamsCounter teamsCounter;
     private final Team[] teamList;
+    private final Card[] cardList;
 
     public Project(
             ProjectId id,
@@ -18,14 +22,20 @@ public abstract class Project extends AggregateRoot {
             ProjectCreateBy createBy,
             ProjectCreationDate creationDate,
             ProjectFuncionalitiesCounter funcionalitiesCounter,
-            Team[] teamList
+            ProjectCardCounter cardCounter,
+            ProjectTeamsCounter teamsCounter,
+            Team[] teamList,
+            Card[] cardList
     ) {
         this.id = id;
         this.name = name;
         this.createBy = createBy;
         this.creationDate = creationDate;
         this.funcionalitiesCounter = funcionalitiesCounter;
+        this.cardCounter = cardCounter;
+        this.teamsCounter = teamsCounter;
         this.teamList = teamList;
+        this.cardList = cardList;
     }
 
     public ProjectId getId() {
@@ -50,5 +60,17 @@ public abstract class Project extends AggregateRoot {
 
     public ProjectFuncionalitiesCounter getFuncionalitiesCounter() {
         return this.funcionalitiesCounter;
+    }
+
+    public Card[] getCardList() {
+        return this.cardList;
+    }
+
+    public ProjectCardCounter getCardCounter() {
+        return this.cardCounter;
+    }
+
+    public ProjectTeamsCounter getTeamsCounter() {
+        return this.teamsCounter;
     }
 }

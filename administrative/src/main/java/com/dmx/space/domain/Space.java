@@ -26,6 +26,7 @@ public final class Space {
             String currentPostId = data.postList()[postCounter];
             newPostIdList[postCounter] = new PostId(currentPostId);
         }
+
         int membersLength = data.memberList().length;
         UserId[] newMemberIdList = new UserId[membersLength];
         for (int membersCounter = 0; membersCounter < membersLength; membersCounter++) {
@@ -38,6 +39,25 @@ public final class Space {
                 new SpaceCreationDate(data.creationDate()),
                 newPostIdList,
                 newMemberIdList
+        );
+    }
+
+    public SpaceDTO toPrimitives() {
+        String[] postList = new String[this.postList.length];
+        for (int postsCounter = 0; postsCounter < this.postList.length; postsCounter++) {
+            postList[postsCounter] = this.postList[postsCounter].value();
+        }
+        String[] memberList = new String[this.memberList.length];
+        for (int membersCounter = 0; membersCounter < this.memberList.length; membersCounter++) {
+            memberList[membersCounter] = this.memberList[membersCounter].value();
+        }
+
+        return new SpaceDTO(
+                this.id.value(),
+                this.name.value(),
+                this.creationDate.value(),
+                postList,
+                memberList
         );
     }
 

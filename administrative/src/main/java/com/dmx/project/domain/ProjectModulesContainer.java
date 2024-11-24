@@ -7,8 +7,6 @@ import com.dmx.team.domain.TeamDTO;
 public final class ProjectModulesContainer extends Project {
     private final ProjectModulesCounter modulesCounter;
     private final ProjectState state;
-    private final ProjectFuncionalitiesCounter funcionalitiesCounter;
-    private final Team[] teamList;
 
     public ProjectModulesContainer(
             ProjectId id,
@@ -20,16 +18,14 @@ public final class ProjectModulesContainer extends Project {
             ProjectFuncionalitiesCounter funcionalitiesCounter,
             Team[] teamsList
     ) {
-        super(id, name, createBy, creationDate);
+        super(id, name, createBy, creationDate,funcionalitiesCounter, teamsList);
         this.modulesCounter = modulesCounter;
         this.state = state;
-        this.funcionalitiesCounter = funcionalitiesCounter;
-        this.teamList = teamsList;
     }
 
-    public static ProjectModulesContainer fromPrimitives(ProjectModulesContainerDTO data){
+    public static ProjectModulesContainer fromPrimitives(ProjectModulesContainerDTO data) {
         Team[] teamList = new Team[data.teamsList().length];
-        for(int teamsCounter= 0 ; teamsCounter<data.teamsList().length; teamsCounter++){
+        for (int teamsCounter = 0; teamsCounter < data.teamsList().length; teamsCounter++) {
             TeamDTO currentTeam = data.teamsList()[teamsCounter];
             teamList[teamsCounter] = Team.fromPrimitives(currentTeam);
         }
@@ -45,10 +41,10 @@ public final class ProjectModulesContainer extends Project {
         );
     }
 
-    public ProjectModulesContainerDTO toPrimitives(){
-        TeamDTO[] teamsList = new TeamDTO[this.teamList.length];
-        for(int teamsCounter = 0; teamsCounter<this.teamList.length; teamsCounter++){
-            teamsList[teamsCounter] = this.teamList[teamsCounter].toPrimitives();
+    public ProjectModulesContainerDTO toPrimitives() {
+        TeamDTO[] teamsList = new TeamDTO[this.getTeamList().length];
+        for (int teamsCounter = 0; teamsCounter < this.getTeamList().length; teamsCounter++) {
+            teamsList[teamsCounter] = this.getTeamList()[teamsCounter].toPrimitives();
         }
         return new ProjectModulesContainerDTO(
                 this.getId().value(),
@@ -57,7 +53,7 @@ public final class ProjectModulesContainer extends Project {
                 this.getCreationDate().value(),
                 this.modulesCounter.value(),
                 this.state.value(),
-                this.funcionalitiesCounter.value(),
+                this.getFuncionalitiesCounter().value(),
                 teamsList
         );
     }
@@ -68,13 +64,5 @@ public final class ProjectModulesContainer extends Project {
 
     public ProjectState getState() {
         return this.state;
-    }
-
-    public ProjectFuncionalitiesCounter getFuncionalitiesCounter() {
-        return this.funcionalitiesCounter;
-    }
-
-    public Team[] getTeamsList() {
-        return teamList;
     }
 }

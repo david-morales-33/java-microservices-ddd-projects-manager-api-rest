@@ -1,5 +1,6 @@
 package com.dmx.administrative.team.domain;
 
+import com.dmx.administrative.post.domain.Post;
 import com.dmx.administrative.role.domain.Role;
 import com.dmx.shared.domain.TeamId;
 import com.dmx.shared.domain.AggregateRoot;
@@ -7,32 +8,33 @@ import com.dmx.shared.domain.UserId;
 import com.dmx.administrative.space.domain.Space;
 import com.dmx.administrative.space.domain.SpaceDTO;
 
+import java.util.HashMap;
+import java.util.HashSet;
+
 public final class Team extends AggregateRoot {
     private final TeamId id;
     private final TeamName name;
-    private final TeamMembersCounter membersCounter;
-    private final TeamSpacesCounter spacesCounter;
     private final TeamCreationDate creationDate;
     private final TeamState state;
     private final Role role;
-    private final UserId[] memberList;
-    private final Space[] spaceList;
+    private final HashSet<UserId> memberList;
+    private final HashMap<String, Space> spaceList;
+    private TeamMembersCounter membersCounter;
+    private TeamSpacesCounter spacesCounter;
 
     public Team(
             TeamId id,
             TeamName name,
-            TeamMembersCounter membersCounter,
-            TeamSpacesCounter spacesCounter,
             TeamCreationDate creationDate,
             TeamState state,
             Role role,
-            UserId[] memberList,
-            Space[] spaceList
+            HashSet<UserId> memberList,
+            HashMap<String, Space> spaceList
     ) {
         this.id = id;
         this.name = name;
-        this.membersCounter = membersCounter;
-        this.spacesCounter = spacesCounter;
+        this.membersCounter = new TeamMembersCounter(memberList.size());
+        this.spacesCounter = new TeamSpacesCounter(spaceList.size());
         this.creationDate = creationDate;
         this.state = state;
         this.role = role;
@@ -40,24 +42,21 @@ public final class Team extends AggregateRoot {
         this.spaceList = spaceList;
     }
 
-    public static Team fromPrimitives(TeamDTO data){
-        UserId[] newMemberList = new UserId[data.membersCounter()];
-        for(int membersCounter= 0; membersCounter<data.membersCounter(); membersCounter++){
-            String currentMemberId = data.memberList()[membersCounter];
-            newMemberList[membersCounter]= new UserId(currentMemberId);
-        }
+    public static Team fromPrimitives(TeamDTO data) {
+        HashSet<UserId> newMemberList = new HashSet<>();
+        HashMap<String, Space> newSpaceList = new HashMap<>();
 
-        Space[] newSpaceList = new Space[data.spacesCounter()];
-        for(int spacesCounter = 0; spacesCounter<data.spacesCounter(); spacesCounter++){
-            SpaceDTO currentSpace = data.spaceList()[spacesCounter];
-            newSpaceList[spacesCounter] = Space.fromPrimitive(currentSpace);
-        }
+        data.memberList().forEach(element -> {
+            newMemberList.add(new UserId(element));
+        });
+
+        data.spaceList().forEach((key, value) -> {
+            newSpaceList.put(key, Space.fromPrimitive(value));
+        });
 
         return new Team(
                 new TeamId(data.id()),
                 new TeamName(data.name()),
-                new TeamMembersCounter(data.membersCounter()),
-                new TeamSpacesCounter(data.spacesCounter()),
                 new TeamCreationDate(data.creationDate()),
                 new TeamState(data.state()),
                 Role.fromPrimitives(data.role()),
@@ -66,16 +65,17 @@ public final class Team extends AggregateRoot {
         );
     }
 
-    public TeamDTO toPrimitives(){
-        String[] memberList = new String[this.membersCounter.value()];
-        for(int membersCounter= 0; membersCounter< this.membersCounter.value(); membersCounter++){
-            memberList[membersCounter]= this.memberList[membersCounter].value();
-        }
+    public TeamDTO toPrimitives() {
+        HashSet<String> memberList = new HashSet<>();
+        HashMap<String, SpaceDTO> spaceList = new HashMap<>();
 
-        SpaceDTO[] spaceList = new SpaceDTO[this.spacesCounter.value()];
-        for(int spacesCounter= 0 ; spacesCounter<this.spacesCounter.value(); spacesCounter++){
-            spaceList[spacesCounter] = this.spaceList[spacesCounter].toPrimitives();
-        }
+        this.memberList.forEach(element -> {
+            memberList.add(element.value());
+        });
+
+        this.spaceList.forEach((key, value) -> {
+            spaceList.put(key, value.toPrimitives());
+        });
 
         return new TeamDTO(
                 this.id.value(),
@@ -88,6 +88,31 @@ public final class Team extends AggregateRoot {
                 memberList,
                 spaceList
         );
+    }
+
+    public void addSpace(Space newSpace) {
+        this.spaceList.put(newSpace.getId().value(), newSpace);
+        this.spacesCounter = this.incrementSpaceCounter();
+    }
+
+    public void addUser(UserId newMember) {
+        this.memberList.add(newMember);
+        this.membersCounter = this.incrementMembersCounter();
+    }
+
+    public void addPost(Post newPost) {
+        Space currentSpace = this.spaceList.get(newPost.getSpaceId().value());
+        if (currentSpace == null) {
+            System.out.println("No se encontró el espacio solicitado");
+        }
+    }
+
+    public TeamSpacesCounter incrementSpaceCounter() {
+        return new TeamSpacesCounter(this.spacesCounter.value() + 1);
+    }
+
+    public TeamMembersCounter incrementMembersCounter() {
+        return new TeamMembersCounter(this.membersCounter.value() + 1);
     }
 
     public TeamId getId() {
@@ -118,11 +143,11 @@ public final class Team extends AggregateRoot {
         return role;
     }
 
-    public UserId[] getMemberList() {
+    public HashSet<UserId> getMemberList() {
         return this.memberList;
     }
 
-    public Space[] getSpaceList() {
+    public HashMap<String, Space> getSpaceList() {
         return this.spaceList;
     }
 }

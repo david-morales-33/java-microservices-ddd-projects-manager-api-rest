@@ -1,4 +1,5 @@
 module app {
     requires development;
-    //requires shared;
+    requires administrative;
+    requires shared;
 }

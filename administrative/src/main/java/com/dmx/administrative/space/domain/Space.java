@@ -13,6 +13,8 @@ public final class Space {
     private final SpaceCreateBy createBy;
     private final HashSet<PostId> postList;
     private final HashSet<UserId> memberList;
+    private SpacePostCounter postCounter;
+    private SpaceMembersCounter membersCounter;
 
     public Space(
             SpaceId id,
@@ -28,6 +30,8 @@ public final class Space {
         this.createBy = createBy;
         this.postList = postList;
         this.memberList = memberList;
+        this.membersCounter = new SpaceMembersCounter(memberList.size());
+        this.postCounter = new SpacePostCounter(postList.size());
     }
 
     public static Space fromPrimitive(SpaceDTO data) {
@@ -53,16 +57,20 @@ public final class Space {
 
         this.postList.forEach(element -> postList.add(element.value()));
         this.memberList.forEach(element -> memberList.add(element.value()));
-        
+
         return new SpaceDTO(
                 this.id.value(),
                 this.name.value(),
                 this.creationDate.value(),
                 this.createBy.value(),
                 postList,
-                memberList
+                memberList,
+                this.postCounter.value(),
+                this.membersCounter.value()
         );
     }
+
+    //public void addMember
 
     public SpaceId getId() {
         return this.id;
@@ -78,6 +86,14 @@ public final class Space {
 
     public HashSet<PostId> getPostList() {
         return this.postList;
+    }
+
+    public SpacePostCounter getPostCounter() {
+        return this.postCounter;
+    }
+
+    public SpaceMembersCounter getMembersCounter() {
+        return this.membersCounter;
     }
 
     public HashSet<UserId> getMemberList() {

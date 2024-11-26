@@ -8,5 +8,8 @@ public record SpaceDTO(
         String creationDate,
         String createBy,
         HashSet<String> postList,
-        HashSet<String> memberList) {
+        HashSet<String> memberList,
+        int postCounter,
+        int membersCounter
+) {
 }

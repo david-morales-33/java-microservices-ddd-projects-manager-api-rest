@@ -1,5 +1,6 @@
 package com.dmx.administrative.space.domain;
 
+import com.dmx.administrative.post.domain.Post;
 import com.dmx.shared.domain.PostId;
 import com.dmx.shared.domain.SpaceId;
 import com.dmx.shared.domain.UserId;
@@ -70,7 +71,23 @@ public final class Space {
         );
     }
 
-    //public void addMember
+    private SpaceMembersCounter incrementMembersCounter() {
+        return new SpaceMembersCounter(this.membersCounter.value() + 1);
+    }
+
+    private SpacePostCounter incrementPostCounter() {
+        return new SpacePostCounter(this.postCounter.value() + 1);
+    }
+
+    public void addMember(UserId newUser) {
+        this.memberList.add(newUser);
+        this.membersCounter = this.incrementMembersCounter();
+    }
+
+    public void addPost(PostId newPost) {
+        this.postList.add(newPost);
+        this.postCounter = this.incrementPostCounter();
+    }
 
     public SpaceId getId() {
         return this.id;

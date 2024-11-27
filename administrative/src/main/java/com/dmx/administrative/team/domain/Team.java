@@ -2,6 +2,7 @@ package com.dmx.administrative.team.domain;
 
 import com.dmx.administrative.post.domain.Post;
 import com.dmx.administrative.role.domain.Role;
+import com.dmx.shared.domain.SpaceId;
 import com.dmx.shared.domain.TeamId;
 import com.dmx.shared.domain.AggregateRoot;
 import com.dmx.shared.domain.UserId;
@@ -91,11 +92,17 @@ public final class Team extends AggregateRoot {
     }
 
     public void addSpace(Space newSpace) {
+        if (!this.isValidSpace(newSpace.getId())) {
+            throw new SpaceNotValidException("El espacio <" + newSpace.getId().value() + "> ya existe");
+        }
         this.spaceList.put(newSpace.getId().value(), newSpace);
         this.spacesCounter = this.incrementSpaceCounter();
     }
 
     public void addUser(UserId newMember) {
+        if (!this.isValidUser(newMember)) {
+            throw new UserNotValidException("El usuario <" + newMember.value() + "> ya existe");
+        }
         this.memberList.add(newMember);
         this.membersCounter = this.incrementMembersCounter();
     }
@@ -114,6 +121,14 @@ public final class Team extends AggregateRoot {
 
     public TeamMembersCounter incrementMembersCounter() {
         return new TeamMembersCounter(this.membersCounter.value() + 1);
+    }
+
+    public boolean isValidUser(UserId userId) {
+        return !this.memberList.contains(userId);
+    }
+
+    public boolean isValidSpace(SpaceId spaceId) {
+        return !this.spaceList.containsKey(spaceId.value());
     }
 
     public TeamId getId() {

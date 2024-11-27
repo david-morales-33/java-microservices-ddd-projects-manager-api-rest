@@ -1,22 +1,25 @@
 package com.dmx.administrative.user.domain;
 
 import com.dmx.administrative.role.domain.Role;
+import com.dmx.administrative.role.domain.RoleDTO;
 import com.dmx.shared.domain.AggregateRoot;
 import com.dmx.shared.domain.UserId;
 
-public class User extends AggregateRoot {
+import java.util.HashMap;
+
+public final class User extends AggregateRoot {
     private final UserId id;
     private final UserName name;
     private final UserEmail email;
     private final UserNickName nickName;
-    private final Role role;
+    private final HashMap<String, Role> roleList;
 
-    public User(UserId id, UserName name, UserEmail email, UserNickName nickName, Role role) {
+    public User(UserId id, UserName name, UserEmail email, UserNickName nickName, HashMap<String, Role> roleList) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.nickName = nickName;
-        this.role = role;
+        this.roleList = roleList;
     }
 
     public UserId getId() {
@@ -35,38 +38,36 @@ public class User extends AggregateRoot {
         return this.nickName;
     }
 
-    public Role getRole() {
-        return this.role;
+    public HashMap<String, Role> getRole() {
+        return this.roleList;
     }
 
     public static User fromPrimitives(UserDTO data) {
+        HashMap<String, Role> roleList = new HashMap<>();
+        data.roleList().forEach((key, value) -> {
+            roleList.put(key, Role.fromPrimitives(value));
+        });
         return new User(
                 new UserId(data.id()),
                 new UserName(data.name()),
                 new UserEmail(data.email()),
                 new UserNickName(data.nickName()),
-                Role.fromPrimitives(data.role())
-        );
+                roleList
+                );
     }
 
     public UserDTO toPrimitives() {
+        HashMap<String, RoleDTO> roleList = new HashMap<>();
+        this.roleList.forEach((key,value)->{
+            roleList.put(key,value.toPrimitives());
+        });
+
         return new UserDTO(
                 this.id.value(),
                 this.name.value(),
                 this.email.value(),
                 this.nickName.value(),
-                this.role.toPrimitives()
-        );
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + this.id +
-                ", name=" + this.name +
-                ", email=" + this.email +
-                ", nickName=" + this.nickName +
-                ", role=" + this.role +
-                '}';
+                roleList
+                );
     }
 }

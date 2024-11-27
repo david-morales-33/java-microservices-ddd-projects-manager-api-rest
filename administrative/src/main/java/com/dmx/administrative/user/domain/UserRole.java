@@ -5,7 +5,7 @@ import com.dmx.administrative.role.domain.RoleDescription;
 import com.dmx.administrative.role.domain.RoleName;
 import com.dmx.shared.domain.RoleId;
 
-public class UserRole extends Role {
+public final class UserRole extends Role {
     public UserRole(RoleId id, RoleName name, RoleDescription description) {
         super(id, name, description);
     }

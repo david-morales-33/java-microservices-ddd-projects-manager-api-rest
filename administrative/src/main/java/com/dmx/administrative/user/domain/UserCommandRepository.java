@@ -1,4 +1,5 @@
 package com.dmx.administrative.user.domain;
 
-public interface UserCommandInterface {
+public interface UserCommandRepository {
+    void save(User user);
 }

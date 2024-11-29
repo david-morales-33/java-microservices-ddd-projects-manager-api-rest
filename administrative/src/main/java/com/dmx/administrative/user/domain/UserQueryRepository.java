@@ -1,8 +1,12 @@
 package com.dmx.administrative.user.domain;
 
+import com.dmx.shared.domain.UserId;
+
 import java.util.List;
+import java.util.Optional;
 
 public interface UserQueryRepository {
-    User find(User user);
+    Optional<User> find(UserId userId);
+
     List<User> searchAll();
 }

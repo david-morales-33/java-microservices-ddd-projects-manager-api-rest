@@ -4,7 +4,7 @@ import com.dmx.shared.domain.PostId;
 import com.dmx.shared.domain.SpaceId;
 import com.dmx.administrative.user.domain.User;
 
-public class Post {
+public final class Post {
     private final PostId id;
     private final PostTitle title;
     private final PostContent content;

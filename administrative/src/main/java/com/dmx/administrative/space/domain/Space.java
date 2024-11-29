@@ -1,10 +1,13 @@
 package com.dmx.administrative.space.domain;
 
 import com.dmx.administrative.post.domain.Post;
+import com.dmx.administrative.post.domain.PostDTO;
+import com.dmx.administrative.team.domain.UserNotValidException;
 import com.dmx.shared.domain.PostId;
 import com.dmx.shared.domain.SpaceId;
 import com.dmx.shared.domain.UserId;
 
+import java.util.HashMap;
 import java.util.HashSet;
 
 public final class Space {
@@ -12,7 +15,7 @@ public final class Space {
     private final SpaceName name;
     private final SpaceCreationDate creationDate;
     private final SpaceCreateBy createBy;
-    private final HashSet<PostId> postList;
+    private final HashMap<String, Post> postList;
     private final HashSet<UserId> memberList;
     private SpacePostCounter postCounter;
     private SpaceMembersCounter membersCounter;
@@ -22,7 +25,7 @@ public final class Space {
             SpaceName name,
             SpaceCreationDate creationDate,
             SpaceCreateBy createBy,
-            HashSet<PostId> postList,
+            HashMap<String, Post> postList,
             HashSet<UserId> memberList
     ) {
         this.id = id;
@@ -36,10 +39,10 @@ public final class Space {
     }
 
     public static Space fromPrimitive(SpaceDTO data) {
-        HashSet<PostId> newPostIdList = new HashSet<>();
+        HashMap<String, Post> newPostIdList = new HashMap<>();
         HashSet<UserId> newMemberIdList = new HashSet<>();
 
-        data.postList().forEach(element -> newPostIdList.add(new PostId(element)));
+        data.postList().forEach((key, value) -> newPostIdList.put(value.id(), Post.fromPrimitives(value)));
         data.memberList().forEach(element -> newMemberIdList.add(new UserId(element)));
 
         return new Space(
@@ -53,10 +56,10 @@ public final class Space {
     }
 
     public SpaceDTO toPrimitives() {
-        HashSet<String> postList = new HashSet<>();
+        HashMap<String, PostDTO> postList = new HashMap<String, PostDTO>();
         HashSet<String> memberList = new HashSet<>();
 
-        this.postList.forEach(element -> postList.add(element.value()));
+        this.postList.forEach((key, element) -> postList.put(element.getId().value(), element.toPrimitives()));
         this.memberList.forEach(element -> memberList.add(element.value()));
 
         return new SpaceDTO(
@@ -84,8 +87,12 @@ public final class Space {
         this.membersCounter = this.incrementMembersCounter();
     }
 
-    public void addPost(PostId newPost) {
-        this.postList.add(newPost);
+    public void addPost(Post newPost) {
+
+        if (!this.toPrimitives().memberList().contains(newPost.getUser().getId().value()))
+            throw new UserNotValidException("El usuario no es valido en el espacio");
+
+        this.postList.put(newPost.getId().value(), newPost);
         this.postCounter = this.incrementPostCounter();
     }
 
@@ -101,8 +108,8 @@ public final class Space {
         return this.createBy;
     }
 
-    public HashSet<PostId> getPostList() {
-        return this.postList;
+    public HashMap<String, Post> getPostList() {
+        return postList;
     }
 
     public SpacePostCounter getPostCounter() {

@@ -109,10 +109,13 @@ public final class Team extends AggregateRoot {
 
     public void addPost(Post newPost) {
         Space currentSpace = this.spaceList.get(newPost.getSpaceId().value());
-        if (currentSpace == null) {
-            throw new SpaceNotFoundException("El espacio no existe");
-        }
-        currentSpace.addPost(newPost.getId());
+
+        if (currentSpace == null) throw new SpaceNotFoundException("El espacio no existe");
+
+        if (!this.toPrimitives().memberList().contains(newPost.getUser().getId().value()))
+            throw new UserNotValidException("El usuario no es valido en este equipo");
+
+        currentSpace.addPost(newPost);
     }
 
     public TeamSpacesCounter incrementSpaceCounter() {

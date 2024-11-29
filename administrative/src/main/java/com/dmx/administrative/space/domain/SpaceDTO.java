@@ -1,5 +1,8 @@
 package com.dmx.administrative.space.domain;
 
+import com.dmx.administrative.post.domain.PostDTO;
+
+import java.util.HashMap;
 import java.util.HashSet;
 
 public record SpaceDTO(
@@ -7,7 +10,7 @@ public record SpaceDTO(
         String name,
         String creationDate,
         String createBy,
-        HashSet<String> postList,
+        HashMap<String, PostDTO> postList,
         HashSet<String> memberList,
         int postCounter,
         int membersCounter

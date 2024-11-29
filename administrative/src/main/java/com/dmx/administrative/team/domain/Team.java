@@ -43,6 +43,18 @@ public final class Team extends AggregateRoot {
         this.spaceList = spaceList;
     }
 
+    public static Team create(
+            TeamId id,
+            TeamName name,
+            TeamCreationDate creationDate,
+            TeamState state,
+            Role role,
+            HashSet<UserId> memberList,
+            HashMap<String, Space> spaceList
+    ) {
+        return new Team(id, name, creationDate, state, role, memberList, spaceList);
+    }
+
     public static Team fromPrimitives(TeamDTO data) {
         HashSet<UserId> newMemberList = new HashSet<>();
         HashMap<String, Space> newSpaceList = new HashMap<>();

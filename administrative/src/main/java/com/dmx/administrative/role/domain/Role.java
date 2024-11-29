@@ -13,6 +13,10 @@ public class Role {
         this.description = description;
     }
 
+    public static Role create(RoleId id, RoleName name, RoleDescription description) {
+        return new Role(id, name, description);
+    }
+
     public static Role fromPrimitives(RoleDTO data) {
         return new Role(
                 new RoleId(data.id()),

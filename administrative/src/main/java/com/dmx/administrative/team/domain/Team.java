@@ -2,6 +2,8 @@ package com.dmx.administrative.team.domain;
 
 import com.dmx.administrative.post.domain.Post;
 import com.dmx.administrative.role.domain.Role;
+import com.dmx.administrative.user.domain.User;
+import com.dmx.administrative.user.domain.UserDTO;
 import com.dmx.shared.domain.SpaceId;
 import com.dmx.shared.domain.TeamId;
 import com.dmx.shared.domain.AggregateRoot;
@@ -10,7 +12,6 @@ import com.dmx.administrative.space.domain.Space;
 import com.dmx.administrative.space.domain.SpaceDTO;
 
 import java.util.HashMap;
-import java.util.HashSet;
 
 public final class Team extends AggregateRoot {
     private final TeamId id;
@@ -18,7 +19,7 @@ public final class Team extends AggregateRoot {
     private final TeamCreationDate creationDate;
     private final TeamState state;
     private final Role role;
-    private final HashSet<UserId> memberList;
+    private final HashMap<String, User> memberList;
     private final HashMap<String, Space> spaceList;
     private TeamMembersCounter membersCounter;
     private TeamSpacesCounter spacesCounter;
@@ -29,7 +30,7 @@ public final class Team extends AggregateRoot {
             TeamCreationDate creationDate,
             TeamState state,
             Role role,
-            HashSet<UserId> memberList,
+            HashMap<String, User> memberList,
             HashMap<String, Space> spaceList
     ) {
         this.id = id;
@@ -49,18 +50,18 @@ public final class Team extends AggregateRoot {
             TeamCreationDate creationDate,
             TeamState state,
             Role role,
-            HashSet<UserId> memberList,
+            HashMap<String, User> memberList,
             HashMap<String, Space> spaceList
     ) {
         return new Team(id, name, creationDate, state, role, memberList, spaceList);
     }
 
     public static Team fromPrimitives(TeamDTO data) {
-        HashSet<UserId> newMemberList = new HashSet<>();
+        HashMap<String, User> newMemberList = new HashMap<>();
         HashMap<String, Space> newSpaceList = new HashMap<>();
 
-        data.memberList().forEach(element -> {
-            newMemberList.add(new UserId(element));
+        data.memberList().forEach((key, value) -> {
+            newMemberList.put(key, User.fromPrimitives(value));
         });
 
         data.spaceList().forEach((key, value) -> {
@@ -79,11 +80,11 @@ public final class Team extends AggregateRoot {
     }
 
     public TeamDTO toPrimitives() {
-        HashSet<String> memberList = new HashSet<>();
+        HashMap<String, UserDTO> memberList = new HashMap<>();
         HashMap<String, SpaceDTO> spaceList = new HashMap<>();
 
-        this.memberList.forEach(element -> {
-            memberList.add(element.value());
+        this.memberList.forEach((key, value) -> {
+            memberList.put(key, value.toPrimitives());
         });
 
         this.spaceList.forEach((key, value) -> {
@@ -111,11 +112,11 @@ public final class Team extends AggregateRoot {
         this.spacesCounter = this.incrementSpaceCounter();
     }
 
-    public void addUser(UserId newMember) {
-        if (!this.isValidUser(newMember)) {
-            throw new UserNotValidException("El usuario <" + newMember.value() + "> ya existe");
+    public void addUser(User newMember) {
+        if (!this.isValidUser(newMember.getId())) {
+            throw new UserNotValidException("El usuario <" + newMember.getName().value() + "> ya existe");
         }
-        this.memberList.add(newMember);
+        this.memberList.put(newMember.getId().value(), newMember);
         this.membersCounter = this.incrementMembersCounter();
     }
 
@@ -124,7 +125,7 @@ public final class Team extends AggregateRoot {
 
         if (currentSpace == null) throw new SpaceNotFoundException("El espacio no existe");
 
-        if (!this.toPrimitives().memberList().contains(newPost.getUser().getId().value()))
+        if (!this.toPrimitives().memberList().containsKey(newPost.getUser().getId().value()))
             throw new UserNotValidException("El usuario no es valido en este equipo");
 
         currentSpace.addPost(newPost);
@@ -139,7 +140,7 @@ public final class Team extends AggregateRoot {
     }
 
     public boolean isValidUser(UserId userId) {
-        return !this.memberList.contains(userId);
+        return !this.memberList.containsKey(userId.value());
     }
 
     public boolean isValidSpace(SpaceId spaceId) {
@@ -174,7 +175,7 @@ public final class Team extends AggregateRoot {
         return role;
     }
 
-    public HashSet<UserId> getMemberList() {
+    public HashMap<String, User> getMemberList() {
         return this.memberList;
     }
 

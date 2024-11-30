@@ -2,9 +2,9 @@ package com.dmx.administrative.team.domain;
 
 import com.dmx.administrative.role.domain.RoleDTO;
 import com.dmx.administrative.space.domain.SpaceDTO;
+import com.dmx.administrative.user.domain.UserDTO;
 
 import java.util.HashMap;
-import java.util.HashSet;
 
 public record TeamDTO(
         String id,
@@ -14,7 +14,7 @@ public record TeamDTO(
         String creationDate,
         boolean state,
         RoleDTO role,
-        HashSet<String> memberList,
+        HashMap<String, UserDTO> memberList,
         HashMap<String, SpaceDTO> spaceList
 ) {
 }

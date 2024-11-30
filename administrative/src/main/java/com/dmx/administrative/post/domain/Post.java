@@ -21,7 +21,18 @@ public final class Post {
         this.user = user;
     }
 
-    public static Post fromPrimitives(PostDTO data){
+    public static Post create(
+            PostId id,
+            PostTitle title,
+            PostContent content,
+            PostCreationDate creationDate,
+            SpaceId spaceId,
+            User user
+    ) {
+        return new Post(id, title, content, creationDate, spaceId, user);
+    }
+
+    public static Post fromPrimitives(PostDTO data) {
         return new Post(
                 new PostId(data.id()),
                 new PostTitle(data.title()),
@@ -32,7 +43,7 @@ public final class Post {
         );
     }
 
-    public PostDTO toPrimitives(){
+    public PostDTO toPrimitives() {
         return new PostDTO(
                 this.id.value(),
                 this.title.value(),
@@ -67,15 +78,4 @@ public final class Post {
         return user;
     }
 
-    @Override
-    public String toString() {
-        return "Post{" +
-                "id=" + id +
-                ", title=" + title +
-                ", content=" + content +
-                ", creationDate=" + creationDate +
-                ", spaceId=" + spaceId +
-                ", user=" + user +
-                '}';
-    }
 }

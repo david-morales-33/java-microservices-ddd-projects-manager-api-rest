@@ -83,7 +83,7 @@ public class Main {
         Space space1 = Space.fromPrimitive(spaceDTO1);
         Space space2 = Space.fromPrimitive(spaceDTO2);
 
-        HashSet<String> spaceMembers = new HashSet<>();
+        HashMap<String, UserDTO> spaceMembers = new HashMap<>();
         HashMap<String, SpaceDTO> spaceList = new HashMap<>();
 
         TeamDTO teamDTO = new TeamDTO(
@@ -103,8 +103,8 @@ public class Main {
         space2.addMember(post5.getUser().getId());
         team.addSpace(space1);
         team.addSpace(space2);
-        team.addUser(post1.getUser().getId());
-        team.addUser(post5.getUser().getId());
+        team.addUser(post1.getUser());
+        team.addUser(post5.getUser());
         team.addPost(post1);
 
         System.out.println(LocalDate.now().toString());

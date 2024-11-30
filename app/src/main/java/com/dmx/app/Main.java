@@ -12,8 +12,10 @@ import com.dmx.administrative.user.domain.User;
 import com.dmx.administrative.user.domain.UserDTO;
 import com.dmx.shared.domain.RoleId;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.time.LocalDate;
 
 public class Main {
     public static void main(String[] args) {
@@ -105,6 +107,6 @@ public class Main {
         team.addUser(post5.getUser().getId());
         team.addPost(post1);
 
-        System.out.println(team.toPrimitives());
+        System.out.println(LocalDate.now().toString());
     }
 }

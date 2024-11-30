@@ -3,7 +3,6 @@ package com.dmx.administrative.space.domain;
 import com.dmx.administrative.post.domain.Post;
 import com.dmx.administrative.post.domain.PostDTO;
 import com.dmx.administrative.team.domain.UserNotValidException;
-import com.dmx.shared.domain.PostId;
 import com.dmx.shared.domain.SpaceId;
 import com.dmx.shared.domain.UserId;
 
@@ -36,6 +35,17 @@ public final class Space {
         this.memberList = memberList;
         this.membersCounter = new SpaceMembersCounter(memberList.size());
         this.postCounter = new SpacePostCounter(postList.size());
+    }
+
+    public static Space create(
+            SpaceId id,
+            SpaceName name,
+            SpaceCreationDate creationDate,
+            SpaceCreateBy createBy,
+            HashMap<String, Post> postList,
+            HashSet<UserId> memberList
+    ) {
+        return new Space(id, name, creationDate, createBy, postList, memberList);
     }
 
     public static Space fromPrimitive(SpaceDTO data) {

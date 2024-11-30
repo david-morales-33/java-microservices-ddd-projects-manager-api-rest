@@ -4,6 +4,7 @@ import com.dmx.administrative.post.domain.Post;
 import com.dmx.administrative.role.domain.Role;
 import com.dmx.administrative.user.domain.User;
 import com.dmx.administrative.user.domain.UserDTO;
+import com.dmx.administrative.user.domain.UserNotFindException;
 import com.dmx.shared.domain.SpaceId;
 import com.dmx.shared.domain.TeamId;
 import com.dmx.shared.domain.AggregateRoot;
@@ -118,6 +119,16 @@ public final class Team extends AggregateRoot {
         }
         this.memberList.put(newMember.getId().value(), newMember);
         this.membersCounter = this.incrementMembersCounter();
+    }
+
+    public void addSpaceMember(SpaceId spaceId, UserId userId) {
+        Space space = this.spaceList.get(spaceId.value());
+        User user = this.memberList.get(userId.value());
+
+        if (space == null) throw new SpaceNotFoundException("No el espacio no existe dentro del equipo de trabajo");
+        if (user == null) throw new UserNotValidException("El usuario no existe en este equipo de trabajo");
+
+        space.addMember(user.getId());
     }
 
     public void addPost(Post newPost) {

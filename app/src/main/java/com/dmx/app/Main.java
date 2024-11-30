@@ -99,14 +99,15 @@ public class Main {
         );
 
         Team team = Team.fromPrimitives(teamDTO);
-        space1.addMember(post1.getUser().getId());
-        space2.addMember(post5.getUser().getId());
+        //space1.addMember(post1.getUser().getId());
+        //space2.addMember(post5.getUser().getId());
+        //team.addSpace(space2);
+        //team.addPost(post1);
         team.addSpace(space1);
-        team.addSpace(space2);
         team.addUser(post1.getUser());
         team.addUser(post5.getUser());
-        team.addPost(post1);
+        team.addSpaceMember(space1.getId(),post2.getUser().getId());
 
-        System.out.println(LocalDate.now().toString());
+        System.out.println(team.toPrimitives());
     }
 }

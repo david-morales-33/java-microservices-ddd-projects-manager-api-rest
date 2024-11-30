@@ -21,7 +21,7 @@ public class CreateSpaceCommandHandler implements CommandHandler<CreateSpaceComm
 
     @Override
     public void handle(CreateSpaceCommand command) {
-        
+
         TeamId teamId = new TeamId(command.getTeamId());
         SpaceId id = new SpaceId(command.getId());
         SpaceName name = new SpaceName(command.getName());

@@ -1,8 +1,8 @@
-package com.dmx.administrative.team.application.createTeam;
+package com.dmx.media.team.application.createTeam;
 
-import com.dmx.administrative.role.domain.RoleDescription;
-import com.dmx.administrative.role.domain.RoleName;
-import com.dmx.administrative.team.domain.TeamName;
+import com.dmx.media.role.domain.RoleDescription;
+import com.dmx.media.role.domain.RoleName;
+import com.dmx.media.team.domain.TeamName;
 import com.dmx.shared.domain.RoleId;
 import com.dmx.shared.domain.TeamId;
 import com.dmx.shared.domain.bus.command.CommandHandler;

@@ -1,4 +1,4 @@
-package com.dmx.administrative.team.application.createTeam;
+package com.dmx.media.team.application.createTeam;
 
 import com.dmx.shared.domain.bus.command.Command;
 

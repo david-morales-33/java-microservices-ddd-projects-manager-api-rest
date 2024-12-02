@@ -3,13 +3,13 @@ package com.dmx.administrative.project.domain;
 import com.dmx.administrative.card.domain.CardDTO;
 import com.dmx.administrative.team.domain.TeamDTO;
 
+import java.util.HashMap;
+
 public record ProjectFuncionalitiesContainerDTO(
         String id,
         String name,
-        String createBy,
-        String creationDate,
         int funcionalitiesCounter,
-        TeamDTO[] teamsList,
-        CardDTO[] cardList
+        HashMap<String, TeamDTO> teamsList,
+        HashMap<String, CardDTO> cardList
 ) {
 }

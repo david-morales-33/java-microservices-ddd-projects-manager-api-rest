@@ -2,51 +2,46 @@ package com.dmx.administrative.project.domain;
 
 import com.dmx.administrative.card.domain.Card;
 import com.dmx.administrative.card.domain.CardDTO;
-import com.dmx.shared.domain.ProjectId;
 import com.dmx.administrative.team.domain.Team;
 import com.dmx.administrative.team.domain.TeamDTO;
+import com.dmx.shared.domain.ProjectId;
 
-public class ProjectFuncionalitiesContainer extends Project {
+import java.util.HashMap;
+
+public final class ProjectFuncionalitiesContainer extends Project {
     public ProjectFuncionalitiesContainer(
             ProjectId id,
             ProjectName name,
-            ProjectCreateBy createBy,
-            ProjectCreationDate creationDate,
             ProjectFuncionalitiesCounter funcionalitiesCounter,
-            Team[] teamList,
-            Card[] cardList
+            HashMap<String, Team> teamList,
+            HashMap<String, Card> cardList
     ) {
-        super(
-                id,
-                name,
-                createBy,
-                creationDate,
-                funcionalitiesCounter,
-                new ProjectCardCounter(cardList.length),
-                new ProjectTeamsCounter(teamList.length),
-                teamList,
-                cardList
-        );
+        super(id, name, funcionalitiesCounter, teamList, cardList);
     }
 
-    public static ProjectFuncionalitiesContainer fromPrimitives(ProjectFuncionalitiesContainerDTO data) {
-        Team[] teamList = new Team[data.teamsList().length];
-        for (int teamsCounter = 0; teamsCounter < data.teamsList().length; teamsCounter++) {
-            TeamDTO currentTeam = data.teamsList()[teamsCounter];
-            teamList[teamsCounter] = Team.fromPrimitives(currentTeam);
-        }
+    public static ProjectFuncionalitiesContainer create(
+            ProjectId id,
+            ProjectName name,
+            ProjectFuncionalitiesCounter funcionalitiesCounter,
+            HashMap<String, Team> teamList,
+            HashMap<String, Card> cardList
+    ) {
+        return new ProjectFuncionalitiesContainer(id, name, funcionalitiesCounter, teamList, cardList);
+    }
 
-        Card[] cardList = new Card[data.cardList().length];
-        for (int cardCounter = 0; cardCounter < data.cardList().length; cardCounter++) {
-            CardDTO currentCard = data.cardList()[cardCounter];
-            cardList[cardCounter] = Card.fromPrimitives(currentCard);
-        }
+    public static ProjectFuncionalitiesContainer fromPrimitives(ProjectModulesContainerDTO data) {
+        HashMap<String, Team> teamList = new HashMap<>();
+        HashMap<String, Card> cardList = new HashMap<>();
 
+        data.teamsList().forEach((key, value) -> {
+            teamList.put(key, Team.fromPrimitives(value));
+        });
+        data.cardList().forEach((key, value) -> {
+            cardList.put(key, Card.fromPrimitives(value));
+        });
         return new ProjectFuncionalitiesContainer(
                 new ProjectId(data.id()),
                 new ProjectName(data.name()),
-                new ProjectCreateBy(data.createBy()),
-                new ProjectCreationDate(data.creationDate()),
                 new ProjectFuncionalitiesCounter(data.funcionalitiesCounter()),
                 teamList,
                 cardList
@@ -54,24 +49,23 @@ public class ProjectFuncionalitiesContainer extends Project {
     }
 
     public ProjectFuncionalitiesContainerDTO toPrimitives() {
-        TeamDTO[] teamsList = new TeamDTO[this.getTeamList().length];
-        for (int teamsCounter = 0; teamsCounter < this.getTeamList().length; teamsCounter++) {
-            teamsList[teamsCounter] = this.getTeamList()[teamsCounter].toPrimitives();
-        }
+        HashMap<String, TeamDTO> teamList = new HashMap<>();
+        HashMap<String, CardDTO> cardList = new HashMap<>();
 
-        CardDTO[] cardList = new CardDTO[this.getCardList().length];
-        for (int cardCounter = 0; cardCounter < this.getCardList().length; cardCounter++) {
-            cardList[cardCounter] = this.getCardList()[cardCounter].toPrimitives();
-        }
+        this.getTeamList().forEach((key, value) -> {
+            teamList.put(key, value.toPrimitives());
+        });
+        this.getCardList().forEach((key, value) -> {
+            cardList.put(key, value.toPrimitives());
+        });
 
         return new ProjectFuncionalitiesContainerDTO(
                 this.getId().value(),
                 this.getName().value(),
-                this.getCreateBy().value(),
-                this.getCreationDate().value(),
                 this.getFuncionalitiesCounter().value(),
-                teamsList,
+                teamList,
                 cardList
         );
     }
+
 }

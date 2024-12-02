@@ -4,15 +4,15 @@ import com.dmx.administrative.card.domain.CardDTO;
 import com.dmx.administrative.module.domain.ModuleDTO;
 import com.dmx.administrative.team.domain.TeamDTO;
 
+import java.util.HashMap;
+
 public record ProjectModulesContainerDTO(
         String id,
         String name,
-        String createBy,
-        String creationDate,
-        float state,
         int funcionalitiesCounter,
-        TeamDTO[] teamsList,
-        CardDTO[] cardList,
-        ModuleDTO[] moduleList
+        float state,
+        HashMap<String, TeamDTO> teamsList,
+        HashMap<String, CardDTO> cardList,
+        HashMap<String, ModuleDTO> moduleList
 ) {
 }

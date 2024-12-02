@@ -2,69 +2,62 @@ package com.dmx.administrative.project.domain;
 
 import com.dmx.administrative.card.domain.Card;
 import com.dmx.administrative.card.domain.CardDTO;
+import com.dmx.administrative.module.domain.Module;
 import com.dmx.administrative.module.domain.ModuleDTO;
-import com.dmx.shared.domain.ProjectId;
 import com.dmx.administrative.team.domain.Team;
 import com.dmx.administrative.team.domain.TeamDTO;
-import com.dmx.administrative.module.domain.Module;
+import com.dmx.shared.domain.ProjectId;
+
+import java.util.HashMap;
 
 public final class ProjectModulesContainer extends Project {
-    private final Module[] moduleList;
+    private final HashMap<String, Module> moduleList;
     private final ProjectModulesCounter modulesCounter;
     private final ProjectState state;
 
     public ProjectModulesContainer(
             ProjectId id,
             ProjectName name,
-            ProjectCreateBy createBy,
-            ProjectCreationDate creationDate,
-            ProjectState state,
             ProjectFuncionalitiesCounter funcionalitiesCounter,
-            Team[] teamList,
-            Card[] cardList,
-            Module[] moduleList
+            HashMap<String, Team> teamList,
+            HashMap<String, Card> cardList,
+            HashMap<String, Module> moduleList
     ) {
-        super(
-                id,
-                name,
-                createBy,
-                creationDate,
-                funcionalitiesCounter,
-                new ProjectCardCounter(cardList.length),
-                new ProjectTeamsCounter(teamList.length),
-                teamList,
-                cardList
-        );
+        super(id, name, funcionalitiesCounter, teamList, cardList);
         this.moduleList = moduleList;
-        this.modulesCounter= new ProjectModulesCounter(moduleList.length);
-        this.state = state;
+        this.modulesCounter = new ProjectModulesCounter(moduleList.size());
+        this.state = new ProjectState(0);
+    }
+
+    public static ProjectModulesContainer create(
+            ProjectId id,
+            ProjectName name,
+            ProjectFuncionalitiesCounter funcionalitiesCounter,
+            HashMap<String, Team> teamList,
+            HashMap<String, Card> cardList,
+            HashMap<String, Module> moduleList
+    ) {
+        return new ProjectModulesContainer(id, name, funcionalitiesCounter, teamList, cardList, moduleList);
     }
 
     public static ProjectModulesContainer fromPrimitives(ProjectModulesContainerDTO data) {
-        Team[] teamList = new Team[data.teamsList().length];
-        for (int teamsCounter = 0; teamsCounter < data.teamsList().length; teamsCounter++) {
-            TeamDTO currentTeam = data.teamsList()[teamsCounter];
-            teamList[teamsCounter] = Team.fromPrimitives(currentTeam);
-        }
+        HashMap<String, Team> teamList = new HashMap<>();
+        HashMap<String, Card> cardList = new HashMap<>();
+        HashMap<String, Module> moduleList = new HashMap<>();
 
-        Card[] cardList = new Card[data.cardList().length];
-        for (int cardCounter = 0; cardCounter < data.cardList().length; cardCounter++) {
-            CardDTO currentCard = data.cardList()[cardCounter];
-            cardList[cardCounter] = Card.fromPrimitives(currentCard);
-        }
-
-        Module[] moduleList = new Module[data.moduleList().length];
-        for(int moduleCounter= 0; moduleCounter<data.moduleList().length; moduleCounter++){
-            ModuleDTO currentModule = data.moduleList()[moduleCounter];
-            moduleList[moduleCounter] = Module.fromPrimitives(currentModule);
-        }
+        data.teamsList().forEach((key, value) -> {
+            teamList.put(key, Team.fromPrimitives(value));
+        });
+        data.cardList().forEach((key, value) -> {
+            cardList.put(key, Card.fromPrimitives(value));
+        });
+        data.moduleList().forEach((key, value) -> {
+            moduleList.put(key, Module.fromPrimitives(value));
+        });
 
         return new ProjectModulesContainer(
                 new ProjectId(data.id()),
                 new ProjectName(data.name()),
-                new ProjectCreateBy(data.createBy()),
-                new ProjectCreationDate(data.creationDate()),
-                new ProjectState(data.state()),
                 new ProjectFuncionalitiesCounter(data.funcionalitiesCounter()),
                 teamList,
                 cardList,
@@ -73,42 +66,40 @@ public final class ProjectModulesContainer extends Project {
     }
 
     public ProjectModulesContainerDTO toPrimitives() {
-        TeamDTO[] teamsList = new TeamDTO[this.getTeamList().length];
-        for (int teamsCounter = 0; teamsCounter < this.getTeamList().length; teamsCounter++) {
-            teamsList[teamsCounter] = this.getTeamList()[teamsCounter].toPrimitives();
-        }
+        HashMap<String, TeamDTO> teamList = new HashMap<>();
+        HashMap<String, CardDTO> cardList = new HashMap<>();
+        HashMap<String, ModuleDTO> moduleList = new HashMap<>();
 
-        CardDTO[] cardList = new CardDTO[this.getCardList().length];
-        for (int cardCounter = 0; cardCounter < this.getCardList().length; cardCounter++) {
-            cardList[cardCounter] = this.getCardList()[cardCounter].toPrimitives();
-        }
+        this.getTeamList().forEach((key, value) -> {
+            teamList.put(key, value.toPrimitives());
+        });
+        this.getCardList().forEach((key, value) -> {
+            cardList.put(key, value.toPrimitives());
+        });
+        this.moduleList.forEach((key, value) -> {
+            moduleList.put(key, value.toPrimitives());
+        });
 
-        ModuleDTO[] moduleList = new ModuleDTO[this.moduleList.length];
-        for (int moduleCounter = 0; moduleCounter < this.moduleList.length; moduleCounter++) {
-            cardList[moduleCounter] = this.getCardList()[moduleCounter].toPrimitives();
-        }
         return new ProjectModulesContainerDTO(
                 this.getId().value(),
                 this.getName().value(),
-                this.getCreateBy().value(),
-                this.getCreationDate().value(),
-                this.state.value(),
                 this.getFuncionalitiesCounter().value(),
-                teamsList,
+                this.state.value(),
+                teamList,
                 cardList,
                 moduleList
         );
     }
 
-    public Module[] getModuleList() {
-        return this.moduleList;
+    public HashMap<String, Module> getModuleList() {
+        return moduleList;
     }
 
     public ProjectModulesCounter getModulesCounter() {
-        return this.modulesCounter;
+        return modulesCounter;
     }
 
     public ProjectState getState() {
-        return this.state;
+        return state;
     }
 }

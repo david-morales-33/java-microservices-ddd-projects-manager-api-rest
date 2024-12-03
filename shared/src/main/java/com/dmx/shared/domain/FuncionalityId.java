@@ -1,7 +1,7 @@
 package com.dmx.shared.domain;
 
-public class FuncionalityId extends Identifier {
-    public FuncionalityId(String value) {
+public class FuncionalityId extends IntValueObject {
+    public FuncionalityId(int value) {
         super(value);
     }
 }

@@ -1,6 +1,7 @@
 package com.dmx.administrative.project.domain;
 
 import com.dmx.administrative.card.domain.CardDTO;
+import com.dmx.administrative.funcionality.domain.FuncionalityDTO;
 import com.dmx.administrative.team.domain.TeamDTO;
 
 import java.util.HashMap;
@@ -10,6 +11,7 @@ public record ProjectFuncionalitiesContainerDTO(
         String name,
         int funcionalitiesCounter,
         HashMap<String, TeamDTO> teamsList,
-        HashMap<String, CardDTO> cardList
+        HashMap<String, CardDTO> cardList,
+        HashMap<String, FuncionalityDTO> funcionalityList
 ) {
 }

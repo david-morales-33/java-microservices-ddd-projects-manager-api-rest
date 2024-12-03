@@ -2,7 +2,9 @@ package com.dmx.administrative.project.domain;
 
 import com.dmx.administrative.card.domain.Card;
 import com.dmx.administrative.card.domain.CardDTO;
+import com.dmx.administrative.funcionality.domain.Funcionality;
 import com.dmx.administrative.module.domain.ModuleDTO;
+import com.dmx.administrative.module.domain.ModuleNotFoundException;
 import com.dmx.administrative.team.domain.Team;
 import com.dmx.administrative.team.domain.TeamDTO;
 import com.dmx.shared.domain.ModuleId;
@@ -100,8 +102,12 @@ public final class ProjectModulesContainer extends Project {
         this.modulesCounter = this.incrementModulesCounter();
     }
 
-    public void removeModule(ModuleId moduleId) {
-
+    public void addFuncionality(ModuleId moduleId, Funcionality funcionality) {
+        Module module = this.moduleList.get(moduleId.value().toString());
+        if (module == null)
+            throw new ModuleNotFoundException();
+        module.addFuncionality(funcionality);
+        this.incrementFuncionalitiesCounter();
     }
 
     private ProjectModulesCounter incrementModulesCounter() {

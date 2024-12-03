@@ -2,6 +2,7 @@ package com.dmx.administrative.module.domain;
 
 import com.dmx.administrative.funcionality.domain.Funcionality;
 import com.dmx.administrative.funcionality.domain.FuncionalityDTO;
+import com.dmx.administrative.funcionality.domain.ModuleFuncionalityAlreadyExists;
 import com.dmx.shared.domain.ModuleId;
 
 import java.util.HashMap;
@@ -10,8 +11,8 @@ public final class Module {
     private final ModuleId id;
     private final ModuleName name;
     private final ModuleCreationDate creationDate;
-    private final ModuleFuncionalitiesCounter funcionalitiesCounter;
     private final HashMap<String, Funcionality> funcionalityList;
+    private ModuleFuncionalitiesCounter funcionalitiesCounter;
 
     public Module(
             ModuleId id,
@@ -52,6 +53,17 @@ public final class Module {
                 this.funcionalitiesCounter.value(),
                 funcionalityList
         );
+    }
+
+    public void addFuncionality(Funcionality funcionality) {
+        if (this.funcionalityList.containsValue(funcionality))
+            throw new ModuleFuncionalityAlreadyExists("La funcionalidad ya existe");
+        this.funcionalityList.put(funcionality.getId().value().toString(), funcionality);
+        this.funcionalitiesCounter = this.incrementFuncionalityCounter();
+    }
+
+    private ModuleFuncionalitiesCounter incrementFuncionalityCounter() {
+        return new ModuleFuncionalitiesCounter(this.funcionalitiesCounter.value() + 1);
     }
 
     public ModuleId getId() {

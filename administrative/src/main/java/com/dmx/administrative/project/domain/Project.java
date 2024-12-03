@@ -10,11 +10,11 @@ import java.util.HashMap;
 public abstract class Project extends AggregateRoot {
     private final ProjectId id;
     private final ProjectName name;
-    private final ProjectFuncionalitiesCounter funcionalitiesCounter;
-    private final ProjectCardCounter cardCounter;
-    private final ProjectTeamsCounter teamsCounter;
     private final HashMap<String, Team> teamList;
     private final HashMap<String, Card> cardList;
+    private ProjectFuncionalitiesCounter funcionalitiesCounter;
+    private ProjectCardCounter cardCounter;
+    private ProjectTeamsCounter teamsCounter;
 
     public Project(
             ProjectId id,
@@ -32,6 +32,18 @@ public abstract class Project extends AggregateRoot {
         this.cardCounter = new ProjectCardCounter(cardList.size());
     }
 
+    public void incrementFuncionalitiesCounter() {
+        this.funcionalitiesCounter = new ProjectFuncionalitiesCounter(this.funcionalitiesCounter.value() + 1);
+    }
+
+    public void incrementCardCounter() {
+        this.cardCounter = new ProjectCardCounter(this.cardCounter.value() + 1);
+    }
+
+    public void incrementTeamsCounter() {
+        this.teamsCounter = new ProjectTeamsCounter(this.teamsCounter.value() + 1);
+    }
+
     public ProjectId getId() {
         return this.id;
     }
@@ -44,9 +56,13 @@ public abstract class Project extends AggregateRoot {
         return this.funcionalitiesCounter;
     }
 
-    public HashMap<String, Team> getTeamList() { return teamList; }
+    public HashMap<String, Team> getTeamList() {
+        return teamList;
+    }
 
-    public HashMap<String, Card> getCardList() { return cardList; }
+    public HashMap<String, Card> getCardList() {
+        return cardList;
+    }
 
     public ProjectCardCounter getCardCounter() {
         return this.cardCounter;

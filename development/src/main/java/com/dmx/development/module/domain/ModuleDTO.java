@@ -7,7 +7,7 @@ import com.dmx.shared.domain.ModuleId;
 import java.util.HashMap;
 
 public record ModuleDTO(
-        String id,
+        int id,
         String name,
         String creationDate,
         int funcionalitiesCounter,

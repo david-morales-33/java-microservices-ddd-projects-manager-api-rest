@@ -2,18 +2,19 @@ package com.dmx.administrative.project.domain;
 
 import com.dmx.administrative.card.domain.Card;
 import com.dmx.administrative.card.domain.CardDTO;
-import com.dmx.administrative.module.domain.Module;
 import com.dmx.administrative.module.domain.ModuleDTO;
 import com.dmx.administrative.team.domain.Team;
 import com.dmx.administrative.team.domain.TeamDTO;
+import com.dmx.shared.domain.ModuleId;
 import com.dmx.shared.domain.ProjectId;
+import com.dmx.administrative.module.domain.Module;
 
 import java.util.HashMap;
 
 public final class ProjectModulesContainer extends Project {
     private final HashMap<String, Module> moduleList;
-    private final ProjectModulesCounter modulesCounter;
     private final ProjectState state;
+    private ProjectModulesCounter modulesCounter;
 
     public ProjectModulesContainer(
             ProjectId id,
@@ -89,6 +90,28 @@ public final class ProjectModulesContainer extends Project {
                 cardList,
                 moduleList
         );
+    }
+
+    public void addModule(Module module) {
+        if (this.moduleList.containsValue(module))
+            throw new ProjectModuleAlreadyExistsException("El modulo ya existe");
+
+        this.moduleList.put(module.getId().value().toString(), module);
+        this.modulesCounter = this.incrementModulesCounter();
+    }
+
+    public void removeModule(ModuleId moduleId) {
+
+    }
+
+    private ProjectModulesCounter incrementModulesCounter() {
+        return new ProjectModulesCounter(this.modulesCounter.value() + 1);
+    }
+
+    private ProjectModulesCounter decrementModulesCounter() {
+        if (this.modulesCounter.value() == 0)
+            throw new ProjectInternalException("Contador de modulos no puede ser menor a cero");
+        return new ProjectModulesCounter(this.modulesCounter.value() - 1);
     }
 
     public HashMap<String, Module> getModuleList() {

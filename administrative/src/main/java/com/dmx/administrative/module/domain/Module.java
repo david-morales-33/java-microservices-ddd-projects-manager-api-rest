@@ -1,47 +1,50 @@
 package com.dmx.administrative.module.domain;
 
-import com.dmx.shared.domain.FuncionalityId;
+import com.dmx.administrative.funcionality.domain.Funcionality;
+import com.dmx.administrative.funcionality.domain.FuncionalityDTO;
 import com.dmx.shared.domain.ModuleId;
+
+import java.util.HashMap;
 
 public final class Module {
     private final ModuleId id;
     private final ModuleName name;
     private final ModuleCreationDate creationDate;
     private final ModuleFuncionalitiesCounter funcionalitiesCounter;
-    private final FuncionalityId[] funcionalityList;
+    private final HashMap<String, Funcionality> funcionalityList;
 
     public Module(
             ModuleId id,
             ModuleName name,
             ModuleCreationDate creationDate,
-            ModuleFuncionalitiesCounter funcionalitiesConuter,
-            FuncionalityId[] funcionalityList
+            HashMap<String, Funcionality> funcionalityList
     ) {
         this.id = id;
         this.name = name;
         this.creationDate = creationDate;
-        this.funcionalitiesCounter = funcionalitiesConuter;
+        this.funcionalitiesCounter = new ModuleFuncionalitiesCounter(funcionalityList.size());
         this.funcionalityList = funcionalityList;
     }
 
     public static Module fromPrimitives(ModuleDTO data) {
-        FuncionalityId[] funcionalityIdList = new FuncionalityId[data.funcionalitiesCounter()];
-        for (int funcionalitiesCounter = 0; funcionalitiesCounter < data.funcionalitiesCounter(); funcionalitiesCounter++) {
-            funcionalityIdList[funcionalitiesCounter] = new FuncionalityId(data.funcionalityList()[funcionalitiesCounter]);
-        }
+        HashMap<String, Funcionality> funcionalityList = new HashMap<>();
+        data.funcionalityList().forEach((key, value) -> {
+            funcionalityList.put(key, Funcionality.fromPrimitives(value));
+        });
+
         return new Module(
                 new ModuleId(data.id()),
                 new ModuleName(data.name()),
                 new ModuleCreationDate(data.creationDate()),
-                new ModuleFuncionalitiesCounter(data.funcionalitiesCounter()),
-                funcionalityIdList
+                funcionalityList
         );
     }
+
     public ModuleDTO toPrimitives() {
-        String[] funcionalityList = new String[this.funcionalitiesCounter.value()];
-        for (int funcionalitiesCounter = 0; funcionalitiesCounter < this.funcionalitiesCounter.value(); funcionalitiesCounter++) {
-            funcionalityList[funcionalitiesCounter] = this.funcionalityList[funcionalitiesCounter].value();
-        }
+        HashMap<String, FuncionalityDTO> funcionalityList = new HashMap<>();
+        this.funcionalityList.forEach((key, value) -> {
+            funcionalityList.put(key, value.toPrimitives());
+        });
         return new ModuleDTO(
                 this.id.value(),
                 this.name.value(),
@@ -67,7 +70,7 @@ public final class Module {
         return this.funcionalitiesCounter;
     }
 
-    public FuncionalityId[] getFuncionalityList() {
+    public HashMap<String, Funcionality> getFuncionalityList() {
         return this.funcionalityList;
     }
 }

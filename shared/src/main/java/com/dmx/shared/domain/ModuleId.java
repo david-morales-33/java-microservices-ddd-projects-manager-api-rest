@@ -1,7 +1,7 @@
 package com.dmx.shared.domain;
 
-public class ModuleId extends Identifier{
-    public ModuleId(String value){
+public class ModuleId extends IntValueObject{
+    public ModuleId(Integer value){
         super(value);
     }
 }

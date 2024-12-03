@@ -1,13 +1,14 @@
 package com.dmx.administrative.module.domain;
 
-import com.dmx.shared.domain.FuncionalityId;
-import com.dmx.shared.domain.ModuleId;
+import com.dmx.administrative.funcionality.domain.FuncionalityDTO;
+
+import java.util.HashMap;
 
 public record ModuleDTO(
-        String id,
+        int id,
         String name,
         String creationDate,
         int funcionalitiesCounter,
-        String[] funcionalityList
+        HashMap<String, FuncionalityDTO> funcionalityList
 ) {
 }

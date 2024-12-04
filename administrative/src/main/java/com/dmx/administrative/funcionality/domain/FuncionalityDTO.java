@@ -6,7 +6,6 @@ public record FuncionalityDTO(
         String description,
         String creationdate,
         boolean state,
-        String teamId,
-        String roleId
+        String teamId
 ) {
 }

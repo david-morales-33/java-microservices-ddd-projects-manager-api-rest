@@ -1,7 +1,6 @@
 package com.dmx.administrative.funcionality.domain;
 
 import com.dmx.shared.domain.FuncionalityId;
-import com.dmx.shared.domain.RoleId;
 import com.dmx.shared.domain.TeamId;
 
 public final class Funcionality {
@@ -11,7 +10,6 @@ public final class Funcionality {
     private final FuncionalityCreationdate creationdate;
     private final FuncionalityState state;
     private final TeamId teamId;
-    private final RoleId roleId;
 
     public Funcionality(
             FuncionalityId id,
@@ -19,8 +17,7 @@ public final class Funcionality {
             FuncionalityDescription description,
             FuncionalityCreationdate creationdate,
             FuncionalityState state,
-            TeamId teamId,
-            RoleId roleId
+            TeamId teamId
     ) {
         this.id = id;
         this.name = name;
@@ -28,7 +25,17 @@ public final class Funcionality {
         this.creationdate = creationdate;
         this.state = state;
         this.teamId = teamId;
-        this.roleId = roleId;
+    }
+
+    public static Funcionality create(
+            FuncionalityId id,
+            FuncionalityName name,
+            FuncionalityDescription description,
+            FuncionalityCreationdate creationdate,
+            FuncionalityState state,
+            TeamId teamId
+    ) {
+        return new Funcionality(id, name, description, creationdate, state, teamId);
     }
 
     public static Funcionality fromPrimitives(FuncionalityDTO data) {
@@ -38,8 +45,7 @@ public final class Funcionality {
                 new FuncionalityDescription(data.description()),
                 new FuncionalityCreationdate(data.creationdate()),
                 new FuncionalityState(data.state()),
-                new TeamId(data.teamId()),
-                new RoleId(data.roleId())
+                new TeamId(data.teamId())
         );
     }
 
@@ -50,8 +56,7 @@ public final class Funcionality {
                 this.description.value(),
                 this.creationdate.value(),
                 this.state.value(),
-                this.teamId.value(),
-                this.roleId.value()
+                this.teamId.value()
         );
     }
 
@@ -79,7 +84,4 @@ public final class Funcionality {
         return this.teamId;
     }
 
-    public RoleId getRoleId() {
-        return this.roleId;
-    }
 }

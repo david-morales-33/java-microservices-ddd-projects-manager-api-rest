@@ -32,6 +32,20 @@ public abstract class Project extends AggregateRoot {
         this.cardCounter = new ProjectCardCounter(cardList.size());
     }
 
+    public void addTeam(Team team) {
+        if (this.teamList.containsKey(team.getId().value()))
+            throw new ProjectInternalException("El equipo ya existe");
+        this.teamList.put(team.getId().value(), team);
+        this.incrementTeamsCounter();
+    }
+
+    public void addCard(Card card) {
+        if (this.cardList.containsKey(card.getId().value()))
+            throw new ProjectInternalException("La targeta ya existe");
+        this.cardList.put(card.getId().value(), card);
+        this.incrementCardCounter();
+    }
+
     public void incrementFuncionalitiesCounter() {
         this.funcionalitiesCounter = new ProjectFuncionalitiesCounter(this.funcionalitiesCounter.value() + 1);
     }

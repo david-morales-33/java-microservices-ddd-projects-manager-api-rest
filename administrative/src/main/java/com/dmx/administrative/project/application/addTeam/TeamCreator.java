@@ -7,20 +7,18 @@ import com.dmx.shared.domain.ProjectId;
 import java.util.Optional;
 
 public final class TeamCreator {
-    private final ProjectCommandRepository commandRepository;
-    private final ProjectQueryRepository queryRepository;
+    private final ProjectRootRepository repository;
 
-    public TeamCreator(ProjectCommandRepository commandRepository, ProjectQueryRepository queryRepository) {
-        this.commandRepository = commandRepository;
-        this.queryRepository = queryRepository;
+    public TeamCreator(ProjectRootRepository repository) {
+        this.repository = repository;
     }
 
     public void execute(ProjectId projectId, Team team) {
-        Optional<ProjectFuncionalitiesContainer> response = this.queryRepository.findProjectFuncionalitiesContainer(projectId);
+        Optional<ProjectRoot> response = this.repository.find(projectId);
         if (response.isEmpty()) throw new ProjectNotFound("El proyecto solicitado no fue encontrado");
 
-        ProjectFuncionalitiesContainer project = response.get();
+        ProjectRoot project = response.get();
         project.addTeam(team);
-        this.commandRepository.saveProjectFuncionalitiesContainer(project);
+        this.repository.save(project);
     }
 }

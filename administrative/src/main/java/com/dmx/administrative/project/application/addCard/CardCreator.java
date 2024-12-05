@@ -1,29 +1,23 @@
 package com.dmx.administrative.project.application.addCard;
 
 import com.dmx.administrative.card.domain.Card;
-import com.dmx.administrative.project.domain.ProjectCommandRepository;
-import com.dmx.administrative.project.domain.ProjectFuncionalitiesContainer;
-import com.dmx.administrative.project.domain.ProjectNotFound;
-import com.dmx.administrative.project.domain.ProjectQueryRepository;
+import com.dmx.administrative.project.domain.*;
 import com.dmx.shared.domain.ProjectId;
 
 import java.util.Optional;
 
 public final class CardCreator {
-    private final ProjectCommandRepository commandRepository;
-    private final ProjectQueryRepository queryRepository;
+    private final ProjectRootRepository repository;
 
-    public CardCreator(ProjectCommandRepository commandRepository, ProjectQueryRepository queryRepository) {
-        this.commandRepository = commandRepository;
-        this.queryRepository = queryRepository;
+    public CardCreator(ProjectRootRepository repository) {
+        this.repository = repository;
     }
-
     public void execute(ProjectId projectId, Card card) {
-        Optional<ProjectFuncionalitiesContainer> response = this.queryRepository.findProjectFuncionalitiesContainer(projectId);
+        Optional<ProjectRoot> response = this.repository.find(projectId);
         if (response.isEmpty()) throw new ProjectNotFound("El proyecto no fue encontrado");
 
-        ProjectFuncionalitiesContainer project = response.get();
+        ProjectRoot project = response.get();
         project.addCard(card);
-        this.commandRepository.saveProjectFuncionalitiesContainer(project);
+        this.repository.save(project);
     }
 }

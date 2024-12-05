@@ -31,7 +31,7 @@ public final class AddTeamCommandHandler implements CommandHandler<AddTeamComman
         TeamState state = new TeamState(true);
         HashMap<String, User> members = new HashMap<>();
         Team team = Team.create(id, name, creationDate, state, role, members);
-        
+
         this.creator.execute(projectId, team);
     }
 }

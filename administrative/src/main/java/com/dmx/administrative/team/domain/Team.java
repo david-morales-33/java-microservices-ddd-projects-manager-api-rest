@@ -17,7 +17,6 @@ public final class Team extends AggregateRoot {
     private final Role role;
     private final HashMap<String, User> memberList;
     private TeamMembersCounter membersCounter;
-    private TeamSpacesCounter spacesCounter;
 
     public Team(
             TeamId id,
@@ -75,7 +74,6 @@ public final class Team extends AggregateRoot {
                 this.id.value(),
                 this.name.value(),
                 this.membersCounter.value(),
-                this.spacesCounter.value(),
                 this.creationDate.value(),
                 this.state.value(),
                 this.role.toPrimitives(),
@@ -90,10 +88,6 @@ public final class Team extends AggregateRoot {
         }
         this.memberList.put(newMember.getId().value(), newMember);
         this.membersCounter = this.incrementMembersCounter();
-    }
-
-    public TeamSpacesCounter incrementSpaceCounter() {
-        return new TeamSpacesCounter(this.spacesCounter.value() + 1);
     }
 
     public TeamMembersCounter incrementMembersCounter() {
@@ -114,10 +108,6 @@ public final class Team extends AggregateRoot {
 
     public TeamMembersCounter getMembersCounter() {
         return this.membersCounter;
-    }
-
-    public TeamSpacesCounter getSpacesCounter() {
-        return this.spacesCounter;
     }
 
     public TeamCreationDate getCreationDate() {

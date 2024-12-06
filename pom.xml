@@ -10,7 +10,6 @@
     <packaging>pom</packaging>
     <modules>
         <module>administrative</module>
-        <module>client</module>
         <module>shared</module>
         <module>app</module>
         <module>development</module>

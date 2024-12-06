@@ -5,19 +5,19 @@ import com.dmx.shared.domain.ProjectId;
 import com.dmx.shared.domain.bus.command.Command;
 
 public final class CreateProjectCommand implements Command {
-    private final ProjectId id;
-    private final ProjectName name;
+    private final String id;
+    private final String name;
 
-    public CreateProjectCommand(ProjectId id, ProjectName name) {
+    public CreateProjectCommand(String id, String name) {
         this.id = id;
         this.name = name;
     }
 
-    public ProjectId getId() {
+    public String getId() {
         return this.id;
     }
 
-    public ProjectName getName() {
+    public String getName() {
         return this.name;
     }
 }

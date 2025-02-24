@@ -2,7 +2,7 @@ package com.dmx.administrative.project.application.addModule;
 
 import com.dmx.administrative.module.domain.Module;
 import com.dmx.administrative.project.domain.*;
-import com.dmx.shared.domain.ProjectId;
+import com.dmx.administrative.shared.domain.ProjectId;
 
 import java.util.Optional;
 

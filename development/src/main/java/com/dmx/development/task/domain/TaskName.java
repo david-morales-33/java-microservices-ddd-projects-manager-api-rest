@@ -1,6 +1,6 @@
 package com.dmx.development.task.domain;
 
-import com.dmx.shared.domain.StringValueObject;
+import com.dmx.development.shared.domain.StringValueObject;
 
 public final class TaskName extends StringValueObject {
     public TaskName(String value) {

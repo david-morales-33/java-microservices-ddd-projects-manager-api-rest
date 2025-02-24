@@ -1,5 +1,7 @@
 package com.dmx.media.team.application.addTeamMember;
 
+import com.dmx.media.shared.domain.TeamId;
+import com.dmx.media.shared.domain.UserId;
 import com.dmx.media.team.domain.Team;
 import com.dmx.media.team.domain.TeamCommandRepository;
 import com.dmx.media.team.domain.TeamNotFoundException;
@@ -7,8 +9,7 @@ import com.dmx.media.team.domain.TeamQueryRepository;
 import com.dmx.media.user.domain.User;
 import com.dmx.media.user.domain.UserNotFindException;
 import com.dmx.media.user.domain.UserQueryRepository;
-import com.dmx.shared.domain.TeamId;
-import com.dmx.shared.domain.UserId;
+
 
 import java.util.Optional;
 

@@ -3,7 +3,7 @@ package com.dmx.administrative.project.application.findModuleProject;
 import com.dmx.administrative.project.domain.ProjectModulesContainer;
 import com.dmx.administrative.project.domain.ProjectNotFound;
 import com.dmx.administrative.project.domain.ProjectQueryRepository;
-import com.dmx.shared.domain.ProjectId;
+import com.dmx.administrative.shared.domain.ProjectId;
 
 import java.util.Optional;
 

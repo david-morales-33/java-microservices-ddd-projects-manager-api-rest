@@ -1,10 +1,11 @@
 package com.dmx.administrative.team.application.searchByCriteria;
 
-import com.dmx.shared.domain.bus.query.Query;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
+
+import com.dmx.administrative.shared.domain.bus.query.Query;
 
 public final class SearchByCriteriaTeamQuery implements Query {
     private final List<HashMap<String, String>> filters;

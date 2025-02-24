@@ -1,11 +1,11 @@
 package com.dmx.development.team.domain;
 
 import com.dmx.development.role.domain.Role;
+import com.dmx.development.shared.domain.AggregateRoot;
+import com.dmx.development.shared.domain.TeamId;
+import com.dmx.development.shared.domain.UserId;
 import com.dmx.development.user.domain.User;
 import com.dmx.development.user.domain.UserDTO;
-import com.dmx.shared.domain.TeamId;
-import com.dmx.shared.domain.AggregateRoot;
-import com.dmx.shared.domain.UserId;
 
 import java.util.HashMap;
 

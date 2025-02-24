@@ -2,7 +2,7 @@ package com.dmx.administrative.project.application.addProjectFuncionality;
 
 import com.dmx.administrative.funcionality.domain.Funcionality;
 import com.dmx.administrative.project.domain.*;
-import com.dmx.shared.domain.ProjectId;
+import com.dmx.administrative.shared.domain.ProjectId;
 
 import java.util.Optional;
 

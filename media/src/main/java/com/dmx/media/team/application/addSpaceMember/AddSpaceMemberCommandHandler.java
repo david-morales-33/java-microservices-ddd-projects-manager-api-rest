@@ -1,10 +1,11 @@
 package com.dmx.media.team.application.addSpaceMember;
 
+import com.dmx.media.shared.domain.SpaceId;
+import com.dmx.media.shared.domain.TeamId;
+import com.dmx.media.shared.domain.UserId;
+import com.dmx.media.shared.domain.bus.command.CommandHandler;
 import com.dmx.media.team.domain.TeamNotFoundException;
-import com.dmx.shared.domain.SpaceId;
-import com.dmx.shared.domain.TeamId;
-import com.dmx.shared.domain.UserId;
-import com.dmx.shared.domain.bus.command.CommandHandler;
+
 
 public final class AddSpaceMemberCommandHandler implements CommandHandler<AddSpaceMemberCommand> {
     private final SpaceMemberCreator creator;

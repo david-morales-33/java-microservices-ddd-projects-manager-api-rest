@@ -2,14 +2,14 @@ package com.dmx.administrative.project.application.addTeam;
 
 import com.dmx.administrative.role.domain.Role;
 import com.dmx.administrative.role.domain.RoleDTO;
+import com.dmx.administrative.shared.domain.ProjectId;
+import com.dmx.administrative.shared.domain.TeamId;
+import com.dmx.administrative.shared.domain.bus.command.CommandHandler;
 import com.dmx.administrative.team.domain.Team;
 import com.dmx.administrative.team.domain.TeamCreationDate;
 import com.dmx.administrative.team.domain.TeamName;
 import com.dmx.administrative.team.domain.TeamState;
 import com.dmx.administrative.user.domain.User;
-import com.dmx.shared.domain.ProjectId;
-import com.dmx.shared.domain.TeamId;
-import com.dmx.shared.domain.bus.command.CommandHandler;
 
 import java.time.LocalDate;
 import java.util.HashMap;

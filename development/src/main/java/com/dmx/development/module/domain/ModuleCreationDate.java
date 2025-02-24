@@ -1,6 +1,6 @@
 package com.dmx.development.module.domain;
 
-import com.dmx.shared.domain.StringValueObject;
+import com.dmx.development.shared.domain.StringValueObject;
 
 public final class ModuleCreationDate extends StringValueObject {
     public ModuleCreationDate(String value) {

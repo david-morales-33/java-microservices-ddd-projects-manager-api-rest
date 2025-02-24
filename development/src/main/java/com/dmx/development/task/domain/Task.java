@@ -1,7 +1,7 @@
 package com.dmx.development.task.domain;
 
-import com.dmx.shared.domain.TaskId;
-import com.dmx.shared.domain.UserId;
+import com.dmx.development.shared.domain.TaskId;
+import com.dmx.development.shared.domain.UserId;
 
 public final class Task {
     private final TaskId id;

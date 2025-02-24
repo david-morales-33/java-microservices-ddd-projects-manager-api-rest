@@ -1,6 +1,6 @@
 package com.dmx.development.team.application.addTeamMember;
 
-import com.dmx.shared.domain.bus.command.Command;
+import com.dmx.development.shared.domain.bus.command.Command;
 
 public final class AddTeamMemberCommand implements Command {
     private final String userId;

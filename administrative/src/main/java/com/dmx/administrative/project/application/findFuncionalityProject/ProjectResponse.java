@@ -1,7 +1,7 @@
 package com.dmx.administrative.project.application.findFuncionalityProject;
 
 import com.dmx.administrative.project.domain.ProjectFuncionalitiesContainerDTO;
-import com.dmx.shared.domain.bus.query.Response;
+import com.dmx.administrative.shared.domain.bus.query.Response;
 
 public final class ProjectResponse implements Response {
     private final ProjectFuncionalitiesContainerDTO response;

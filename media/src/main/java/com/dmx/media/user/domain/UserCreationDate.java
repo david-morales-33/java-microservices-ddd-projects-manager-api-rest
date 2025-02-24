@@ -1,6 +1,6 @@
 package com.dmx.media.user.domain;
 
-import com.dmx.shared.domain.StringValueObject;
+import com.dmx.media.shared.domain.StringValueObject;
 
 public final class UserCreationDate extends StringValueObject {
     public UserCreationDate(String value) {

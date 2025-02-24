@@ -1,11 +1,11 @@
 package com.dmx.administrative.project.application.addModuleFuncionality;
 
 import com.dmx.administrative.funcionality.domain.*;
-import com.dmx.shared.domain.FuncionalityId;
-import com.dmx.shared.domain.ModuleId;
-import com.dmx.shared.domain.ProjectId;
-import com.dmx.shared.domain.TeamId;
-import com.dmx.shared.domain.bus.command.CommandHandler;
+import com.dmx.administrative.shared.domain.FuncionalityId;
+import com.dmx.administrative.shared.domain.ModuleId;
+import com.dmx.administrative.shared.domain.ProjectId;
+import com.dmx.administrative.shared.domain.TeamId;
+import com.dmx.administrative.shared.domain.bus.command.CommandHandler;
 
 import java.time.LocalDate;
 

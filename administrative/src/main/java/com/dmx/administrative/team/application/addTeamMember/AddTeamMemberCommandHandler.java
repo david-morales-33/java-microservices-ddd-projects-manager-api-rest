@@ -1,10 +1,11 @@
 package com.dmx.administrative.team.application.addTeamMember;
 
+import com.dmx.administrative.shared.domain.TeamId;
+import com.dmx.administrative.shared.domain.UserId;
+import com.dmx.administrative.shared.domain.bus.command.CommandHandler;
 import com.dmx.administrative.team.domain.TeamNotFoundException;
 import com.dmx.administrative.user.domain.UserNotFindException;
-import com.dmx.shared.domain.TeamId;
-import com.dmx.shared.domain.UserId;
-import com.dmx.shared.domain.bus.command.CommandHandler;
+;
 
 public final class AddTeamMemberCommandHandler implements CommandHandler<AddTeamMemberCommand> {
     private final TeamMemberCreator creator;

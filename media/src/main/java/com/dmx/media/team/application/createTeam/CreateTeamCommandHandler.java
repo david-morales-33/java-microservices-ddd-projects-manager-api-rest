@@ -2,10 +2,10 @@ package com.dmx.media.team.application.createTeam;
 
 import com.dmx.media.role.domain.RoleDescription;
 import com.dmx.media.role.domain.RoleName;
+import com.dmx.media.shared.domain.RoleId;
+import com.dmx.media.shared.domain.TeamId;
+import com.dmx.media.shared.domain.bus.command.CommandHandler;
 import com.dmx.media.team.domain.TeamName;
-import com.dmx.shared.domain.RoleId;
-import com.dmx.shared.domain.TeamId;
-import com.dmx.shared.domain.bus.command.CommandHandler;
 
 public final class CreateTeamCommandHandler implements CommandHandler<CreateTeamCommand> {
     private final TeamCreator creator;

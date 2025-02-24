@@ -1,8 +1,8 @@
 package com.dmx.media.team.application.searchByCriteria;
 
+import com.dmx.media.shared.domain.bus.query.Response;
 import com.dmx.media.team.domain.Team;
 import com.dmx.media.team.domain.TeamDTO;
-import com.dmx.shared.domain.bus.query.Response;
 
 import java.util.ArrayList;
 import java.util.List;

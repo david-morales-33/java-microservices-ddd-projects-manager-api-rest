@@ -1,8 +1,8 @@
 package com.dmx.administrative.project.application.createModuleProject;
 
 import com.dmx.administrative.project.domain.ProjectName;
-import com.dmx.shared.domain.ProjectId;
-import com.dmx.shared.domain.bus.command.CommandHandler;
+import com.dmx.administrative.shared.domain.ProjectId;
+import com.dmx.administrative.shared.domain.bus.command.CommandHandler;
 
 public final class CreateProjectCommandHandler implements CommandHandler<CreateProjectCommand> {
     private final ProjectCreator creator;

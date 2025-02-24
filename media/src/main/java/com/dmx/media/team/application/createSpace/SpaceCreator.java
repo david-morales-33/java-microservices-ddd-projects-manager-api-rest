@@ -1,6 +1,9 @@
 package com.dmx.media.team.application.createSpace;
 
 import com.dmx.media.post.domain.Post;
+import com.dmx.media.shared.domain.SpaceId;
+import com.dmx.media.shared.domain.TeamId;
+import com.dmx.media.shared.domain.UserId;
 import com.dmx.media.space.domain.Space;
 import com.dmx.media.space.domain.SpaceCreateBy;
 import com.dmx.media.space.domain.SpaceCreationDate;
@@ -9,9 +12,7 @@ import com.dmx.media.team.domain.Team;
 import com.dmx.media.team.domain.TeamCommandRepository;
 import com.dmx.media.team.domain.TeamNotFoundException;
 import com.dmx.media.team.domain.TeamQueryRepository;
-import com.dmx.shared.domain.SpaceId;
-import com.dmx.shared.domain.TeamId;
-import com.dmx.shared.domain.UserId;
+
 
 import java.util.HashMap;
 import java.util.HashSet;

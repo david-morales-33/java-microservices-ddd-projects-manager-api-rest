@@ -5,10 +5,10 @@ import com.dmx.administrative.card.domain.CardDTO;
 import com.dmx.administrative.funcionality.domain.Funcionality;
 import com.dmx.administrative.module.domain.ModuleDTO;
 import com.dmx.administrative.module.domain.ModuleNotFoundException;
+import com.dmx.administrative.shared.domain.ModuleId;
+import com.dmx.administrative.shared.domain.ProjectId;
 import com.dmx.administrative.team.domain.Team;
 import com.dmx.administrative.team.domain.TeamDTO;
-import com.dmx.shared.domain.ModuleId;
-import com.dmx.shared.domain.ProjectId;
 import com.dmx.administrative.module.domain.Module;
 
 import java.util.HashMap;

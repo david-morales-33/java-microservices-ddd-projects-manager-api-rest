@@ -1,8 +1,8 @@
 package com.dmx.media.space.application.searchByCriteria;
 
+import com.dmx.media.shared.domain.bus.query.Response;
 import com.dmx.media.space.domain.Space;
 import com.dmx.media.space.domain.SpaceDTO;
-import com.dmx.shared.domain.bus.query.Response;
 
 import java.util.ArrayList;
 import java.util.List;

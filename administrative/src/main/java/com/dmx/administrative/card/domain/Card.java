@@ -1,7 +1,7 @@
 package com.dmx.administrative.card.domain;
 
-import com.dmx.shared.domain.AggregateRoot;
-import com.dmx.shared.domain.CardId;
+import com.dmx.administrative.shared.domain.AggregateRoot;
+import com.dmx.administrative.shared.domain.CardId;
 
 public final class Card extends AggregateRoot {
     private final CardId id;

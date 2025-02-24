@@ -1,9 +1,9 @@
 package com.dmx.media.space.application.find;
 
+import com.dmx.media.shared.domain.SpaceId;
 import com.dmx.media.space.domain.Space;
 import com.dmx.media.space.domain.SpaceQueryRepository;
 import com.dmx.media.team.domain.SpaceNotFoundException;
-import com.dmx.shared.domain.SpaceId;
 
 import java.util.Optional;
 

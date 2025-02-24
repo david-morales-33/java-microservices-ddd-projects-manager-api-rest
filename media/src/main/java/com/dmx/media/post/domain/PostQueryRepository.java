@@ -1,8 +1,9 @@
 package com.dmx.media.post.domain;
 
-import com.dmx.shared.domain.criteria.Criteria;
 
 import java.util.List;
+
+import com.dmx.media.shared.domain.criteria.Criteria;
 
 public interface PostQueryRepository {
     List<Post> searchAll();

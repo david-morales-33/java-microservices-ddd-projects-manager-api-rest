@@ -2,12 +2,12 @@ package com.dmx.media.team.domain;
 
 import com.dmx.media.post.domain.Post;
 import com.dmx.media.role.domain.Role;
+import com.dmx.media.shared.domain.AggregateRoot;
+import com.dmx.media.shared.domain.SpaceId;
+import com.dmx.media.shared.domain.TeamId;
+import com.dmx.media.shared.domain.UserId;
 import com.dmx.media.user.domain.User;
 import com.dmx.media.user.domain.UserDTO;
-import com.dmx.shared.domain.SpaceId;
-import com.dmx.shared.domain.TeamId;
-import com.dmx.shared.domain.AggregateRoot;
-import com.dmx.shared.domain.UserId;
 import com.dmx.media.space.domain.Space;
 import com.dmx.media.space.domain.SpaceDTO;
 

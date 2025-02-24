@@ -1,13 +1,11 @@
 package com.dmx.administrative.project.application.createFuncionalitiesProject;
 
-import com.dmx.administrative.project.application.createModuleProject.CreateProjectCommand;
-import com.dmx.administrative.project.application.createModuleProject.ProjectCreator;
 import com.dmx.administrative.project.domain.ProjectName;
-import com.dmx.shared.domain.ProjectId;
-import com.dmx.shared.domain.bus.command.CommandHandler;
+import com.dmx.administrative.shared.domain.ProjectId;
+import com.dmx.administrative.shared.domain.bus.command.CommandHandler;
 
-public final class CreateProjectCommandHandler implements CommandHandler<com.dmx.administrative.project.application.createModuleProject.CreateProjectCommand> {
-    private final com.dmx.administrative.project.application.createModuleProject.ProjectCreator creator;
+public final class CreateProjectCommandHandler implements CommandHandler<CreateProjectCommand> {
+    private final ProjectCreator creator;
 
     public CreateProjectCommandHandler(ProjectCreator creator) {
         this.creator = creator;

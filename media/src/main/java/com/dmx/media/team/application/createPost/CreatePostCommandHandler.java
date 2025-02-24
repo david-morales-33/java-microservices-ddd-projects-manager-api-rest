@@ -4,11 +4,12 @@ import com.dmx.media.post.domain.PostContent;
 import com.dmx.media.post.domain.PostCreationDate;
 import com.dmx.media.post.domain.PostId;
 import com.dmx.media.post.domain.PostTitle;
+import com.dmx.media.shared.domain.SpaceId;
+import com.dmx.media.shared.domain.TeamId;
+import com.dmx.media.shared.domain.UserId;
+import com.dmx.media.shared.domain.bus.command.CommandHandler;
 import com.dmx.media.team.domain.TeamNotFoundException;
-import com.dmx.shared.domain.SpaceId;
-import com.dmx.shared.domain.TeamId;
-import com.dmx.shared.domain.UserId;
-import com.dmx.shared.domain.bus.command.CommandHandler;
+
 
 import java.time.LocalDate;
 

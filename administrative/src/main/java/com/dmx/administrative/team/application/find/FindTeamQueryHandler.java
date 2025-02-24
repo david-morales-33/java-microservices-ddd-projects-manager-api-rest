@@ -1,8 +1,8 @@
 package com.dmx.administrative.team.application.find;
 
+import com.dmx.administrative.shared.domain.TeamId;
+import com.dmx.administrative.shared.domain.bus.query.QueryHandler;
 import com.dmx.administrative.team.domain.TeamNotFoundException;
-import com.dmx.shared.domain.TeamId;
-import com.dmx.shared.domain.bus.query.QueryHandler;
 
 public final class FindTeamQueryHandler implements QueryHandler<FindTeamQuery, TeamResponse> {
     private final TeamFinder finder;

@@ -1,6 +1,6 @@
 package com.dmx.administrative.user.application.find;
 
-import com.dmx.shared.domain.bus.query.Query;
+import com.dmx.administrative.shared.domain.bus.query.Query;
 
 public record FindUserQuery(
         String userId

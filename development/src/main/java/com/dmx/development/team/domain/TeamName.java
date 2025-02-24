@@ -1,6 +1,6 @@
 package com.dmx.development.team.domain;
 
-import com.dmx.shared.domain.StringValueObject;
+import com.dmx.development.shared.domain.StringValueObject;
 
 public final class TeamName extends StringValueObject {
     public TeamName(String value){

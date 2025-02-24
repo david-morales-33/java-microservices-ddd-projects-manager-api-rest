@@ -1,9 +1,9 @@
 package com.dmx.development.team.application.find;
 
+import com.dmx.development.shared.domain.TeamId;
 import com.dmx.development.team.domain.Team;
 import com.dmx.development.team.domain.TeamNotFoundException;
 import com.dmx.development.team.domain.TeamQueryRepository;
-import com.dmx.shared.domain.TeamId;
 
 import java.util.Optional;
 

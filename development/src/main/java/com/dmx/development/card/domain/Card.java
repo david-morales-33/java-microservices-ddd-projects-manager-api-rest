@@ -1,6 +1,6 @@
 package com.dmx.development.card.domain;
 
-import com.dmx.shared.domain.CardId;
+import com.dmx.development.shared.domain.CardId;
 import com.dmx.development.task.domain.Task;
 import com.dmx.development.task.domain.TaskDTO;
 

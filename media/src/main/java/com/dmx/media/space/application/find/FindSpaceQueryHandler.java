@@ -1,8 +1,9 @@
 package com.dmx.media.space.application.find;
 
+import com.dmx.media.shared.domain.SpaceId;
+import com.dmx.media.shared.domain.bus.query.QueryHandler;
 import com.dmx.media.team.domain.SpaceNotFoundException;
-import com.dmx.shared.domain.SpaceId;
-import com.dmx.shared.domain.bus.query.QueryHandler;
+
 
 public class FindSpaceQueryHandler implements QueryHandler<FindSpaceQuery, SpaceResponse> {
     private final SpaceFinder finder;

@@ -1,10 +1,11 @@
 package com.dmx.media.team.application.searchByCriteria;
 
-import com.dmx.shared.domain.bus.query.QueryHandler;
-import com.dmx.shared.domain.criteria.Filters;
-import com.dmx.shared.domain.criteria.Order;
 
 import java.util.Optional;
+
+import com.dmx.media.shared.domain.bus.query.QueryHandler;
+import com.dmx.media.shared.domain.criteria.Filters;
+import com.dmx.media.shared.domain.criteria.Order;
 
 public final class SearchByCriteriaTeamQueryHandler implements QueryHandler<SearchByCriteriaTeamQuery, TeamResponse> {
     private final TeamByCriteriaSearcher searcher;

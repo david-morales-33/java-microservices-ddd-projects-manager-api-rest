@@ -1,9 +1,9 @@
 package com.dmx.administrative.board.domain;
 
-import com.dmx.shared.domain.AggregateRoot;
-import com.dmx.shared.domain.BoardId;
-
 import java.util.Objects;
+
+import com.dmx.administrative.shared.domain.AggregateRoot;
+import com.dmx.administrative.shared.domain.BoardId;
 
 public final class Board extends AggregateRoot {
     private final BoardId id;

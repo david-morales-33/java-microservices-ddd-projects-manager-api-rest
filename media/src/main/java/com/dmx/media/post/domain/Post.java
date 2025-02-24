@@ -1,7 +1,7 @@
 package com.dmx.media.post.domain;
 
+import com.dmx.media.shared.domain.SpaceId;
 import com.dmx.media.user.domain.User;
-import com.dmx.shared.domain.SpaceId;
 
 public final class Post {
     private final PostId id;

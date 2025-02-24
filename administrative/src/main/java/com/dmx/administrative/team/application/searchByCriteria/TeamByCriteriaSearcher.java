@@ -1,10 +1,11 @@
 package com.dmx.administrative.team.application.searchByCriteria;
 
+import com.dmx.administrative.shared.domain.criteria.Criteria;
+import com.dmx.administrative.shared.domain.criteria.Filters;
+import com.dmx.administrative.shared.domain.criteria.Order;
 import com.dmx.administrative.team.domain.Team;
 import com.dmx.administrative.team.domain.TeamQueryRepository;
-import com.dmx.shared.domain.criteria.Criteria;
-import com.dmx.shared.domain.criteria.Filters;
-import com.dmx.shared.domain.criteria.Order;
+
 
 import java.util.List;
 import java.util.Optional;

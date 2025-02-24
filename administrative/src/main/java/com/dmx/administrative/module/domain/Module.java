@@ -3,7 +3,7 @@ package com.dmx.administrative.module.domain;
 import com.dmx.administrative.funcionality.domain.Funcionality;
 import com.dmx.administrative.funcionality.domain.FuncionalityDTO;
 import com.dmx.administrative.funcionality.domain.ModuleFuncionalityAlreadyExists;
-import com.dmx.shared.domain.ModuleId;
+import com.dmx.administrative.shared.domain.ModuleId;
 
 import java.util.HashMap;
 

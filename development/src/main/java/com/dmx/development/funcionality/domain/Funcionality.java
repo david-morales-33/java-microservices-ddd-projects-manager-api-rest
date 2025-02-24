@@ -1,8 +1,8 @@
 package com.dmx.development.funcionality.domain;
 
-import com.dmx.shared.domain.FuncionalityId;
-import com.dmx.shared.domain.RoleId;
-import com.dmx.shared.domain.TeamId;
+import com.dmx.development.shared.domain.FuncionalityId;
+import com.dmx.development.shared.domain.RoleId;
+import com.dmx.development.shared.domain.TeamId;
 
 public final class Funcionality {
     private final FuncionalityId id;

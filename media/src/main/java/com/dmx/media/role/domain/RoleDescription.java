@@ -1,6 +1,6 @@
 package com.dmx.media.role.domain;
 
-import com.dmx.shared.domain.StringValueObject;
+import com.dmx.media.shared.domain.StringValueObject;
 
 public final class RoleDescription extends StringValueObject {
     public RoleDescription(String value) {

@@ -2,8 +2,8 @@ package com.dmx.administrative.project.application.addCard;
 
 import com.dmx.administrative.card.domain.Card;
 import com.dmx.administrative.card.domain.CardDTO;
-import com.dmx.shared.domain.ProjectId;
-import com.dmx.shared.domain.bus.command.CommandHandler;
+import com.dmx.administrative.shared.domain.ProjectId;
+import com.dmx.administrative.shared.domain.bus.command.CommandHandler;
 
 import java.time.LocalDate;
 

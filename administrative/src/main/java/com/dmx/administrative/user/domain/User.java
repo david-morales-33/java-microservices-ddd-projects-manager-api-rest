@@ -2,8 +2,8 @@ package com.dmx.administrative.user.domain;
 
 import com.dmx.administrative.role.domain.Role;
 import com.dmx.administrative.role.domain.RoleDTO;
-import com.dmx.shared.domain.AggregateRoot;
-import com.dmx.shared.domain.UserId;
+import com.dmx.administrative.shared.domain.AggregateRoot;
+import com.dmx.administrative.shared.domain.UserId;
 
 import java.util.HashMap;
 

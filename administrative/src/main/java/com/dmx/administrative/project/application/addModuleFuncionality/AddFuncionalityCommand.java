@@ -1,6 +1,6 @@
 package com.dmx.administrative.project.application.addModuleFuncionality;
 
-import com.dmx.shared.domain.bus.command.Command;
+import com.dmx.administrative.shared.domain.bus.command.Command;
 
 public final class AddFuncionalityCommand implements Command {
     private final String projectId;

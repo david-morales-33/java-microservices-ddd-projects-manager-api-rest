@@ -4,9 +4,9 @@ import com.dmx.administrative.card.domain.Card;
 import com.dmx.administrative.card.domain.CardDTO;
 import com.dmx.administrative.funcionality.domain.Funcionality;
 import com.dmx.administrative.funcionality.domain.FuncionalityDTO;
+import com.dmx.administrative.shared.domain.ProjectId;
 import com.dmx.administrative.team.domain.Team;
 import com.dmx.administrative.team.domain.TeamDTO;
-import com.dmx.shared.domain.ProjectId;
 
 import java.util.HashMap;
 

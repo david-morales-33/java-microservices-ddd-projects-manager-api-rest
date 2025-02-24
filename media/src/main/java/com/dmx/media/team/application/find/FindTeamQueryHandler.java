@@ -1,8 +1,8 @@
 package com.dmx.media.team.application.find;
 
+import com.dmx.media.shared.domain.TeamId;
+import com.dmx.media.shared.domain.bus.query.QueryHandler;
 import com.dmx.media.team.domain.TeamNotFoundException;
-import com.dmx.shared.domain.TeamId;
-import com.dmx.shared.domain.bus.query.QueryHandler;
 
 public final class FindTeamQueryHandler implements QueryHandler<FindTeamQuery, TeamResponse> {
     private final TeamFinder finder;

@@ -3,11 +3,11 @@ package com.dmx.media.team.application.createTeam;
 import com.dmx.media.role.domain.Role;
 import com.dmx.media.role.domain.RoleDescription;
 import com.dmx.media.role.domain.RoleName;
+import com.dmx.media.shared.domain.RoleId;
+import com.dmx.media.shared.domain.TeamId;
 import com.dmx.media.space.domain.Space;
 import com.dmx.media.team.domain.*;
 import com.dmx.media.user.domain.User;
-import com.dmx.shared.domain.RoleId;
-import com.dmx.shared.domain.TeamId;
 
 import java.time.LocalDate;
 import java.util.HashMap;

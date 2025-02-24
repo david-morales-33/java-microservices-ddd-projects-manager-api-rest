@@ -1,11 +1,11 @@
 package com.dmx.media.team.application.createSpace;
 
+import com.dmx.media.shared.domain.SpaceId;
+import com.dmx.media.shared.domain.TeamId;
+import com.dmx.media.shared.domain.bus.command.CommandHandler;
 import com.dmx.media.space.domain.SpaceCreateBy;
 import com.dmx.media.space.domain.SpaceCreationDate;
 import com.dmx.media.space.domain.SpaceName;
-import com.dmx.shared.domain.SpaceId;
-import com.dmx.shared.domain.TeamId;
-import com.dmx.shared.domain.bus.command.CommandHandler;
 
 import java.time.LocalDate;
 

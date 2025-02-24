@@ -1,6 +1,6 @@
 package com.dmx.media.space.domain;
 
-import com.dmx.shared.domain.StringValueObject;
+import com.dmx.media.shared.domain.StringValueObject;
 
 public final class SpaceCreationDate extends StringValueObject {
     public SpaceCreationDate(String value) {

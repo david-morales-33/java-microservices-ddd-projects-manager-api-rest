@@ -2,8 +2,8 @@ package com.dmx.media.user.domain;
 
 import com.dmx.media.role.domain.Role;
 import com.dmx.media.role.domain.RoleDTO;
-import com.dmx.shared.domain.AggregateRoot;
-import com.dmx.shared.domain.UserId;
+import com.dmx.media.shared.domain.AggregateRoot;
+import com.dmx.media.shared.domain.UserId;
 
 import java.util.HashMap;
 

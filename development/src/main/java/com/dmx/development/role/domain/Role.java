@@ -1,6 +1,6 @@
 package com.dmx.development.role.domain;
 
-import com.dmx.shared.domain.RoleId;
+import com.dmx.development.shared.domain.RoleId;
 
 public final class Role {
     private final RoleId id;

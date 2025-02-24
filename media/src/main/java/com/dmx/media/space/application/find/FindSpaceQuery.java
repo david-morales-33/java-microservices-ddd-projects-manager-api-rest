@@ -1,6 +1,6 @@
 package com.dmx.media.space.application.find;
 
-import com.dmx.shared.domain.bus.query.Query;
+import com.dmx.media.shared.domain.bus.query.Query;
 
 public final class FindSpaceQuery implements Query {
     private final String spaceId;

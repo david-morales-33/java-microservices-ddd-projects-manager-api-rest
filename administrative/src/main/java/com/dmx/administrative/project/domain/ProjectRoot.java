@@ -1,8 +1,8 @@
 package com.dmx.administrative.project.domain;
 
 import com.dmx.administrative.card.domain.Card;
+import com.dmx.administrative.shared.domain.ProjectId;
 import com.dmx.administrative.team.domain.Team;
-import com.dmx.shared.domain.ProjectId;
 
 import java.util.HashMap;
 

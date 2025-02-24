@@ -1,8 +1,8 @@
 package com.dmx.administrative.user.application.find;
 
+import com.dmx.administrative.shared.domain.UserId;
+import com.dmx.administrative.shared.domain.bus.query.QueryHandler;
 import com.dmx.administrative.user.domain.UserNotFindException;
-import com.dmx.shared.domain.UserId;
-import com.dmx.shared.domain.bus.query.QueryHandler;
 
 public class FindUserQueryHandler implements QueryHandler<FindUserQuery, UserResponse> {
     private final UserFinder finder;

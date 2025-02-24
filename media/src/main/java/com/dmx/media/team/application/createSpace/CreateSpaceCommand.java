@@ -1,6 +1,6 @@
 package com.dmx.media.team.application.createSpace;
 
-import com.dmx.shared.domain.bus.command.Command;
+import com.dmx.media.shared.domain.bus.command.Command;
 
 public final class CreateSpaceCommand implements Command {
     private final String teamId;

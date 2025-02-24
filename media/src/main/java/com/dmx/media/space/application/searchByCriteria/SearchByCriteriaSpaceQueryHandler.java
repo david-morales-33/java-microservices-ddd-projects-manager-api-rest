@@ -1,10 +1,11 @@
 package com.dmx.media.space.application.searchByCriteria;
 
-import com.dmx.shared.domain.bus.query.QueryHandler;
-import com.dmx.shared.domain.criteria.Filters;
-import com.dmx.shared.domain.criteria.Order;
 
 import java.util.Optional;
+
+import com.dmx.media.shared.domain.bus.query.QueryHandler;
+import com.dmx.media.shared.domain.criteria.Filters;
+import com.dmx.media.shared.domain.criteria.Order;
 
 public final class SearchByCriteriaSpaceQueryHandler implements QueryHandler<SearchByCriteriaSpaceQuery, SpaceResponse> {
     private final SpaceByCriteriaSearcher searcher;

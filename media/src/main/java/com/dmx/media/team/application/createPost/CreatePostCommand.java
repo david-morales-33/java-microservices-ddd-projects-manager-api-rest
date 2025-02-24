@@ -1,6 +1,6 @@
 package com.dmx.media.team.application.createPost;
 
-import com.dmx.shared.domain.bus.command.Command;
+import com.dmx.media.shared.domain.bus.command.Command;
 
 public final class CreatePostCommand implements Command {
     private final String teamId;

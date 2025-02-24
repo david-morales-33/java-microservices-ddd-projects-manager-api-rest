@@ -1,7 +1,7 @@
 package com.dmx.administrative.project.application.createModuleProject;
 
 import com.dmx.administrative.project.domain.*;
-import com.dmx.shared.domain.ProjectId;
+import com.dmx.administrative.shared.domain.ProjectId;
 
 import java.util.HashMap;
 import java.util.Optional;

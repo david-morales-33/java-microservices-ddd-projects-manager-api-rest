@@ -1,6 +1,6 @@
 package com.dmx.media.role.domain;
 
-import com.dmx.shared.domain.RoleId;
+import com.dmx.media.shared.domain.RoleId;
 
 public class Role {
     private final RoleId id;

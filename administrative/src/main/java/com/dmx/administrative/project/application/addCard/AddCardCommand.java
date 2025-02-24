@@ -1,6 +1,6 @@
 package com.dmx.administrative.project.application.addCard;
 
-import com.dmx.shared.domain.bus.command.Command;
+import com.dmx.administrative.shared.domain.bus.command.Command;
 
 public final class AddCardCommand implements Command {
     private final String projectId;

@@ -3,8 +3,8 @@ package com.dmx.administrative.project.application.addModule;
 import com.dmx.administrative.funcionality.domain.FuncionalityDTO;
 import com.dmx.administrative.module.domain.Module;
 import com.dmx.administrative.module.domain.ModuleDTO;
-import com.dmx.shared.domain.ProjectId;
-import com.dmx.shared.domain.bus.command.CommandHandler;
+import com.dmx.administrative.shared.domain.ProjectId;
+import com.dmx.administrative.shared.domain.bus.command.CommandHandler;
 
 import java.util.HashMap;
 

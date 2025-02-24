@@ -2,7 +2,7 @@ package com.dmx.development.module.domain;
 
 import com.dmx.development.funcionality.domain.Funcionality;
 import com.dmx.development.funcionality.domain.FuncionalityDTO;
-import com.dmx.shared.domain.ModuleId;
+import com.dmx.development.shared.domain.ModuleId;
 
 import java.util.HashMap;
 

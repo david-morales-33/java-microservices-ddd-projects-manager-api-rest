@@ -3,8 +3,8 @@ package com.dmx.development.project.domain;
 import com.dmx.development.card.domain.Card;
 import com.dmx.development.card.domain.CardDTO;
 import com.dmx.development.module.domain.ModuleDTO;
+import com.dmx.development.shared.domain.ProjectId;
 import com.dmx.development.team.domain.TeamDTO;
-import com.dmx.shared.domain.ProjectId;
 import com.dmx.development.team.domain.Team;
 import com.dmx.development.module.domain.Module;
 

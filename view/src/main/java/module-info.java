@@ -1,3 +1,0 @@
-module view {
-    requires shared;
-}

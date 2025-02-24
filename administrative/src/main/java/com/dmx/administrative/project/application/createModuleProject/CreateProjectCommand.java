@@ -1,7 +1,5 @@
 package com.dmx.administrative.project.application.createModuleProject;
 
-import com.dmx.administrative.project.domain.ProjectName;
-import com.dmx.shared.domain.ProjectId;
 import com.dmx.shared.domain.bus.command.Command;
 
 public final class CreateProjectCommand implements Command {

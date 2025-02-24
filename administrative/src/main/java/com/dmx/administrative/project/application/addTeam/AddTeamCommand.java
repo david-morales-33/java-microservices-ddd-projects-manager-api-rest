@@ -1,6 +1,8 @@
 package com.dmx.administrative.project.application.addTeam;
 
-public final class AddTeamCommand {
+import com.dmx.shared.domain.bus.command.Command;
+
+public final class AddTeamCommand implements Command{
     private final String projectId;
     private final String teamId;
     private final String roleId;

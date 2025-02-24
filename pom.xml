@@ -11,9 +11,7 @@
     <modules>
         <module>administrative</module>
         <module>shared</module>
-        <module>app</module>
         <module>development</module>
-        <module>view</module>
         <module>media</module>
         <module>authentication</module>
     </modules>

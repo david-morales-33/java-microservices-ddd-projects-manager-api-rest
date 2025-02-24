@@ -1,7 +1,6 @@
 package com.dmx.administrative.project.application.findFuncionalityProject;
 
 import com.dmx.administrative.project.domain.ProjectFuncionalitiesContainer;
-import com.dmx.administrative.project.domain.ProjectModulesContainer;
 import com.dmx.administrative.project.domain.ProjectNotFound;
 import com.dmx.administrative.project.domain.ProjectQueryRepository;
 import com.dmx.shared.domain.ProjectId;

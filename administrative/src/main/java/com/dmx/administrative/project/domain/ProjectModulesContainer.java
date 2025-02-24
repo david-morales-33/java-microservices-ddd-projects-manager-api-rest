@@ -114,11 +114,11 @@ public final class ProjectModulesContainer extends Project {
         return new ProjectModulesCounter(this.modulesCounter.value() + 1);
     }
 
-    private ProjectModulesCounter decrementModulesCounter() {
-        if (this.modulesCounter.value() == 0)
-            throw new ProjectInternalException("Contador de modulos no puede ser menor a cero");
-        return new ProjectModulesCounter(this.modulesCounter.value() - 1);
-    }
+    // private ProjectModulesCounter decrementModulesCounter() {
+    //     if (this.modulesCounter.value() == 0)
+    //         throw new ProjectInternalException("Contador de modulos no puede ser menor a cero");
+    //     return new ProjectModulesCounter(this.modulesCounter.value() - 1);
+    // }
 
     public HashMap<String, Module> getModuleList() {
         return moduleList;

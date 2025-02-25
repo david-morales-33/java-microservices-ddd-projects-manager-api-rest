@@ -1,9 +1,0 @@
-package com.dmx.development.team.domain;
-
-import com.dmx.development.shared.domain.StringValueObject;
-
-public final class TeamName extends StringValueObject {
-    public TeamName(String value){
-        super(value);
-    }
-}

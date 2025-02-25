@@ -1,0 +1,25 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: msvc-administrative
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/test-microservices
+    username: admin
+    password: Sistemas-2020
+  jpa:
+    hibernate:
+      ddl-auto: create
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+  config: 
+    import: optional:configserver:http://localhost:8888
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    service-url: 
+      defaultZone: http://localhost:8761/eureka
+
+

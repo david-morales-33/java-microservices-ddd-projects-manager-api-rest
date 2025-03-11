@@ -26,4 +26,15 @@ public final class FuncionalityTest {
                 TeamIdTest.random()
         );
     }
+
+    public static Funcionality random(FuncionalityId id) {
+        return create(
+                id,
+                FuncionalityNameTest.random(),
+                FuncionalityDescriptionTest.random(),
+                FuncionalityCreationDateTest.random(),
+                FuncionalityStateTest.random(),
+                TeamIdTest.random()
+        );
+    }
 }

@@ -17,7 +17,7 @@ public class AddModuleCommandHandler implements CommandHandler<AddModuleCommand>
 
     @Override
     public void handle(AddModuleCommand command) {
-        HashMap<String, FuncionalityDTO> funcionalityList = new HashMap<>();
+        HashMap<Integer, FuncionalityDTO> funcionalityList = new HashMap<>();
 
         ProjectId projectId = new ProjectId(command.getProjectId());
         Module module = Module.fromPrimitives(new ModuleDTO(

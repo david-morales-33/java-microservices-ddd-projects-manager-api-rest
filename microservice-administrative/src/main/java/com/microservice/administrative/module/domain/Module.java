@@ -11,14 +11,14 @@ public final class Module {
     private final ModuleId id;
     private final ModuleName name;
     private final ModuleCreationDate creationDate;
-    private final HashMap<String, Funcionality> funcionalityList;
+    private final HashMap<Integer, Funcionality> funcionalityList;
     private ModuleFuncionalitiesCounter funcionalitiesCounter;
 
     public Module(
             ModuleId id,
             ModuleName name,
             ModuleCreationDate creationDate,
-            HashMap<String, Funcionality> funcionalityList
+            HashMap<Integer, Funcionality> funcionalityList
     ) {
         this.id = id;
         this.name = name;
@@ -28,7 +28,7 @@ public final class Module {
     }
 
     public static Module fromPrimitives(ModuleDTO data) {
-        HashMap<String, Funcionality> funcionalityList = new HashMap<>();
+        HashMap<Integer, Funcionality> funcionalityList = new HashMap<>();
         data.funcionalityList().forEach((key, value) -> {
             funcionalityList.put(key, Funcionality.fromPrimitives(value));
         });
@@ -42,7 +42,7 @@ public final class Module {
     }
 
     public ModuleDTO toPrimitives() {
-        HashMap<String, FuncionalityDTO> funcionalityList = new HashMap<>();
+        HashMap<Integer, FuncionalityDTO> funcionalityList = new HashMap<>();
         this.funcionalityList.forEach((key, value) -> {
             funcionalityList.put(key, value.toPrimitives());
         });
@@ -58,7 +58,7 @@ public final class Module {
     public void addFuncionality(Funcionality funcionality) {
         if (this.funcionalityList.containsValue(funcionality))
             throw new ModuleFuncionalityAlreadyExists("La funcionalidad ya existe");
-        this.funcionalityList.put(funcionality.getId().value().toString(), funcionality);
+        this.funcionalityList.put(funcionality.getId().value(), funcionality);
         this.funcionalitiesCounter = this.incrementFuncionalityCounter();
     }
 
@@ -82,7 +82,7 @@ public final class Module {
         return this.funcionalitiesCounter;
     }
 
-    public HashMap<String, Funcionality> getFuncionalityList() {
+    public HashMap<Integer, Funcionality> getFuncionalityList() {
         return this.funcionalityList;
     }
 }

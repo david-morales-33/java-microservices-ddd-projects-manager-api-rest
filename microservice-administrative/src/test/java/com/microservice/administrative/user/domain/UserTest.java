@@ -13,7 +13,7 @@ public final class UserTest {
 
     public static User random() {
         HashMap<String, Role> roleList = new HashMap<>();
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 2; i++) {
             Role role = RoleTest.random();
             roleList.put(role.getId().value(), role);
         }

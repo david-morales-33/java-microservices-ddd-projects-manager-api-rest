@@ -9,7 +9,9 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 public class MicroserviceDevelopmentApplication {
 
 	public static void main(String[] args) {
+
 		SpringApplication.run(MicroserviceDevelopmentApplication.class, args);
+		System.out.println(args);
 	}
 
 }

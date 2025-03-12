@@ -29,10 +29,7 @@ public final class ProjectCreator {
         ProjectFuncionalitiesContainer project = ProjectFuncionalitiesContainer.create(
                 projectId,
                 projectName,
-                new ProjectFuncionalitiesCounter(0),
-                new HashMap<>(),
-                new HashMap<>(),
-                new HashMap<>()
+                new ProjectFuncionalitiesCounter(0)
         );
         this.commandRepository.saveProjectFuncionalitiesContainer(project);
     }

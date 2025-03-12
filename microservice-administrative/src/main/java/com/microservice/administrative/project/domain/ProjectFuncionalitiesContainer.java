@@ -12,7 +12,7 @@ import java.util.HashMap;
 
 public final class ProjectFuncionalitiesContainer extends Project {
 
-    private final HashMap<String, Funcionality> funcionalityList;
+    private final HashMap<Integer, Funcionality> funcionalityList;
 
     public ProjectFuncionalitiesContainer(
             ProjectId id,
@@ -20,7 +20,7 @@ public final class ProjectFuncionalitiesContainer extends Project {
             ProjectFuncionalitiesCounter funcionalitiesCounter,
             HashMap<String, Team> teamList,
             HashMap<String, Card> cardList,
-            HashMap<String, Funcionality> funcionalityList
+            HashMap<Integer, Funcionality> funcionalityList
     ) {
         super(id, name, funcionalitiesCounter, teamList, cardList);
         this.funcionalityList = funcionalityList;
@@ -29,18 +29,15 @@ public final class ProjectFuncionalitiesContainer extends Project {
     public static ProjectFuncionalitiesContainer create(
             ProjectId id,
             ProjectName name,
-            ProjectFuncionalitiesCounter funcionalitiesCounter,
-            HashMap<String, Team> teamList,
-            HashMap<String, Card> cardList,
-            HashMap<String, Funcionality> funcionalityList
+            ProjectFuncionalitiesCounter funcionalitiesCounter
     ) {
-        return new ProjectFuncionalitiesContainer(id, name, funcionalitiesCounter, teamList, cardList, funcionalityList);
+        return new ProjectFuncionalitiesContainer(id, name, funcionalitiesCounter, new HashMap<>(), new HashMap<>(), new HashMap<>());
     }
 
     public static ProjectFuncionalitiesContainer fromPrimitives(ProjectFuncionalitiesContainerDTO data) {
         HashMap<String, Team> teamList = new HashMap<>();
         HashMap<String, Card> cardList = new HashMap<>();
-        HashMap<String, Funcionality> funcionalityList = new HashMap<>();
+        HashMap<Integer, Funcionality> funcionalityList = new HashMap<>();
 
         data.teamsList().forEach((key, value) -> {
             teamList.put(key, Team.fromPrimitives(value));
@@ -64,7 +61,7 @@ public final class ProjectFuncionalitiesContainer extends Project {
     public ProjectFuncionalitiesContainerDTO toPrimitives() {
         HashMap<String, TeamDTO> teamList = new HashMap<>();
         HashMap<String, CardDTO> cardList = new HashMap<>();
-        HashMap<String, FuncionalityDTO> funcionalityList = new HashMap<>();
+        HashMap<Integer, FuncionalityDTO> funcionalityList = new HashMap<>();
 
         this.getTeamList().forEach((key, value) -> {
             teamList.put(key, value.toPrimitives());
@@ -87,11 +84,11 @@ public final class ProjectFuncionalitiesContainer extends Project {
     }
 
     public void addFuncionality(Funcionality funcionality) {
-        this.funcionalityList.put(funcionality.getId().value().toString(), funcionality);
+        this.funcionalityList.put(funcionality.getId().value(), funcionality);
         this.incrementFuncionalitiesCounter();
     }
 
-    public HashMap<String, Funcionality> getFuncionalityList() {
+    public HashMap<Integer, Funcionality> getFuncionalityList() {
         return this.funcionalityList;
     }
 }

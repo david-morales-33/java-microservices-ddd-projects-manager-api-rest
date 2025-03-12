@@ -13,6 +13,6 @@ public record ProjectModulesContainerDTO(
         float state,
         HashMap<String, TeamDTO> teamsList,
         HashMap<String, CardDTO> cardList,
-        HashMap<String, ModuleDTO> moduleList
+        HashMap<Integer, ModuleDTO> moduleList
 ) {
 }

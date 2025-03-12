@@ -12,9 +12,10 @@ import com.microservice.administrative.team.domain.TeamDTO;
 import com.microservice.administrative.module.domain.Module;
 
 import java.util.HashMap;
+import java.util.List;
 
 public final class ProjectModulesContainer extends Project {
-    private final HashMap<String, Module> moduleList;
+    private final HashMap<Integer, Module> moduleList;
     private final ProjectState state;
     private ProjectModulesCounter modulesCounter;
 
@@ -24,7 +25,7 @@ public final class ProjectModulesContainer extends Project {
             ProjectFuncionalitiesCounter funcionalitiesCounter,
             HashMap<String, Team> teamList,
             HashMap<String, Card> cardList,
-            HashMap<String, Module> moduleList
+            HashMap<Integer, Module> moduleList
     ) {
         super(id, name, funcionalitiesCounter, teamList, cardList);
         this.moduleList = moduleList;
@@ -35,18 +36,15 @@ public final class ProjectModulesContainer extends Project {
     public static ProjectModulesContainer create(
             ProjectId id,
             ProjectName name,
-            ProjectFuncionalitiesCounter funcionalitiesCounter,
-            HashMap<String, Team> teamList,
-            HashMap<String, Card> cardList,
-            HashMap<String, Module> moduleList
+            ProjectFuncionalitiesCounter funcionalitiesCounter
     ) {
-        return new ProjectModulesContainer(id, name, funcionalitiesCounter, teamList, cardList, moduleList);
+        return new ProjectModulesContainer(id, name, funcionalitiesCounter, new HashMap<>(), new HashMap<>(), new HashMap<>());
     }
 
     public static ProjectModulesContainer fromPrimitives(ProjectModulesContainerDTO data) {
         HashMap<String, Team> teamList = new HashMap<>();
         HashMap<String, Card> cardList = new HashMap<>();
-        HashMap<String, Module> moduleList = new HashMap<>();
+        HashMap<Integer, Module> moduleList = new HashMap<>();
 
         data.teamsList().forEach((key, value) -> {
             teamList.put(key, Team.fromPrimitives(value));
@@ -71,7 +69,7 @@ public final class ProjectModulesContainer extends Project {
     public ProjectModulesContainerDTO toPrimitives() {
         HashMap<String, TeamDTO> teamList = new HashMap<>();
         HashMap<String, CardDTO> cardList = new HashMap<>();
-        HashMap<String, ModuleDTO> moduleList = new HashMap<>();
+        HashMap<Integer, ModuleDTO> moduleList = new HashMap<>();
 
         this.getTeamList().forEach((key, value) -> {
             teamList.put(key, value.toPrimitives());
@@ -98,7 +96,7 @@ public final class ProjectModulesContainer extends Project {
         if (this.moduleList.containsValue(module))
             throw new ProjectModuleAlreadyExistsException("El modulo ya existe");
 
-        this.moduleList.put(module.getId().value().toString(), module);
+        this.moduleList.put(module.getId().value(), module);
         this.modulesCounter = this.incrementModulesCounter();
     }
 
@@ -120,7 +118,7 @@ public final class ProjectModulesContainer extends Project {
     //     return new ProjectModulesCounter(this.modulesCounter.value() - 1);
     // }
 
-    public HashMap<String, Module> getModuleList() {
+    public HashMap<Integer, Module> getModuleList() {
         return moduleList;
     }
 

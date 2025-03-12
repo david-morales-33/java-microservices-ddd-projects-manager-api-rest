@@ -29,10 +29,7 @@ public final class ProjectCreator {
         ProjectModulesContainer project = ProjectModulesContainer.create(
                 projectId,
                 projectName,
-                new ProjectFuncionalitiesCounter(0),
-                new HashMap<>(),
-                new HashMap<>(),
-                new HashMap<>()
+                new ProjectFuncionalitiesCounter(0)
         );
         this.commandRepository.saveProjectModulesContainer(project);
     }

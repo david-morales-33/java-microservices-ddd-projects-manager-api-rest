@@ -12,6 +12,6 @@ public record ProjectFuncionalitiesContainerDTO(
         int funcionalitiesCounter,
         HashMap<String, TeamDTO> teamsList,
         HashMap<String, CardDTO> cardList,
-        HashMap<String, FuncionalityDTO> funcionalityList
+        HashMap<Integer, FuncionalityDTO> funcionalityList
 ) {
 }

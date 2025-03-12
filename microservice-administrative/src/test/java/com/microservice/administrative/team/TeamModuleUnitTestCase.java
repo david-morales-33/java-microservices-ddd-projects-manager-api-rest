@@ -1,7 +1,6 @@
 package com.microservice.administrative.team;
 
 import com.microservice.administrative.shared.domain.TeamId;
-import com.microservice.administrative.shared.domain.criteria.Criteria;
 import com.microservice.administrative.shared.infrastructure.UnitTestCase;
 import com.microservice.administrative.team.domain.Team;
 import com.microservice.administrative.team.domain.TeamCommandRepository;

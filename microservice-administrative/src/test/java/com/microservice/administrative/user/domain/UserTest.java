@@ -11,6 +11,15 @@ public final class UserTest {
         return new User(id, name, email, nickName, roleList);
     }
 
+    public static User create(UserId id) {
+        HashMap<String, Role> roleList = new HashMap<>();
+        for (int i = 0; i < 2; i++) {
+            Role role = RoleTest.random();
+            roleList.put(role.getId().value(), role);
+        }
+        return create(id, UserNameTest.random(), UserEmailTest.random(), UserNickNameTest.random(), roleList);
+    }
+
     public static User random() {
         HashMap<String, Role> roleList = new HashMap<>();
         for (int i = 0; i < 2; i++) {

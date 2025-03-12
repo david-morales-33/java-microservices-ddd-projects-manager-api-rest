@@ -20,6 +20,22 @@ public final class TeamTest {
         return new Team(id, name, creationDate, state, role, memberList);
     }
 
+    public static Team create(TeamId id) {
+        HashMap<String, User> membersList = new HashMap<>();
+        for (int i = 0; i < 3; i++) {
+            User user = UserTest.random();
+            membersList.put(user.getId().value(), user);
+        }
+        return create(
+                id,
+                TeamNameTest.random(),
+                TeamCreationDateTest.random(),
+                TeamStateTest.radom(),
+                RoleTest.random(),
+                membersList
+        );
+    }
+
     public static Team random() {
         HashMap<String, User> membersList = new HashMap<>();
         for (int i = 0; i < 3; i++) {

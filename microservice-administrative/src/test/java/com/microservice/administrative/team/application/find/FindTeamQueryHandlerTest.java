@@ -1,7 +1,9 @@
 package com.microservice.administrative.team.application.find;
 
+import com.microservice.administrative.shared.domain.TeamId;
 import com.microservice.administrative.team.TeamModuleUnitTestCase;
 import com.microservice.administrative.team.domain.Team;
+import com.microservice.administrative.team.domain.TeamIdTest;
 import com.microservice.administrative.team.domain.TeamNotFoundException;
 import com.microservice.administrative.team.domain.TeamTest;
 import org.junit.jupiter.api.BeforeEach;
@@ -32,10 +34,10 @@ public final class FindTeamQueryHandlerTest extends TeamModuleUnitTestCase {
 
     @Test
     void it_should_throw_an_exception_when_team_doest_exist() {
-        Team team = TeamTest.random();
-        FindTeamQuery query = FindTeamQueryTest.create(team.getId().value());
+        FindTeamQuery query = FindTeamQueryTest.random();
 
-        shouldHaveAskById(team.getId());
+        shouldHaveAskById(TeamIdTest.create(query.getTeamId()));
+
         assertThrows(TeamNotFoundException.class, () -> queryHandler.handle(query));
     }
 }

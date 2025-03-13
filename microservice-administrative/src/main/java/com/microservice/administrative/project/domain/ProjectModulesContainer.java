@@ -93,8 +93,11 @@ public final class ProjectModulesContainer extends Project {
     }
 
     public void addModule(Module module) {
-        if (this.moduleList.containsValue(module))
-            throw new ProjectModuleAlreadyExistsException("El modulo ya existe");
+
+        this.moduleList.forEach((key, value) -> {
+            if (module.getName().value().equals(value.getName().value())||module.getId().value().equals(value.getId().value()))
+                throw new ProjectModuleAlreadyExistsException("El modulo ya existe");
+        });
 
         this.moduleList.put(module.getId().value(), module);
         this.modulesCounter = this.incrementModulesCounter();
@@ -117,7 +120,6 @@ public final class ProjectModulesContainer extends Project {
     //         throw new ProjectInternalException("Contador de modulos no puede ser menor a cero");
     //     return new ProjectModulesCounter(this.modulesCounter.value() - 1);
     // }
-
 
 
     public HashMap<Integer, Module> getModuleList() {

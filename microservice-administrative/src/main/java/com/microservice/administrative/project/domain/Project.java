@@ -1,6 +1,7 @@
 package com.microservice.administrative.project.domain;
 
 import java.util.HashMap;
+import java.util.Objects;
 
 import com.microservice.administrative.card.domain.Card;
 import com.microservice.administrative.shared.domain.AggregateRoot;
@@ -84,5 +85,17 @@ public abstract class Project extends AggregateRoot {
 
     public ProjectTeamsCounter getTeamsCounter() {
         return this.teamsCounter;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Project project = (Project) o;
+        return Objects.equals(id, project.id) && Objects.equals(name, project.name) && Objects.equals(teamList, project.teamList) && Objects.equals(cardList, project.cardList) && Objects.equals(funcionalitiesCounter, project.funcionalitiesCounter) && Objects.equals(cardCounter, project.cardCounter) && Objects.equals(teamsCounter, project.teamsCounter);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, teamList, cardList, funcionalitiesCounter, cardCounter, teamsCounter);
     }
 }

@@ -21,10 +21,10 @@ public final class ProjectCreator {
         this.projectRootRepository = projectRootRepository;
     }
 
-    public  void execute(ProjectId projectId, ProjectName projectName){
+    public void execute(ProjectId projectId, ProjectName projectName) {
 
         Optional<ProjectRoot> response = this.projectRootRepository.find(projectId);
-        if(response.isPresent()) throw new ProjectAlreadyExists("El projecto ya existe");
+        if (response.isPresent()) throw new ProjectAlreadyExists("El proyecto ya existe");
 
         ProjectModulesContainer project = ProjectModulesContainer.create(
                 projectId,

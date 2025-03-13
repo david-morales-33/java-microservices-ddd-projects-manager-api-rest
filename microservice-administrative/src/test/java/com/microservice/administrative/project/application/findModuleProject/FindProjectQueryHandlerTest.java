@@ -1,6 +1,6 @@
 package com.microservice.administrative.project.application.findModuleProject;
 
-import com.microservice.administrative.project.ProjectModuleUnitTestCase;
+import com.microservice.administrative.project.ProjectUnitTestCase;
 import com.microservice.administrative.project.domain.ProjectModulesContainer;
 import com.microservice.administrative.project.domain.ProjectModulesContainerTest;
 import com.microservice.administrative.project.domain.ProjectNotFound;
@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 
-public final class FindProjectQueryHandlerTest extends ProjectModuleUnitTestCase {
+public final class FindProjectQueryHandlerTest extends ProjectUnitTestCase {
 
     FindProjectQueryHandler handler;
 

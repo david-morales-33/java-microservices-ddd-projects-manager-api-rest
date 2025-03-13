@@ -41,8 +41,10 @@ public abstract class Project extends AggregateRoot {
     }
 
     public void addCard(Card card) {
-        if (this.cardList.containsKey(card.getId().value()))
-            throw new ProjectInternalException("La targeta ya existe");
+        this.cardList.forEach((id, value) -> {
+            if (value.getName().value().equals(card.getName().value()))
+                throw new ProjectInternalException("La targeta ya existe");
+        });
         this.cardList.put(card.getId().value(), card);
         this.incrementCardCounter();
     }

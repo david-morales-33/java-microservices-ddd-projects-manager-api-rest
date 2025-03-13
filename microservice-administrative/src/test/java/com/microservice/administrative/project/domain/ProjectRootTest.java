@@ -30,6 +30,13 @@ public final class ProjectRootTest {
         );
     }
 
+    public static ProjectRoot create(ProjectId id) {
+        HashMap<String, Team> teamList = new HashMap<>();
+        HashMap<String, Card> cardList = new HashMap<>();
+
+        return new ProjectRoot(id, ProjectNameTest.random(), ProjectFuncionalitiesCounterTest.random(), teamList, cardList);
+    }
+
     public static ProjectRoot random() {
         HashMap<String, Team> teamList = new HashMap<>();
         HashMap<String, Card> cardList = new HashMap<>();

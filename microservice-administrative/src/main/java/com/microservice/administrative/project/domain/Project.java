@@ -34,8 +34,11 @@ public abstract class Project extends AggregateRoot {
     }
 
     public void addTeam(Team team) {
-        if (this.teamList.containsKey(team.getId().value()))
-            throw new ProjectInternalException("El equipo ya existe");
+        this.teamList.forEach((key, value) -> {
+            if (team.getName().value().equals(value.getName().value()))
+                throw new ProjectInternalException("El equipo ya existe");
+
+        });
         this.teamList.put(team.getId().value(), team);
         this.incrementTeamsCounter();
     }

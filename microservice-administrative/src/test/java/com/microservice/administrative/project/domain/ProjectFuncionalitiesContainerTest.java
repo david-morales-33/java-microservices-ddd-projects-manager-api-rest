@@ -4,7 +4,7 @@ import com.microservice.administrative.card.domain.Card;
 import com.microservice.administrative.card.domain.CardTest;
 import com.microservice.administrative.funcionality.domain.Funcionality;
 import com.microservice.administrative.funcionality.domain.FuncionalityTest;
-import com.microservice.administrative.project.application.createModuleProject.CreateProjectCommand;
+import com.microservice.administrative.project.application.createFuncionalitiesProject.CreateProjectCommand;
 import com.microservice.administrative.shared.domain.ProjectId;
 import com.microservice.administrative.team.domain.Team;
 import com.microservice.administrative.team.domain.TeamTest;

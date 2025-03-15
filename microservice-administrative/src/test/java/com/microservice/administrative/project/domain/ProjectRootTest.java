@@ -20,16 +20,6 @@ public final class ProjectRootTest {
         return new ProjectRoot(id, name, funcionalitiesCounter, teamList, cardList);
     }
 
-    public static ProjectRoot fromRequest(CreateProjectCommand command) {
-        return create(
-                ProjectIdTest.create(command.getId()),
-                ProjectNameTest.create(command.getName()),
-                ProjectFuncionalitiesCounterTest.create(0),
-                new HashMap<>(),
-                new HashMap<>()
-        );
-    }
-
     public static ProjectRoot create(ProjectId id) {
         HashMap<String, Team> teamList = new HashMap<>();
         HashMap<String, Card> cardList = new HashMap<>();

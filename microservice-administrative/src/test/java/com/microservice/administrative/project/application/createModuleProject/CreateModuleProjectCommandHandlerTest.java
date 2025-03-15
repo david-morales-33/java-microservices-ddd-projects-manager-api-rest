@@ -20,6 +20,7 @@ public final class CreateModuleProjectCommandHandlerTest extends ProjectUnitTest
     @Test
     void it_should_create_a_new_module_project() {
         CreateProjectCommand command = CreateModuleProjectCommandTest.random();
+
         ProjectModulesContainer project = ProjectModulesContainerTest.fromRequest(command);
 
         shouldAnswerEmptyProject(ProjectIdTest.create(command.getId()));
@@ -27,13 +28,13 @@ public final class CreateModuleProjectCommandHandlerTest extends ProjectUnitTest
         handler.handle(command);
 
         shouldVerifySaveModuleProject(project);
-
     }
 
     @Test
     void it_should_throw_an_exception_when_project_already_exists() {
-        CreateProjectCommand command = CreateModuleProjectCommandTest.random();
-        ProjectRoot project = ProjectRootTest.fromRequest(command);
+        ProjectRoot project = ProjectRootTest.random();
+
+        CreateProjectCommand command = CreateModuleProjectCommandTest.create(project.getId().value(),project.getName().value());
 
         shouldAnswerAnyProject(project);
 

@@ -1,8 +1,5 @@
-package com.microservice.media.shared.role.domain;
+package com.microservice.media.role.domain;
 
-import com.microservice.media.role.domain.Role;
-import com.microservice.media.role.domain.RoleDescription;
-import com.microservice.media.role.domain.RoleName;
 import com.microservice.media.shared.domain.RoleId;
 
 public final class RoleTest {

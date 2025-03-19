@@ -1,4 +1,4 @@
-package com.microservice.media.shared.role.domain;
+package com.microservice.media.role.domain;
 
 import com.microservice.media.shared.domain.RoleId;
 import com.microservice.media.shared.domain.UuidTest;

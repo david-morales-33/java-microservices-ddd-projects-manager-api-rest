@@ -6,6 +6,7 @@ import com.microservice.media.shared.domain.AggregateRoot;
 import com.microservice.media.shared.domain.UserId;
 
 import java.util.HashMap;
+import java.util.Objects;
 
 public final class User extends AggregateRoot {
     private final UserId id;
@@ -69,5 +70,17 @@ public final class User extends AggregateRoot {
                 this.nickName.value(),
                 roleList
                 );
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return Objects.equals(id, user.id) && Objects.equals(name, user.name) && Objects.equals(email, user.email) && Objects.equals(nickName, user.nickName) && Objects.equals(roleList, user.roleList);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, email, nickName, roleList);
     }
 }

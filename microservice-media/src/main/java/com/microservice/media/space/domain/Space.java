@@ -8,6 +8,7 @@ import com.microservice.media.team.domain.UserNotValidException;
 
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Objects;
 
 public final class Space {
     private final SpaceId id;
@@ -132,5 +133,17 @@ public final class Space {
 
     public SpaceCreationDate getCreationDate() {
         return this.creationDate;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Space space = (Space) o;
+        return Objects.equals(id, space.id) && Objects.equals(name, space.name) && Objects.equals(creationDate, space.creationDate) && Objects.equals(createBy, space.createBy) && Objects.equals(postList, space.postList) && Objects.equals(memberList, space.memberList) && Objects.equals(postCounter, space.postCounter) && Objects.equals(membersCounter, space.membersCounter);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, creationDate, createBy, postList, memberList, postCounter, membersCounter);
     }
 }

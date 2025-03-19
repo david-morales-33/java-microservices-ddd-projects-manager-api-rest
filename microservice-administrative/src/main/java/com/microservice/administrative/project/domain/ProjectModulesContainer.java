@@ -104,7 +104,7 @@ public final class ProjectModulesContainer extends Project {
     }
 
     public void addFuncionality(ModuleId moduleId, Funcionality funcionality) {
-        Module module = this.moduleList.get(moduleId.value().toString());
+        Module module = this.moduleList.get(moduleId.value());
         if (module == null)
             throw new ModuleNotFoundException();
         module.addFuncionality(funcionality);

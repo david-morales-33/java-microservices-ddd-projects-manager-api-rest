@@ -16,6 +16,19 @@ public final class ModuleTest {
     ) {
         return new Module(id, name, creationDate, funcionalityList);
     }
+    public static Module create(ModuleId id) {
+        HashMap<Integer, Funcionality> funcionalityList = new HashMap<>();
+        for (int i = 0; i < 5; i++) {
+            Funcionality funcionality = FuncionalityTest.random(new FuncionalityId(i));
+            funcionalityList.put(funcionality.getId().value(), funcionality);
+        }
+        return create(
+                id,
+                ModuleNameTest.random(),
+                ModuleCreationDateTest.random(),
+                funcionalityList
+        );
+    }
 
     public static Module random() {
         HashMap<Integer, Funcionality> funcionalityList = new HashMap<>();

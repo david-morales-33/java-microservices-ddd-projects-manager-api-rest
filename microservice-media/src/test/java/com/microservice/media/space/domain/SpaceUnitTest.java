@@ -23,7 +23,7 @@ public final class SpaceUnitTest {
     }
 
     @Test
-    void it_should_add_a_new_member() {
+    void it_should_increment_member_counter() {
         UserId newUser = UserIdTest.random();
 
         space.addMember(newUser);
@@ -40,7 +40,7 @@ public final class SpaceUnitTest {
     }
 
     @Test
-    void it_should_add_a_new_post() {
+    void it_should_increment_post_counter() {
         List<UserId> membersList = new ArrayList<>(space.getMemberList());
         UserId newUser = membersList.get(0);
 

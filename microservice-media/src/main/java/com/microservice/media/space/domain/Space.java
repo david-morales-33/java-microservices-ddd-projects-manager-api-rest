@@ -90,6 +90,8 @@ public final class Space {
     }
 
     public void addMember(UserId newUser) {
+        if (this.memberList.contains(newUser))
+            throw new SpaceMemberAlreadyExists();
         this.memberList.add(newUser);
         this.membersCounter = this.incrementMembersCounter();
     }

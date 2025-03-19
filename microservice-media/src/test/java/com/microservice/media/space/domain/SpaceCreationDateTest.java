@@ -10,4 +10,13 @@ public final class SpaceCreationDateTest {
     public static SpaceCreationDate random() {
         return create(DateTest.random());
     }
+
+    public static class SpaceUnitTest {
+
+
+
+        void it_should_add_a_new_member(){
+
+        }
+    }
 }

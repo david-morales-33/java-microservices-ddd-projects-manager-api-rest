@@ -12,6 +12,7 @@ import com.microservice.media.space.domain.Space;
 import com.microservice.media.space.domain.SpaceDTO;
 
 import java.util.HashMap;
+import java.util.Objects;
 
 public final class Team extends AggregateRoot {
     private final TeamId id;
@@ -191,5 +192,17 @@ public final class Team extends AggregateRoot {
 
     public HashMap<String, Space> getSpaceList() {
         return this.spaceList;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Team team = (Team) o;
+        return Objects.equals(id, team.id) && Objects.equals(name, team.name) && Objects.equals(creationDate, team.creationDate) && Objects.equals(state, team.state) && Objects.equals(role, team.role) && Objects.equals(memberList, team.memberList) && Objects.equals(spaceList, team.spaceList) && Objects.equals(membersCounter, team.membersCounter) && Objects.equals(spacesCounter, team.spacesCounter);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, creationDate, state, role, memberList, spaceList, membersCounter, spacesCounter);
     }
 }

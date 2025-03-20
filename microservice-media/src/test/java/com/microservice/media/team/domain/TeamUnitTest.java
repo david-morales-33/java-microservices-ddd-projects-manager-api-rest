@@ -56,7 +56,7 @@ public final class TeamUnitTest {
     }
 
     @Test
-    void ADD_MEMBER_SPACE_it_should_increment_members_counter() {
+    void ADD_SPACE_MEMBER_it_should_increment_members_counter() {
         Space space = SpaceTest.random();
         User user = UserTest.random();
 
@@ -69,7 +69,7 @@ public final class TeamUnitTest {
     }
 
     @Test
-    void ADD_MEMBER_SPACE_it_should_throw_an_exception_when_space_does_not_exist() {
+    void ADD_SPACE_MEMBER_it_should_throw_an_exception_when_space_does_not_exist() {
         User user = UserTest.random();
 
         team.addUser(user);
@@ -78,7 +78,7 @@ public final class TeamUnitTest {
     }
 
     @Test
-    void ADD_MEMBER_SPACE_it_should_throw_an_exception_when_user_does_not_exist_on_team() {
+    void ADD_SPACE_MEMBER_it_should_throw_an_exception_when_user_does_not_exist_on_team() {
         Space space = SpaceTest.random();
         User user = UserTest.random();
 

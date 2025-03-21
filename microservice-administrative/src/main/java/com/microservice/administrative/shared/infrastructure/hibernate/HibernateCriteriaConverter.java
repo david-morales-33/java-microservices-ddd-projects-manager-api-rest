@@ -8,7 +8,6 @@ import jakarta.persistence.criteria.*;
 import java.util.HashMap;
 import java.util.List;
 import java.util.function.BiFunction;
-import java.util.stream.Collectors;
 
 public final class HibernateCriteriaConverter<T> {
     private final CriteriaBuilder builder;

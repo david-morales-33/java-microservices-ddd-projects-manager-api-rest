@@ -3,6 +3,7 @@ package com.microservice.media.shared.domain.criteria;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 public final class Filters {
@@ -22,6 +23,19 @@ public final class Filters {
 
     public List<Filter> filters() {
         return filters;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Filters filters1 = (Filters) o;
+        return Objects.equals(filters, filters1.filters);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(filters);
     }
 
     public String serialize() {

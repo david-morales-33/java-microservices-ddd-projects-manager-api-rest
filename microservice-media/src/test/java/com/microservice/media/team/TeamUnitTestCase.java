@@ -42,8 +42,8 @@ public abstract class TeamUnitTestCase extends UnitTestCase {
         when(queryRepository.searchAll()).thenReturn(new ArrayList<>());
     }
 
-    public void shouldAnswerAnyTeamByCriteria(Criteria criteria, Team team) {
-        when(queryRepository.match(criteria)).thenReturn(List.of(team));
+    public void shouldAnswerAnyTeamByCriteria(Criteria criteria, List<Team> teamList) {
+        when(queryRepository.match(criteria)).thenReturn(teamList);
     }
 
     public void shouldAnswerEmptyTeamByCriteria(Criteria criteria) {

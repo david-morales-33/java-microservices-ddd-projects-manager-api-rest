@@ -1,5 +1,6 @@
 package com.microservice.media.shared.domain.criteria;
 
+import java.util.Objects;
 import java.util.Optional;
 
 public final class Criteria {
@@ -40,6 +41,19 @@ public final class Criteria {
 
     public boolean hasFilters() {
         return filters.filters().size() > 0;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Criteria criteria = (Criteria) o;
+        return Objects.equals(filters, criteria.filters) && Objects.equals(order, criteria.order) && Objects.equals(limit, criteria.limit) && Objects.equals(offset, criteria.offset);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(filters, order, limit, offset);
     }
 
     public String serialize() {

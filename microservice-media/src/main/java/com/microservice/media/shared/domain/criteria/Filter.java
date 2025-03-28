@@ -1,6 +1,7 @@
 package com.microservice.media.shared.domain.criteria;
 
 import java.util.HashMap;
+import java.util.Objects;
 
 public final class Filter {
     private final FilterField    field;
@@ -39,6 +40,19 @@ public final class Filter {
 
     public FilterValue value() {
         return value;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Filter filter = (Filter) o;
+        return Objects.equals(field, filter.field) && operator == filter.operator && Objects.equals(value, filter.value);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(field, operator, value);
     }
 
     public String serialize() {

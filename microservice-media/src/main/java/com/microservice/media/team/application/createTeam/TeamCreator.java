@@ -6,25 +6,27 @@ import com.microservice.media.role.domain.RoleName;
 import com.microservice.media.shared.domain.RoleId;
 import com.microservice.media.shared.domain.TeamId;
 import com.microservice.media.space.domain.Space;
-import com.microservice.media.team.domain.Team;
-import com.microservice.media.team.domain.TeamCommandRepository;
-import com.microservice.media.team.domain.TeamCreationDate;
-import com.microservice.media.team.domain.TeamName;
-import com.microservice.media.team.domain.TeamState;
+import com.microservice.media.team.domain.*;
 import com.microservice.media.user.domain.User;
 
 import java.time.LocalDate;
 import java.util.HashMap;
+import java.util.Optional;
 
 public final class TeamCreator {
     private final TeamCommandRepository commandRepository;
+    private final TeamQueryRepository queryRepository;
 
-    public TeamCreator(TeamCommandRepository commandRepository) {
+    public TeamCreator(TeamCommandRepository commandRepository, TeamQueryRepository queryRepository) {
         this.commandRepository = commandRepository;
+        this.queryRepository = queryRepository;
     }
 
-    public void execute(TeamId teamId, TeamName teamName, RoleId roleId, RoleName roleName, RoleDescription roleDescription) {
-        TeamCreationDate creationDate = new TeamCreationDate(LocalDate.now().toString());
+    public void execute(TeamId teamId, TeamName teamName, TeamCreationDate creationDate, RoleId roleId, RoleName roleName, RoleDescription roleDescription) {
+        Optional<Team> response = this.queryRepository.find(teamId);
+
+        if (response.isPresent()) throw new TeamAlreadyExists("El equipo ya existe");
+
         TeamState teamState = new TeamState(true);
         Role role = new Role(roleId, roleName, roleDescription);
         HashMap<String, User> membersList = new HashMap<>();

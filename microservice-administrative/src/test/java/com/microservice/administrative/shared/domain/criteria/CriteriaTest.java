@@ -1,6 +1,6 @@
-package com.microservice.media.shared.domain.criteria;
+package com.microservice.administrative.shared.domain.criteria;
 
-import com.microservice.media.shared.domain.ListTest;
+import com.microservice.administrative.shared.domain.ListTest;
 
 import java.util.Optional;
 

@@ -15,6 +15,12 @@ public class Role {
         this.description = description;
     }
 
+    private Role() {
+        this.id = null;
+        this.name = null;
+        this.description = null;
+    }
+
     public static Role create(RoleId id, RoleName name, RoleDescription description) {
         return new Role(id, name, description);
     }

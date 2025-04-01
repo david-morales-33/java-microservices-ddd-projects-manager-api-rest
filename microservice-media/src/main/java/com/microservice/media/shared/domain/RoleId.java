@@ -4,4 +4,6 @@ public class RoleId extends Identifier {
     public RoleId(String value) {
         super(value);
     }
+
+    private RoleId(){}
 }

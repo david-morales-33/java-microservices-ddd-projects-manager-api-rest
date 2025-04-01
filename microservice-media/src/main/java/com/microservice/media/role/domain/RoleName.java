@@ -6,4 +6,8 @@ public final class RoleName extends StringValueObject {
     public RoleName(String value) {
         super(value);
     }
+
+    public RoleName() {
+        super(null);
+    }
 }

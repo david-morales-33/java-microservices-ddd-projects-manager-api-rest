@@ -34,7 +34,7 @@ public class HibernateConfigurationFactory {
         sessionFactory.setDataSource(dataSource);
         sessionFactory.setHibernateProperties(hibernateProperties());
 
-        List<Resource> mappingFiles = searchMappingFiles(contextName);
+        List<Resource> mappingFiles = searchMappingFiles();
 
         sessionFactory.setMappingLocations(mappingFiles.toArray(new Resource[mappingFiles.size()]));
 
@@ -63,7 +63,7 @@ public class HibernateConfigurationFactory {
         return dataSource;
     }
 
-    private List<Resource> searchMappingFiles(String contextName) {
+    public List<Resource> searchMappingFiles() {
         List<String> modules = subdirectoriesFor();
         List<String> goodPaths = new ArrayList<>();
 
@@ -114,7 +114,7 @@ public class HibernateConfigurationFactory {
 
     private Properties hibernateProperties() {
         Properties hibernateProperties = new Properties();
-        hibernateProperties.put(AvailableSettings.HBM2DDL_AUTO, "create");
+        hibernateProperties.put(AvailableSettings.HBM2DDL_AUTO, "none");
         hibernateProperties.put(AvailableSettings.SHOW_SQL, "true");
         hibernateProperties.put(AvailableSettings.DIALECT, "org.hibernate.dialect.PostgreSQLDialect");
         hibernateProperties.put(AvailableSettings.TRANSFORM_HBM_XML, true);

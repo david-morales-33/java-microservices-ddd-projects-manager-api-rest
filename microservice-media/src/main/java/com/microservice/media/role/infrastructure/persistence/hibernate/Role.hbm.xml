@@ -4,7 +4,7 @@
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-    <class name="com.microservice.media.role.domain.Role" table="role">
+    <class name="com.microservice.media.role.domain.Role" table="tbl_role">
         <composite-id name="id" class="com.microservice.media.shared.domain.RoleId" access="field">
             <key-property column="rol_id" name="value" access="field" />
         </composite-id>

@@ -6,21 +6,30 @@ import com.microservice.media.shared.domain.AggregateRoot;
 import com.microservice.media.shared.domain.UserId;
 
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
-public final class User extends AggregateRoot {
+public class User extends AggregateRoot {
     private final UserId id;
     private final UserName name;
     private final UserEmail email;
     private final UserNickName nickName;
-    private final HashMap<String, Role> roleList;
+    private Map<String, Role> roleList;
 
-    public User(UserId id, UserName name, UserEmail email, UserNickName nickName, HashMap<String, Role> roleList) {
+    public User(UserId id, UserName name, UserEmail email, UserNickName nickName, Map<String, Role> roleList) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.nickName = nickName;
         this.roleList = roleList;
+    }
+
+    private User() {
+        this.id = null;
+        this.name = null;
+        this.email = null;
+        this.nickName = null;
+        this.roleList = new HashMap<>();
     }
 
     public UserId getId() {
@@ -39,12 +48,16 @@ public final class User extends AggregateRoot {
         return this.nickName;
     }
 
-    public HashMap<String, Role> getRole() {
+    public Map<String, Role> getRoleList() {
         return this.roleList;
     }
 
+    public void setRoleList(Map<String, Role> roleList) {
+        this.roleList = roleList;
+    }
+
     public static User fromPrimitives(UserDTO data) {
-        HashMap<String, Role> roleList = new HashMap<>();
+        Map<String, Role> roleList = new HashMap<>();
         data.roleList().forEach((key, value) -> {
             roleList.put(key, Role.fromPrimitives(value));
         });
@@ -54,13 +67,13 @@ public final class User extends AggregateRoot {
                 new UserEmail(data.email()),
                 new UserNickName(data.nickName()),
                 roleList
-                );
+        );
     }
 
     public UserDTO toPrimitives() {
-        HashMap<String, RoleDTO> roleList = new HashMap<>();
-        this.roleList.forEach((key,value)->{
-            roleList.put(key,value.toPrimitives());
+        Map<String, RoleDTO> roleList = new HashMap<>();
+        this.roleList.forEach((key, value) -> {
+            roleList.put(key, value.toPrimitives());
         });
 
         return new UserDTO(
@@ -69,7 +82,7 @@ public final class User extends AggregateRoot {
                 this.email.value(),
                 this.nickName.value(),
                 roleList
-                );
+        );
     }
 
     @Override

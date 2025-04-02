@@ -35,8 +35,8 @@ public final class TeamTest {
             spaceList.put(space.getId().value(), space);
 
             space.getMemberList().forEach(user -> {
-                User member = UserTest.create(new UserId(user.value()));
-                memberList.put(user.value(), member);
+                User member = UserTest.create(user.getId());
+                memberList.put(member.getId().value(), member);
             });
         }
 

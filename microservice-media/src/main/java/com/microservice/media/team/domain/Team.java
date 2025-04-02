@@ -128,7 +128,7 @@ public final class Team extends AggregateRoot {
         if (space == null) throw new SpaceNotFoundException("No el espacio no existe dentro del equipo de trabajo");
         if (user == null) throw new UserNotValidException("El usuario no existe en este equipo de trabajo");
 
-        space.addMember(user.getId());
+        space.addMember(user);
     }
 
     public void addPost(Post newPost) {

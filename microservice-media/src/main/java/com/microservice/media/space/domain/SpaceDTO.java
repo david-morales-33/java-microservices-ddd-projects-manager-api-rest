@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 
 import com.microservice.media.post.domain.PostDTO;
+import com.microservice.media.user.domain.UserDTO;
 
 public record SpaceDTO(
         String id,
@@ -11,7 +12,7 @@ public record SpaceDTO(
         String creationDate,
         String createBy,
         HashMap<String, PostDTO> postList,
-        HashSet<String> memberList,
+        HashSet<UserDTO> memberList,
         int postCounter,
         int membersCounter
 ) {

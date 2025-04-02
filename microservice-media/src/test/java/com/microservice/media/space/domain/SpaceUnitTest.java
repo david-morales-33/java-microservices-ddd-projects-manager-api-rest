@@ -3,6 +3,7 @@ package com.microservice.media.space.domain;
 import com.microservice.media.post.domain.*;
 import com.microservice.media.shared.domain.UserId;
 import com.microservice.media.team.domain.UserNotValidException;
+import com.microservice.media.user.domain.User;
 import com.microservice.media.user.domain.UserIdTest;
 import com.microservice.media.user.domain.UserTest;
 import org.junit.jupiter.api.BeforeEach;
@@ -24,7 +25,7 @@ public final class SpaceUnitTest {
 
     @Test
     void it_should_increment_member_counter() {
-        UserId newUser = UserIdTest.random();
+        User newUser = UserTest.random();
 
         space.addMember(newUser);
 
@@ -33,16 +34,16 @@ public final class SpaceUnitTest {
 
     @Test
     void it_should_throw_an_exception_when_member_exists() {
-        List<UserId> membersList = new ArrayList<>(space.getMemberList());
-        UserId newUser = membersList.get(0);
+        List<User> membersList = new ArrayList<>(space.getMemberList());
+        User newUser = membersList.get(0);
 
         assertThrows(SpaceMemberAlreadyExists.class, () -> space.addMember(newUser));
     }
 
     @Test
     void it_should_increment_post_counter() {
-        List<UserId> membersList = new ArrayList<>(space.getMemberList());
-        UserId newUser = membersList.get(0);
+        List<User> membersList = new ArrayList<>(space.getMemberList());
+        User newUser = membersList.get(0);
 
         Post newPost = PostTest.create(
                 PostIdTest.random(),
@@ -50,7 +51,7 @@ public final class SpaceUnitTest {
                 PostContentTest.random(),
                 PostCreationDateTest.random(),
                 space.getId(),
-                UserTest.create(newUser)
+                newUser
         );
 
         space.addPost(newPost);

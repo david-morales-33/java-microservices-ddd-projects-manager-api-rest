@@ -12,6 +12,7 @@ import com.microservice.media.team.domain.Team;
 import com.microservice.media.team.domain.TeamCommandRepository;
 import com.microservice.media.team.domain.TeamNotFoundException;
 import com.microservice.media.team.domain.TeamQueryRepository;
+import com.microservice.media.user.domain.User;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -32,7 +33,7 @@ public final class SpaceCreator {
         Team team = response.get();
 
         HashMap<String, Post> postList = new HashMap<>();
-        HashSet<UserId> membersList = new HashSet<>();
+        HashSet<User> membersList = new HashSet<>();
 
         Space space = Space.create(spaceId, name, creationDate, createBy, postList, membersList);
         team.addSpace(space);

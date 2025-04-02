@@ -17,19 +17,19 @@ public final class SpaceTest {
             SpaceCreationDate creationDate,
             SpaceCreateBy createBy,
             HashMap<String, Post> postList,
-            HashSet<UserId> memberList
+            HashSet<User> memberList
     ) {
         return new Space(id, name, creationDate, createBy, postList, memberList);
     }
 
     public static Space random() {
         HashMap<String, Post> postList = new HashMap<>();
-        HashSet<UserId> memberList = new HashSet<>();
+        HashSet<User> memberList = new HashSet<>();
         for (int i = 0; i < 3; i++) {
             Post post = PostTest.random();
             User user = UserTest.random();
             postList.put(post.getId().value(), post);
-            memberList.add(user.getId());
+            memberList.add(user);
         }
         return create(
                 SpaceIdTest.random(),

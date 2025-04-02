@@ -6,17 +6,15 @@ import com.microservice.media.shared.domain.SpaceId;
 import com.microservice.media.shared.domain.UserId;
 import com.microservice.media.team.domain.UserNotValidException;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Objects;
+import java.util.*;
 
 public final class Space {
     private final SpaceId id;
     private final SpaceName name;
     private final SpaceCreationDate creationDate;
     private final SpaceCreateBy createBy;
-    private final HashMap<String, Post> postList;
-    private final HashSet<UserId> memberList;
+    private Map<String, Post> postList;
+    private Set<UserId> memberList;
     private SpacePostCounter postCounter;
     private SpaceMembersCounter membersCounter;
 
@@ -35,6 +33,15 @@ public final class Space {
         this.memberList = memberList;
         this.membersCounter = new SpaceMembersCounter(memberList.size());
         this.postCounter = new SpacePostCounter(postList.size());
+    }
+
+    public Space() {
+        this.id = null;
+        this.name = null;
+        this.creationDate = null;
+        this.createBy = null;
+        this.postList = new HashMap<>();
+        this.memberList = new HashSet<>();
     }
 
     public static Space create(
@@ -117,7 +124,7 @@ public final class Space {
         return this.createBy;
     }
 
-    public HashMap<String, Post> getPostList() {
+    public Map<String, Post> getPostList() {
         return postList;
     }
 
@@ -129,12 +136,20 @@ public final class Space {
         return this.membersCounter;
     }
 
-    public HashSet<UserId> getMemberList() {
+    public Set<UserId> getMemberList() {
         return this.memberList;
     }
 
     public SpaceCreationDate getCreationDate() {
         return this.creationDate;
+    }
+
+    private void setPostList(Map<String, Post> postList) {
+        this.postList = postList;
+    }
+
+    private void setMemberList(Set<UserId> memberList) {
+        this.memberList = memberList;
     }
 
     @Override

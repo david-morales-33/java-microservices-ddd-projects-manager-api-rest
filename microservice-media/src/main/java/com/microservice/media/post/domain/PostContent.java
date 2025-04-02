@@ -6,4 +6,8 @@ public final class PostContent extends StringValueObject {
     public PostContent(String value) {
         super(value);
     }
+
+    private PostContent() {
+        super(null);
+    }
 }

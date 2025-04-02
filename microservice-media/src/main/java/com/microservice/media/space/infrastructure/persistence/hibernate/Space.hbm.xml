@@ -1,0 +1,35 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.microservice.media.space.domain.Space" table="tbl_space">
+        <composite-id name="id" class="com.microservice.media.shared.domain.SpaceId" access="field">
+            <key-property column="spc_id" name="value" access="field"/>
+        </composite-id>
+
+        <component name="name" class="com.microservice.media.space.domain.SpaceName" access="field">
+            <property name="value" column="spc_name" type="string" access="field"/>
+        </component>
+
+        <component name="creationDate" class="com.microservice.media.space.domain.SpaceCreationDate" access="field">
+            <property name="value" column="spc_create_at" type="string" access="field"/>
+        </component>
+
+        <component name="createBy" class="com.microservice.media.space.domain.SpaceCreateBy" access="field">
+            <property name="value" column="spc_create_by" type="string" access="field"/>
+        </component>
+
+        <map name="postList">
+            <key column="pst_id"/>
+            <map-key column="spc_x_pst" type="string"/>
+            <one-to-many class="com.microservice.media.post.domain.Post"/>
+        </map>
+
+        <set name="memberList" table="tbl_space_x_user" access="field">
+            <key column="spc_x_usr"/>
+            <element column="usr_id" type="string"/>
+        </set>
+    </class>
+</hibernate-mapping>

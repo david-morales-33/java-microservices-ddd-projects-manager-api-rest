@@ -1,0 +1,30 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.microservice.media.post.domain.Post" table="tbl_post">
+        <composite-id name="id" class="com.microservice.media.post.domain.PostId" access="field">
+            <key-property column="pst_id" name="value" access="field"/>
+        </composite-id>
+
+        <component name="title" class="com.microservice.media.post.domain.PostTitle" access="field">
+            <property name="value" column="pst_title" type="string" access="field"/>
+        </component>
+
+        <component name="content" class="com.microservice.media.post.domain.PostContent" access="field">
+            <property name="value" column="pst_content" type="string" access="field"/>
+        </component>
+
+        <component name="creationDate" class="com.microservice.media.post.domain.PostCreationDate" access="field">
+            <property name="value" column="pst_create_at" type="string" access="field"/>
+        </component>
+
+        <component name="spaceId" class="com.microservice.media.shared.domain.SpaceId" access="field">
+            <property name="value" column="spc_id" type="string" access="field"/>
+        </component>
+
+        <one-to-one name="user" class="com.microservice.media.user.domain.User" access="field" constrained="true"/>
+    </class>
+</hibernate-mapping>

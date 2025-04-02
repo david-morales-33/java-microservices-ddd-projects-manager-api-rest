@@ -6,4 +6,8 @@ public final class PostCreationDate extends StringValueObject {
     public PostCreationDate(String value) {
         super(value);
     }
+
+    private PostCreationDate() {
+        super(null);
+    }
 }

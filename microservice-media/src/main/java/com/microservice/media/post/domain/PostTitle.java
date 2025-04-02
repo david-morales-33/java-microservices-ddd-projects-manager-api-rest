@@ -6,4 +6,8 @@ public final class PostTitle extends StringValueObject {
     public PostTitle(String value) {
         super(value);
     }
+
+    private PostTitle() {
+        super(null);
+    }
 }

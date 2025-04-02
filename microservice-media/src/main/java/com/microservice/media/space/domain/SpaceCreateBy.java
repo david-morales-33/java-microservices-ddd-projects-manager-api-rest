@@ -6,4 +6,8 @@ public final class SpaceCreateBy extends UserId {
     public SpaceCreateBy(String value) {
         super(value);
     }
+
+    public SpaceCreateBy() {
+        super(null);
+    }
 }

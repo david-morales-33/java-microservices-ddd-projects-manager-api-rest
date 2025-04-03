@@ -24,7 +24,7 @@ public class User extends AggregateRoot {
         this.roleList = roleList;
     }
 
-    private User() {
+    public User() {
         this.id = null;
         this.name = null;
         this.email = null;

@@ -9,7 +9,7 @@ public final class Post {
     private final PostContent content;
     private final PostCreationDate creationDate;
     private final SpaceId spaceId;
-    private final User user;
+    private User user;
 
     public Post(PostId id, PostTitle title, PostContent content, PostCreationDate creationDate, SpaceId spaceId, User user) {
         this.id = id;
@@ -29,6 +29,15 @@ public final class Post {
             User user
     ) {
         return new Post(id, title, content, creationDate, spaceId, user);
+    }
+
+    private Post() {
+        this.id = null;
+        this.title = null;
+        this.content = null;
+        this.creationDate = null;
+        this.spaceId = null;
+        this.user = null;
     }
 
     public static Post fromPrimitives(PostDTO data) {
@@ -71,6 +80,10 @@ public final class Post {
 
     public SpaceId getSpaceId() {
         return spaceId;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public User getUser() {

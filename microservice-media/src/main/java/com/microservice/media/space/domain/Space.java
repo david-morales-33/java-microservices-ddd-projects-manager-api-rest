@@ -44,6 +44,8 @@ public final class Space {
         this.createBy = null;
         this.postList = new HashMap<>();
         this.memberList = new HashSet<>();
+        this.membersCounter = new SpaceMembersCounter(0);
+        this.postCounter = new SpacePostCounter(0);
     }
 
     public static Space create(

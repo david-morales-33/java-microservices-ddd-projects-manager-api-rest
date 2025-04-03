@@ -25,6 +25,6 @@
             <property name="value" column="spc_id" type="string" access="field"/>
         </component>
 
-        <one-to-one name="user" class="com.microservice.media.user.domain.User" access="field" constrained="true"/>
+        <many-to-one name="user" class="com.microservice.media.user.domain.User" access="field" column="usr_id"/>
     </class>
 </hibernate-mapping>

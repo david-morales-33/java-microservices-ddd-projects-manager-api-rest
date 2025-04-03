@@ -21,15 +21,15 @@
             <property name="value" column="spc_create_by" type="string" access="field"/>
         </component>
 
-        <map name="postList">
-            <key column="pst_id"/>
-            <map-key column="spc_x_pst" type="string"/>
+        <map name="postList" cascade="merge">
+            <key column="spc_id"/>
+            <map-key column="pst_id" type="string"/>
             <one-to-many class="com.microservice.media.post.domain.Post"/>
         </map>
 
         <set name="memberList" table="tbl_space_x_user" access="field">
-            <key column="spc_x_usr"/>
-            <element column="usr_id" type="string"/>
+            <key column="spc_id"/>
+            <many-to-many column="usr_id" class="com.microservice.media.user.domain.User"/>
         </set>
     </class>
 </hibernate-mapping>

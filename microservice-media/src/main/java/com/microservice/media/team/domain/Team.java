@@ -12,6 +12,7 @@ import com.microservice.media.space.domain.Space;
 import com.microservice.media.space.domain.SpaceDTO;
 
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 public final class Team extends AggregateRoot {
@@ -19,9 +20,9 @@ public final class Team extends AggregateRoot {
     private final TeamName name;
     private final TeamCreationDate creationDate;
     private final TeamState state;
-    private final Role role;
-    private final HashMap<String, User> memberList;
-    private final HashMap<String, Space> spaceList;
+    private Role role;
+    private Map<String, User> memberList;
+    private Map<String, Space> spaceList;
     private TeamMembersCounter membersCounter;
     private TeamSpacesCounter spacesCounter;
 
@@ -43,6 +44,20 @@ public final class Team extends AggregateRoot {
         this.role = role;
         this.memberList = memberList;
         this.spaceList = spaceList;
+    }
+
+    private Team() {
+        this.id = null;
+        this.name = null;
+        this.membersCounter = null;
+        this.spacesCounter = null;
+        this.creationDate = null;
+        this.state = null;
+        this.role = null;
+        this.memberList = new HashMap<>();
+        this.spaceList = new HashMap<>();
+        this.membersCounter = new TeamMembersCounter(0);
+        this.spacesCounter = new TeamSpacesCounter(0);
     }
 
     public static Team create(
@@ -186,12 +201,24 @@ public final class Team extends AggregateRoot {
         return role;
     }
 
-    public HashMap<String, User> getMemberList() {
+    public Map<String, User> getMemberList() {
         return this.memberList;
     }
 
-    public HashMap<String, Space> getSpaceList() {
+    public Map<String, Space> getSpaceList() {
         return this.spaceList;
+    }
+
+    private void setMemberList(Map<String, User> memberList) {
+        this.memberList = memberList;
+    }
+
+    private void setSpaceList(Map<String, Space> spaceList) {
+        this.spaceList = spaceList;
+    }
+
+    private void setRole(Role role) {
+        this.role = role;
     }
 
     @Override

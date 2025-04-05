@@ -15,7 +15,7 @@ public class Role {
         this.description = description;
     }
 
-    private Role() {
+    public Role() {
         this.id = null;
         this.name = null;
         this.description = null;

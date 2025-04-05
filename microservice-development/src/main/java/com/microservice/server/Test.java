@@ -1,8 +1,6 @@
 package com.microservice.server;
 
-import com.microservice.media.shared.domain.TeamId;
 import com.microservice.media.shared.infrastructure.hibernate.HibernateConfigurationFactory;
-import com.microservice.media.team.domain.Team;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -35,9 +33,6 @@ public class Test {
 
             Session session = sessionFactory.openSession();
             Transaction transaction = session.beginTransaction();
-
-            Team team = session.find(Team.class, new TeamId("36479f04-dcb1-4fe4-8d4e-67184ca9b90c"));
-            System.out.println(team.toPrimitives());
 
             transaction.commit();
         } catch (Exception e) {

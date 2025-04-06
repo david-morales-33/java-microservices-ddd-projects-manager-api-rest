@@ -1,8 +1,11 @@
 package com.microservice.development.shared.domain;
 
 
-public class UserId extends Identifier{
-    public UserId(String value){
+public class UserId extends Identifier {
+    public UserId(String value) {
         super(value);
+    }
+
+    private UserId() {
     }
 }

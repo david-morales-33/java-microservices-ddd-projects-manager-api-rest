@@ -6,4 +6,7 @@ public final class UserEmail extends StringValueObject {
     public UserEmail(String value) {
         super(value);
     }
+    private UserEmail() {
+        super(null);
+    }
 }

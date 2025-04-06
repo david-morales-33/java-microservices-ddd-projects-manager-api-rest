@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.microservice.development.user.domain.User" table="tbl_user">
+        <composite-id name="id" class="com.microservice.development.shared.domain.UserId" access="field">
+            <key-property name="value" column="usr_id" type="string" access="field"/>
+        </composite-id>
+
+        <component name="name" class="com.microservice.development.user.domain.UserName" access="field">
+            <property name="value" column="user_name" type="string" access="field" />
+        </component>
+
+        <component name="email" class="com.microservice.development.user.domain.UserEmail" access="field">
+            <property name="value" column="user_email" type="string" access="field" />
+        </component>
+
+        <component name="nickName" class="com.microservice.development.user.domain.UserNickName" access="field">
+            <property name="value" column="user_nickname" type="string" access="field" />
+        </component>
+
+        <map name="roleList" table="tbl_user_x_role">
+            <key column="usr_id"/>
+            <map-key column="usr_x_rol" type="string"/>
+            <many-to-many class="com.microservice.development.role.domain.Role" column="rol_id"/>
+        </map>
+    </class>
+</hibernate-mapping>

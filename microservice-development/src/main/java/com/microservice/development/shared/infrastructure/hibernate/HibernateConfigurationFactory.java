@@ -79,11 +79,11 @@ public class HibernateConfigurationFactory {
     }
 
     private List<String> subdirectoriesFor() {
-        String path = "./microservice-media/src/main/java/com/microservice/media/";
+        String path = "./microservice-development/src/main/java/com/microservice/development/";
 
         String[] files = new File(path).list((current, name) -> new File(current, name).isDirectory());
         if (null == files) {
-            path = "./main/java/com/microservice/media/";
+            path = "./main/java/com/microservice/development/";
             files = new File(path).list((current, name) -> new File(current, name).isDirectory());
         }
 

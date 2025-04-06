@@ -2,7 +2,9 @@ package com.microservice.development.role.domain;
 
 import com.microservice.development.shared.domain.RoleId;
 
-public final class Role {
+import java.util.Objects;
+
+public class Role {
     private final RoleId id;
     private final RoleName name;
     private final RoleDescription description;
@@ -11,6 +13,12 @@ public final class Role {
         this.id = id;
         this.name = name;
         this.description = description;
+    }
+
+    public Role() {
+        this.id = null;
+        this.name = null;
+        this.description = null;
     }
 
     public static Role create(RoleId id, RoleName name, RoleDescription description) {
@@ -46,11 +54,14 @@ public final class Role {
     }
 
     @Override
-    public String toString() {
-        return "Role{" +
-                "id=" + this.id +
-                ", name=" + this.name +
-                ", description=" + this.description +
-                '}';
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Role role = (Role) o;
+        return Objects.equals(id, role.id) && Objects.equals(name, role.name) && Objects.equals(description, role.description);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, description);
     }
 }

@@ -1,0 +1,20 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.microservice.development.role.domain.Role" table="tbl_role">
+        <composite-id name="id" class="com.microservice.development.shared.domain.RoleId" access="field">
+            <key-property column="rol_id" name="value" access="field" />
+        </composite-id>
+
+        <component name="name" class="com.microservice.development.role.domain.RoleName" access="field">
+            <property name="value" column="rol_name" type="string" access="field" />
+        </component>
+
+        <component name="description" class="com.microservice.development.role.domain.RoleDescription" access="field">
+            <property name="value" column="rol_description" type="string" access="field" />
+        </component>
+    </class>
+</hibernate-mapping>

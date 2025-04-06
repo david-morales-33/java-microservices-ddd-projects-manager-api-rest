@@ -9,7 +9,6 @@ public record TeamDTO(
         String id,
         String name,
         int membersCounter,
-        int spacesCounter,
         String creationDate,
         boolean state,
         RoleDTO role,

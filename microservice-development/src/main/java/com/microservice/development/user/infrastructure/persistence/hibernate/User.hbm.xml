@@ -21,9 +21,9 @@
             <property name="value" column="user_nickname" type="string" access="field" />
         </component>
 
-        <map name="roleList" table="tbl_user_x_role">
+        <map name="roleList" table="tbl_user_x_role" access="field">
             <key column="usr_id"/>
-            <map-key column="usr_x_rol" type="string"/>
+            <map-key column="usr_x_rol" type="string" />
             <many-to-many class="com.microservice.development.role.domain.Role" column="rol_id"/>
         </map>
     </class>

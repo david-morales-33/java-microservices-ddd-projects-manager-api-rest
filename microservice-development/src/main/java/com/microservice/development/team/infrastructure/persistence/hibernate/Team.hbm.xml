@@ -1,0 +1,32 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.microservice.development.team.domain.Team" table="tbl_team">
+        <composite-id name="id" class="com.microservice.development.shared.domain.TeamId" access="field">
+            <key-property column="tmn_id" name="value" access="field"/>
+        </composite-id>
+
+        <component name="name" class="com.microservice.development.team.domain.TeamName" access="field">
+            <property name="value" column="tmn_name" type="string" access="field"/>
+        </component>
+
+        <component name="creationDate" class="com.microservice.development.team.domain.TeamCreationDate" access="field">
+            <property name="value" column="tmn_create_at" type="string" access="field"/>
+        </component>
+
+        <component name="state" class="com.microservice.development.team.domain.TeamState" access="field">
+            <property name="value" column="tmn_state" type="boolean" access="field"/>
+        </component>
+
+        <many-to-one name="role" class="com.microservice.development.role.domain.Role" column="rol_id"/>
+
+        <map name="memberList" table="tbl_team_x_user" cascade="persist">
+            <key column="tmn_id"/>
+            <map-key column="tmn_x_usr" type="string"/>
+            <many-to-many column="usr_id" class="com.microservice.development.user.domain.User"/>
+        </map>
+    </class>
+</hibernate-mapping>

@@ -6,4 +6,8 @@ public final class TeamState extends BooleanValueObject {
     public TeamState(boolean value) {
         super(value);
     }
+
+    public TeamState() {
+        super(null);
+    }
 }

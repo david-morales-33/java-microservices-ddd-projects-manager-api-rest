@@ -5,4 +5,7 @@ public class TeamId extends Identifier {
     public TeamId(String value){
         super(value);
     }
+
+    public TeamId() {
+    }
 }

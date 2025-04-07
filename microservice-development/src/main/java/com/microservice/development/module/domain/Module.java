@@ -5,19 +5,21 @@ import com.microservice.development.funcionality.domain.FuncionalityDTO;
 import com.microservice.development.shared.domain.ModuleId;
 
 import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
 
 public final class Module {
     private final ModuleId id;
     private final ModuleName name;
     private final ModuleCreationDate creationDate;
-    private final ModuleFuncionalitiesCounter funcionalitiesCounter;
-    private final HashMap<String, Funcionality> funcionalityList;
+    private ModuleFuncionalitiesCounter funcionalitiesCounter;
+    private Map<Integer, Funcionality> funcionalityList;
 
     public Module(
             ModuleId id,
             ModuleName name,
             ModuleCreationDate creationDate,
-            HashMap<String, Funcionality> funcionalityList
+            Map<Integer, Funcionality> funcionalityList
     ) {
         this.id = id;
         this.name = name;
@@ -26,8 +28,16 @@ public final class Module {
         this.funcionalityList = funcionalityList;
     }
 
+    private Module() {
+        this.id = null;
+        this.name = null;
+        this.creationDate = null;
+        this.funcionalityList = new HashMap<>();
+        this.funcionalitiesCounter = new ModuleFuncionalitiesCounter(0);
+    }
+
     public static Module fromPrimitives(ModuleDTO data) {
-        HashMap<String, Funcionality> funcionalityList = new HashMap<>();
+        HashMap<Integer, Funcionality> funcionalityList = new HashMap<>();
         data.funcionalityList().forEach((key, value) -> {
             funcionalityList.put(key, Funcionality.fromPrimitives(value));
         });
@@ -41,7 +51,7 @@ public final class Module {
     }
 
     public ModuleDTO toPrimitives() {
-        HashMap<String, FuncionalityDTO> funcionalityList = new HashMap<>();
+        HashMap<Integer, FuncionalityDTO> funcionalityList = new HashMap<>();
         this.funcionalityList.forEach((key, value) -> {
             funcionalityList.put(key, value.toPrimitives());
         });
@@ -70,7 +80,24 @@ public final class Module {
         return this.funcionalitiesCounter;
     }
 
-    public HashMap<String, Funcionality> getFuncionalityList() {
+    public Map<Integer, Funcionality> getFuncionalityList() {
         return this.funcionalityList;
+    }
+
+    public void setFuncionalityList(Map<Integer, Funcionality> funcionalityList) {
+        this.funcionalityList = funcionalityList;
+        this.funcionalitiesCounter = new ModuleFuncionalitiesCounter(funcionalityList.size());
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Module module = (Module) o;
+        return Objects.equals(id, module.id) && Objects.equals(name, module.name) && Objects.equals(creationDate, module.creationDate) && Objects.equals(funcionalitiesCounter, module.funcionalitiesCounter) && Objects.equals(funcionalityList, module.funcionalityList);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, creationDate, funcionalitiesCounter, funcionalityList);
     }
 }

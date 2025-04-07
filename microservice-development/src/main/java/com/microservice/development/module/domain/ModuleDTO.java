@@ -9,6 +9,6 @@ public record ModuleDTO(
         String name,
         String creationDate,
         int funcionalitiesCounter,
-        HashMap<String, FuncionalityDTO> funcionalityList
+        HashMap<Integer, FuncionalityDTO> funcionalityList
 ) {
 }

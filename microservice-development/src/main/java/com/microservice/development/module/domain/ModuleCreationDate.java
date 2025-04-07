@@ -6,4 +6,8 @@ public final class ModuleCreationDate extends StringValueObject {
     public ModuleCreationDate(String value) {
         super(value);
     }
+
+    private ModuleCreationDate() {
+        super(null);
+    }
 }

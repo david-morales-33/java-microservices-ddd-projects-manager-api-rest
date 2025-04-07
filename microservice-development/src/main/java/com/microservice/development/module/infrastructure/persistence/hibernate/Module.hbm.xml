@@ -1,0 +1,26 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.microservice.development.module.domain.Module" table="tbl_module">
+        <composite-id name="id" class="com.microservice.development.shared.domain.ModuleId" access="field">
+            <key-property column="mdl_id" name="value" access="field" />
+        </composite-id>
+
+        <component name="name" class="com.microservice.development.module.domain.ModuleName" access="field">
+            <property name="value" column="mdl_name" type="string" access="field" />
+        </component>
+
+        <component name="creationDate" class="com.microservice.development.module.domain.ModuleCreationDate" access="field">
+            <property name="value" column="mdl_create_at" type="string" access="field" />
+        </component>
+
+        <map name="funcionalityList" access="field" >
+            <key column="mdl_id"/>
+            <map-key column="ftn_id" type="integer"/>
+            <one-to-many class="com.microservice.development.funcionality.domain.Funcionality"/>
+        </map>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,22 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.microservice.development.card.domain.Card" table="tbl_card">
+        <composite-id name="id" class="com.microservice.development.shared.domain.CardId" access="field">
+            <key-property column="crd_id" name="value" access="field" />
+        </composite-id>
+
+        <component name="name" class="com.microservice.development.card.domain.CardName" access="field">
+            <property name="value" column="crd_name" type="string" access="field" />
+        </component>
+
+        <set name="taskList" access="field" cascade="all">
+            <key column="crd_id" />
+            <one-to-many class="com.microservice.development.task.domain.Task"/>
+        </set>
+
+    </class>
+</hibernate-mapping>

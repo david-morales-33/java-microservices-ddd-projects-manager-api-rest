@@ -5,42 +5,50 @@ import com.microservice.development.task.domain.Task;
 import com.microservice.development.task.domain.TaskDTO;
 
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Objects;
+import java.util.Set;
 
 public final class Card {
     private final CardId id;
     private final CardName name;
-    private final CardTaskCounter taskCounter;
-    private final HashMap<String, Task> taskList;
+    private CardTaskCounter taskCounter;
+    private Set<Task> taskList;
 
-    public Card(CardId id, CardName name, CardTaskCounter taskCounter, HashMap<String, Task> taskList) {
+    public Card(CardId id, CardName name, Set<Task> taskList) {
         this.id = id;
         this.name = name;
-        this.taskCounter = taskCounter;
+        this.taskCounter = new CardTaskCounter(taskList.size());
         this.taskList = taskList;
     }
 
+    private Card() {
+        this.id = null;
+        this.name = null;
+        this.taskCounter = null;
+        this.taskList = new HashSet<>();
+    }
+
     public static Card fromPrimitives(CardDTO data) {
-        HashMap<String, Task> taskList = new HashMap<>();
-        data.taskList().forEach((key, value) -> {
-            taskList.put(key, Task.fromPrimitives(value));
+        HashSet<Task> taskList = new HashSet<>();
+        data.taskList().forEach((value) -> {
+            taskList.add(Task.fromPrimitives(value));
         });
         return new Card(
                 new CardId(data.id()),
                 new CardName(data.name()),
-                new CardTaskCounter(data.taskCounter()),
                 taskList
         );
     }
 
     public CardDTO toPrimitives() {
-        HashMap<String, TaskDTO> taskList = new HashMap<>();
-        this.taskList.forEach((key, value) -> {
-            taskList.put(key, value.toPrimitives());
+        HashSet<TaskDTO> taskList = new HashSet<>();
+        this.taskList.forEach((value) -> {
+            taskList.add(value.toPrimitives());
         });
         return new CardDTO(
                 this.id.value(),
                 this.name.value(),
-                this.taskCounter.value(),
                 taskList
         );
     }
@@ -57,7 +65,24 @@ public final class Card {
         return this.taskCounter;
     }
 
-    public HashMap<String,Task> getTaskList() {
+    public Set<Task> getTaskList() {
         return this.taskList;
+    }
+
+    private void setTaskList(Set<Task> taskList) {
+        this.taskList = taskList;
+        this.taskCounter = new CardTaskCounter(taskList.size());
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Card card = (Card) o;
+        return Objects.equals(id, card.id) && Objects.equals(name, card.name) && Objects.equals(taskCounter, card.taskCounter) && Objects.equals(taskList, card.taskList);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, taskCounter, taskList);
     }
 }

@@ -22,7 +22,7 @@
         </component>
 
         <component name="state" class="com.microservice.development.task.domain.TaskState" access="field">
-            <property name="value" column="tsk_state" type="string" access="field" />
+            <property name="value" column="tsk_state" type="boolean" access="field"/>
         </component>
 
         <component name="createBy" class="com.microservice.development.shared.domain.UserId" access="field">

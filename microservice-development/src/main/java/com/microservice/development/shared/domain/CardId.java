@@ -5,4 +5,7 @@ public class CardId extends Identifier {
     public CardId(String value) {
         super(value);
     }
+
+    public CardId() {
+    }
 }

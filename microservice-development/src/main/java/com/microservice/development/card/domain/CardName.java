@@ -6,4 +6,8 @@ public final class CardName extends StringValueObject {
     public CardName(String value) {
         super(value);
     }
+
+    public CardName() {
+        super(null);
+    }
 }

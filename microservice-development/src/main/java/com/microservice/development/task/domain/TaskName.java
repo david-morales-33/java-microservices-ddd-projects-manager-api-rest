@@ -6,4 +6,8 @@ public final class TaskName extends StringValueObject {
     public TaskName(String value) {
         super(value);
     }
+
+    public TaskName() {
+        super(null);
+    }
 }

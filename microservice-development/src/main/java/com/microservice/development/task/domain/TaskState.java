@@ -6,4 +6,8 @@ public final class TaskState extends BooleanValueObject {
     public TaskState(boolean value) {
         super(value);
     }
+
+    public TaskState() {
+        super(null);
+    }
 }

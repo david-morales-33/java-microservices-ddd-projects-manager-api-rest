@@ -6,4 +6,8 @@ public final class TaskDescription extends StringValueObject {
     public TaskDescription(String value) {
         super(value);
     }
+
+    public TaskDescription() {
+        super(null);
+    }
 }

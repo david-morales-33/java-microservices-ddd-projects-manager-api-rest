@@ -6,4 +6,8 @@ public final class TaskCreationDate extends StringValueObject {
     public TaskCreationDate(String value) {
         super(value);
     }
+
+    public TaskCreationDate() {
+        super(null);
+    }
 }

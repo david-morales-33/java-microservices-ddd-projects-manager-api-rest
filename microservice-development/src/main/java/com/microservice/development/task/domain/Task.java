@@ -27,6 +27,15 @@ public final class Task {
         this.createBy = createBy;
     }
 
+    private Task() {
+        this.id = null;
+        this.name = null;
+        this.description = null;
+        this.creationDate = null;
+        this.state = null;
+        this.createBy = null;
+    }
+
     public static Task fromPrimitives(TaskDTO data) {
         return new Task(
                 new TaskId(data.id()),

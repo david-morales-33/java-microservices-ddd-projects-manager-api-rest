@@ -45,26 +45,7 @@ public class Test {
             Session session = sessionFactory.openSession();
             Transaction transaction = session.beginTransaction();
 
-/*
-            Role role = Role.fromPrimitives(new RoleDTO(
-                    "b1cd4460-920f-4a7b-bd91-491d2147d635",
-                    "Admin",
-                    "Administrador de sistemas"
-            ));
-            HashMap<String, RoleDTO> roleList = new HashMap<>();
-            roleList.put(role.getId().value(), role.toPrimitives());
-            User user = User.fromPrimitives(new UserDTO(
-                    "b1cd4460-920f-4a7b-bd91-491d2147d635",
-                    "Luis Villa",
-                    "Luis.Vill45@gmail.com",
-                    "Luis.Vill45",
-                    roleList
-            ));
-*/
-            Team team = session.find(Team.class, new TeamId("65c29076-9f9d-4365-b05b-d76d511e7bfa"));
-            User user = session.getReference(User.class, new UserId("a69ef755-7d10-44bf-a384-ca75665c255e"));
-            team.addUser(user);
-            session.persist(team);
+
             transaction.commit();
         } catch (Exception e) {
             e.printStackTrace();

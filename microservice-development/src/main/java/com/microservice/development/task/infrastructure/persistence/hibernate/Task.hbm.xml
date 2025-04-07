@@ -1,0 +1,33 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.microservice.development.task.domain.Task" table="tbl_task">
+        <composite-id name="id" class="com.microservice.development.shared.domain.TaskId" access="field">
+            <key-property column="tsk_id" name="value" access="field" />
+        </composite-id>
+
+        <component name="name" class="com.microservice.development.task.domain.TaskName" access="field">
+            <property name="value" column="tsk_name" type="string" access="field" />
+        </component>
+
+        <component name="description" class="com.microservice.development.task.domain.TaskDescription" access="field">
+            <property name="value" column="tsk_description" type="string" access="field" />
+        </component>
+
+        <component name="creationDate" class="com.microservice.development.task.domain.TaskCreationDate" access="field">
+            <property name="value" column="tsk_create_at" type="string" access="field" />
+        </component>
+
+        <component name="state" class="com.microservice.development.task.domain.TaskState" access="field">
+            <property name="value" column="tsk_state" type="string" access="field" />
+        </component>
+
+        <component name="createBy" class="com.microservice.development.shared.domain.UserId" access="field">
+            <property name="value" column="usr_create_by" type="string" access="field" />
+        </component>
+
+    </class>
+</hibernate-mapping>

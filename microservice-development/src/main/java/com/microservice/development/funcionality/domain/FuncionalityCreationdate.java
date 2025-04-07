@@ -6,4 +6,8 @@ public final class FuncionalityCreationdate extends StringValueObject {
     public FuncionalityCreationdate(String value) {
         super(value);
     }
+
+    public FuncionalityCreationdate() {
+        super(null);
+    }
 }

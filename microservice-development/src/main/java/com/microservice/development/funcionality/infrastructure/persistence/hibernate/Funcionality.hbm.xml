@@ -1,0 +1,36 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.microservice.development.funcionality.domain.Funcionality" table="tbl_functionality">
+        <composite-id name="id" class="com.microservice.development.shared.domain.FuncionalityId" access="field">
+            <key-property column="ftn_id" name="value" access="field"/>
+        </composite-id>
+
+        <component name="name" class="com.microservice.development.funcionality.domain.FuncionalityName" access="field">
+            <property name="value" column="ftn_name" type="string" access="field" />
+        </component>
+
+        <component name="description" class="com.microservice.development.funcionality.domain.FuncionalityDescription" access="field">
+            <property name="value" column="ftn_description" type="string" access="field" />
+        </component>
+
+        <component name="creationdate" class="com.microservice.development.funcionality.domain.FuncionalityCreationdate" access="field">
+            <property name="value" column="ftn_create_at" type="string" access="field" />
+        </component>
+
+        <component name="state" class="com.microservice.development.funcionality.domain.FuncionalityState" access="field">
+            <property name="value" column="ftn_state" type="boolean" access="field" />
+        </component>
+
+        <component name="teamId" class="com.microservice.development.shared.domain.TeamId" access="field">
+            <property name="value" column="ftn_team_id" type="string" access="field" />
+        </component>
+
+        <component name="roleId" class="com.microservice.development.shared.domain.RoleId" access="field">
+            <property name="value" column="ftn_role_id" type="string" access="field" />
+        </component>
+    </class>
+</hibernate-mapping>

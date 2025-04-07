@@ -4,6 +4,8 @@ import com.microservice.development.shared.domain.FuncionalityId;
 import com.microservice.development.shared.domain.RoleId;
 import com.microservice.development.shared.domain.TeamId;
 
+import java.util.Objects;
+
 public final class Funcionality {
     private final FuncionalityId id;
     private final FuncionalityName name;
@@ -29,6 +31,16 @@ public final class Funcionality {
         this.state = state;
         this.teamId = teamId;
         this.roleId = roleId;
+    }
+
+    private Funcionality() {
+        this.id = null;
+        this.name = null;
+        this.description = null;
+        this.creationdate = null;
+        this.state = null;
+        this.teamId = null;
+        this.roleId = null;
     }
 
     public static Funcionality fromPrimitives(FuncionalityDTO data) {
@@ -81,5 +93,17 @@ public final class Funcionality {
 
     public RoleId getRoleId() {
         return this.roleId;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Funcionality that = (Funcionality) o;
+        return Objects.equals(id, that.id) && Objects.equals(name, that.name) && Objects.equals(description, that.description) && Objects.equals(creationdate, that.creationdate) && Objects.equals(state, that.state) && Objects.equals(teamId, that.teamId) && Objects.equals(roleId, that.roleId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, description, creationdate, state, teamId, roleId);
     }
 }

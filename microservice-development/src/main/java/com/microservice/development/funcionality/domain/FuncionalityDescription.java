@@ -6,4 +6,8 @@ public final class FuncionalityDescription extends StringValueObject {
     public FuncionalityDescription(String value) {
         super(value);
     }
+
+    public FuncionalityDescription() {
+        super(null);
+    }
 }

@@ -5,4 +5,8 @@ public class FuncionalityId extends IntValueObject {
     public FuncionalityId(int value) {
         super(value);
     }
+
+    public FuncionalityId() {
+        super(null);
+    }
 }

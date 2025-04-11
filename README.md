@@ -74,25 +74,38 @@ Al tener contratos claros (puertos) y comunicaciones definidas, podés exponer e
 .
 ├── microservice-administrative/               # Microservicio para gestión administrativa
 |   ├──pom.xml
-|   ├──src
+|   └──src/main/java/com/microservice
+|   |   ├──administrative
+|   |   |   ├──user                            # Estructura con vertical slice
+|   |   |   |   ├──application
+|   |   |   |   ├──domain
+|   |   |   |   ├──infrastructure
+|   |   |   ├──role
+|   |   |   ├──team
+|   |   |   ├──project
+|   |   |   ├──card
+|   |   |   ├──board
+|   |   |   └──module
+|   |   └──server
 ├── microservice-authentication/               # Microservicio de autenticación
 |   ├──pom.xml
-|   ├──src
+|   └──src/main/java/com/microservice
 ├── microservice-development/                  # Microservicio para desarrollo de proyectos
 |   ├──pom.xml
-|   ├──src
+|   └──src/
+|   |   ├──/main/java/com/microservice
+|   |   └──/test/java/com/microservice
+|   |   |   ├──development
+|   |   |   |   ├──user                        # Estructura con vertical slice
+|   |   |   |   |   ├──application
+|   |   |   |   |   ├──domain
+|   |   |   |   |   └──infrastructure
 ├── microservice-media/                        # Microservicio para comunicación de e
 |   ├──pom.xml
-|   ├──src
+|   └──src/main/java/com/microservice
 ├── microservice-config/                       
-|   ├──pom.xml
-|   ├──src
 ├── microservice-eureka/                       
-|   ├──pom.xml
-|   ├──src
 ├── microservice-gateway/                      
-|   ├──pom.xml
-|   ├──src
 ├── docker/                                    # Archivos Docker y configuración de servicios
 ├── .github/                                   # Workflows, PR templates, etc.
 ├── pom.xml                                    # Configuración Maven principal

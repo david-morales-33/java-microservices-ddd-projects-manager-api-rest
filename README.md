@@ -205,6 +205,3 @@ Este proyecto está bajo la Licencia MIT. Ver el archivo [LICENSE](LICENSE) para
 
 Desarrollado por [David Morales](https://github.com/david-morales-33)
 
----
-
-> ¿Te sirvió este proyecto? ¡No olvides dejar una ⭐ en GitHub!

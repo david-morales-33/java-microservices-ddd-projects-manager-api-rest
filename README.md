@@ -120,6 +120,7 @@ Al tener contratos claros (puertos) y comunicaciones definidas, podés exponer e
 - **Spring Boot**
 - **Maven**
 - **JUnit 5**
+- **Mockito**
 - **Docker / Docker Compose**
 - **Arquitectura hexagonal**
 - **DDD (Domain-Driven Design)**

@@ -1,11 +1,13 @@
 package com.microservice.development.team.application.addTeamMember;
 
+import com.microservice.development.shared.domain.Service;
 import com.microservice.development.shared.domain.TeamId;
 import com.microservice.development.shared.domain.UserId;
 import com.microservice.development.shared.domain.bus.command.CommandHandler;
 import com.microservice.development.team.domain.TeamNotFoundException;
 import com.microservice.development.user.domain.UserNotFindException;
 
+@Service
 public final class AddTeamMemberCommandHandler implements CommandHandler<AddTeamMemberCommand> {
     private final TeamMemberCreator creator;
 

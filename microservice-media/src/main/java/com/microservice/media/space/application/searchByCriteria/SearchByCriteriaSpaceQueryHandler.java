@@ -1,12 +1,13 @@
 package com.microservice.media.space.application.searchByCriteria;
 
-
 import java.util.Optional;
 
+import com.microservice.media.shared.domain.Service;
 import com.microservice.media.shared.domain.bus.query.QueryHandler;
 import com.microservice.media.shared.domain.criteria.Filters;
 import com.microservice.media.shared.domain.criteria.Order;
 
+@Service
 public final class SearchByCriteriaSpaceQueryHandler implements QueryHandler<SearchByCriteriaSpaceQuery, SpaceResponse> {
     private final SpaceByCriteriaSearcher searcher;
 

@@ -1,6 +1,7 @@
 package com.microservice.media.team.application.createSpace;
 
 import com.microservice.media.post.domain.Post;
+import com.microservice.media.shared.domain.Service;
 import com.microservice.media.shared.domain.SpaceId;
 import com.microservice.media.shared.domain.TeamId;
 import com.microservice.media.shared.domain.UserId;
@@ -18,6 +19,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Optional;
 
+@Service
 public final class SpaceCreator {
     private final TeamCommandRepository commandRepository;
     private final TeamQueryRepository queryRepository;

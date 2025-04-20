@@ -1,5 +1,6 @@
 package com.microservice.media.space.application.searchByCriteria;
 
+import com.microservice.media.shared.domain.Service;
 import com.microservice.media.shared.domain.criteria.Criteria;
 import com.microservice.media.shared.domain.criteria.Filters;
 import com.microservice.media.shared.domain.criteria.Order;
@@ -9,6 +10,7 @@ import com.microservice.media.space.domain.SpaceQueryRepository;
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public final class SpaceByCriteriaSearcher {
     private final SpaceQueryRepository queryRepository;
 

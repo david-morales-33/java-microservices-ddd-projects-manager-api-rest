@@ -4,6 +4,7 @@ import com.microservice.media.role.domain.Role;
 import com.microservice.media.role.domain.RoleDescription;
 import com.microservice.media.role.domain.RoleName;
 import com.microservice.media.shared.domain.RoleId;
+import com.microservice.media.shared.domain.Service;
 import com.microservice.media.shared.domain.TeamId;
 import com.microservice.media.space.domain.Space;
 import com.microservice.media.team.domain.*;
@@ -13,6 +14,7 @@ import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Optional;
 
+@Service
 public final class TeamCreator {
     private final TeamCommandRepository commandRepository;
     private final TeamQueryRepository queryRepository;

@@ -1,11 +1,13 @@
 package com.microservice.media.team.application.addSpaceMember;
 
+import com.microservice.media.shared.domain.Service;
 import com.microservice.media.shared.domain.SpaceId;
 import com.microservice.media.shared.domain.TeamId;
 import com.microservice.media.shared.domain.UserId;
 import com.microservice.media.shared.domain.bus.command.CommandHandler;
 import com.microservice.media.team.domain.TeamNotFoundException;
 
+@Service
 public final class AddSpaceMemberCommandHandler implements CommandHandler<AddSpaceMemberCommand> {
     private final SpaceMemberCreator creator;
 

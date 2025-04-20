@@ -4,6 +4,7 @@ import com.microservice.media.post.domain.PostContent;
 import com.microservice.media.post.domain.PostCreationDate;
 import com.microservice.media.post.domain.PostId;
 import com.microservice.media.post.domain.PostTitle;
+import com.microservice.media.shared.domain.Service;
 import com.microservice.media.shared.domain.SpaceId;
 import com.microservice.media.shared.domain.TeamId;
 import com.microservice.media.shared.domain.UserId;
@@ -12,6 +13,7 @@ import com.microservice.media.team.domain.TeamNotFoundException;
 
 import java.time.LocalDate;
 
+@Service
 public final class CreatePostCommandHandler implements CommandHandler<CreatePostCommand> {
     private final PostCreator creator;
 

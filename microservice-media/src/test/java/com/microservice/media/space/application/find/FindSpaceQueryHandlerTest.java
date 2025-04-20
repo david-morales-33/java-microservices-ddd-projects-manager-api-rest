@@ -30,7 +30,7 @@ public final class FindSpaceQueryHandlerTest extends SpaceUnitTestCase {
 
         shouldAnswerAnySpace(space);
 
-        assertEquals(response.getResponse(), handler.handle(query).getResponse());
+        assertEquals(response.response(), handler.handle(query).response());
     }
 
     @Test

@@ -1,5 +1,6 @@
 package com.microservice.media.space.application.find;
 
+import com.microservice.media.shared.domain.Service;
 import com.microservice.media.shared.domain.SpaceId;
 import com.microservice.media.space.domain.Space;
 import com.microservice.media.space.domain.SpaceQueryRepository;
@@ -7,6 +8,7 @@ import com.microservice.media.team.domain.SpaceNotFoundException;
 
 import java.util.Optional;
 
+@Service
 public final class SpaceFinder {
 
     private final SpaceQueryRepository queryRepository;

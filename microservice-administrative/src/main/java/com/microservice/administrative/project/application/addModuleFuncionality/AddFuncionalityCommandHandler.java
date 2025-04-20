@@ -7,12 +7,10 @@ import com.microservice.administrative.funcionality.domain.FuncionalityCreationd
 import com.microservice.administrative.funcionality.domain.FuncionalityDescription;
 import com.microservice.administrative.funcionality.domain.FuncionalityName;
 import com.microservice.administrative.funcionality.domain.FuncionalityState;
-import com.microservice.administrative.shared.domain.FuncionalityId;
-import com.microservice.administrative.shared.domain.ModuleId;
-import com.microservice.administrative.shared.domain.ProjectId;
-import com.microservice.administrative.shared.domain.TeamId;
+import com.microservice.administrative.shared.domain.*;
 import com.microservice.administrative.shared.domain.bus.command.CommandHandler;
 
+@Service
 public final class AddFuncionalityCommandHandler implements CommandHandler<AddFuncionalityCommand> {
     private final FuncionalityCreator creator;
 

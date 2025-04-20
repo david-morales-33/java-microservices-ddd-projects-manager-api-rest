@@ -1,5 +1,6 @@
 package com.microservice.administrative.team.application.searchByCriteria;
 
+import com.microservice.administrative.shared.domain.Service;
 import com.microservice.administrative.shared.domain.criteria.Criteria;
 import com.microservice.administrative.shared.domain.criteria.Filters;
 import com.microservice.administrative.shared.domain.criteria.Order;
@@ -9,6 +10,7 @@ import com.microservice.administrative.team.domain.TeamQueryRepository;
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public final class TeamByCriteriaSearcher {
     private final TeamQueryRepository queryRepository;
 

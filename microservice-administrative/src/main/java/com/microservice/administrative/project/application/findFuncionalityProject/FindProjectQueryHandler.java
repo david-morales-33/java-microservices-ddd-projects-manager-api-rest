@@ -2,8 +2,10 @@ package com.microservice.administrative.project.application.findFuncionalityProj
 
 import com.microservice.administrative.project.domain.ProjectNotFound;
 import com.microservice.administrative.shared.domain.ProjectId;
+import com.microservice.administrative.shared.domain.Service;
 import com.microservice.administrative.shared.domain.bus.query.QueryHandler;
 
+@Service
 public final class FindProjectQueryHandler implements QueryHandler<FindProjectQuery, ProjectResponse> {
     private final ProjectFinder finder;
 

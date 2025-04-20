@@ -1,6 +1,5 @@
 package com.microservice.administrative.project.application.addProjectFuncionality;
 
-
 import java.time.LocalDate;
 
 import com.microservice.administrative.funcionality.domain.Funcionality;
@@ -10,9 +9,11 @@ import com.microservice.administrative.funcionality.domain.FuncionalityName;
 import com.microservice.administrative.funcionality.domain.FuncionalityState;
 import com.microservice.administrative.shared.domain.FuncionalityId;
 import com.microservice.administrative.shared.domain.ProjectId;
+import com.microservice.administrative.shared.domain.Service;
 import com.microservice.administrative.shared.domain.TeamId;
 import com.microservice.administrative.shared.domain.bus.command.CommandHandler;
 
+@Service
 public final class AddProjectFuncionalityCommandHandler implements CommandHandler<AddProjectFuncionalityCommand> {
     private final ProjectFuncionalityCreator creator;
 

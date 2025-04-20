@@ -6,8 +6,10 @@ import com.microservice.administrative.project.domain.ProjectNotFound;
 import com.microservice.administrative.project.domain.ProjectRoot;
 import com.microservice.administrative.project.domain.ProjectRootRepository;
 import com.microservice.administrative.shared.domain.ProjectId;
+import com.microservice.administrative.shared.domain.Service;
 import com.microservice.administrative.team.domain.Team;
 
+@Service
 public final class TeamCreator {
     private final ProjectRootRepository repository;
 

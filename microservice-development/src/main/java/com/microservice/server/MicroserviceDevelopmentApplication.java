@@ -12,7 +12,7 @@ import org.springframework.context.annotation.FilterType;
 @SpringBootApplication(exclude = HibernateJpaAutoConfiguration.class)
 @ComponentScan(
 		includeFilters = @ComponentScan.Filter(type = FilterType.ANNOTATION, classes = Service.class),
-		value = {"com.microservice.media"}
+		value = {"com.microservice.development"}
 )
 public class MicroserviceDevelopmentApplication {
 

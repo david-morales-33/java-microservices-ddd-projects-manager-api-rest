@@ -3,12 +3,14 @@ package com.microservice.administrative.project.application.addModule;
 import com.microservice.administrative.funcionality.domain.FuncionalityDTO;
 import com.microservice.administrative.module.domain.ModuleDTO;
 import com.microservice.administrative.shared.domain.ProjectId;
+import com.microservice.administrative.shared.domain.Service;
 import com.microservice.administrative.shared.domain.bus.command.CommandHandler;
 import com.microservice.administrative.module.domain.Module;
 
 import java.util.HashMap;
 
-public class AddModuleCommandHandler implements CommandHandler<AddModuleCommand> {
+@Service
+public final class AddModuleCommandHandler implements CommandHandler<AddModuleCommand> {
     private final ModuleCreator creator;
 
     public AddModuleCommandHandler(ModuleCreator creator) {

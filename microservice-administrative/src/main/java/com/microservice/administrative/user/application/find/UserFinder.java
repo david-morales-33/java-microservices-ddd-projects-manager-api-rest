@@ -1,5 +1,6 @@
 package com.microservice.administrative.user.application.find;
 
+import com.microservice.administrative.shared.domain.Service;
 import com.microservice.administrative.shared.domain.UserId;
 import com.microservice.administrative.user.domain.User;
 import com.microservice.administrative.user.domain.UserNotFindException;
@@ -7,7 +8,8 @@ import com.microservice.administrative.user.domain.UserQueryRepository;
 
 import java.util.Optional;
 
-public class UserFinder {
+@Service
+public final class UserFinder {
 
     private final UserQueryRepository queryRepository;
 

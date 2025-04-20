@@ -2,8 +2,10 @@ package com.microservice.administrative.project.application.createFuncionalities
 
 import com.microservice.administrative.project.domain.ProjectName;
 import com.microservice.administrative.shared.domain.ProjectId;
+import com.microservice.administrative.shared.domain.Service;
 import com.microservice.administrative.shared.domain.bus.command.CommandHandler;
 
+@Service
 public final class CreateProjectCommandHandler implements CommandHandler<CreateProjectCommand> {
     private final ProjectCreator creator;
 

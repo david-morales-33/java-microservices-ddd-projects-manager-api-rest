@@ -1,5 +1,6 @@
 package com.microservice.administrative.team.application.addTeamMember;
 
+import com.microservice.administrative.shared.domain.Service;
 import com.microservice.administrative.shared.domain.TeamId;
 import com.microservice.administrative.shared.domain.UserId;
 import com.microservice.administrative.team.domain.Team;
@@ -13,6 +14,7 @@ import com.microservice.administrative.user.domain.UserQueryRepository;
 
 import java.util.Optional;
 
+@Service
 public final class TeamMemberCreator {
     private final TeamCommandRepository teamCommandRepository;
     private final TeamQueryRepository teamQueryRepository;

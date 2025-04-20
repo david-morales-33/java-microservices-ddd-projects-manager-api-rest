@@ -5,8 +5,10 @@ import java.time.LocalDate;
 import com.microservice.administrative.card.domain.Card;
 import com.microservice.administrative.card.domain.CardDTO;
 import com.microservice.administrative.shared.domain.ProjectId;
+import com.microservice.administrative.shared.domain.Service;
 import com.microservice.administrative.shared.domain.bus.command.CommandHandler;
 
+@Service
 public final class AddCardCommandHandler implements CommandHandler<AddCardCommand> {
     private final CardCreator creator;
 

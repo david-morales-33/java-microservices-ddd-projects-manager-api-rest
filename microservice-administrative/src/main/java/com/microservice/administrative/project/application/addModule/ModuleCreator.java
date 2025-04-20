@@ -8,7 +8,9 @@ import com.microservice.administrative.project.domain.ProjectNotFound;
 import com.microservice.administrative.project.domain.ProjectQueryRepository;
 import com.microservice.administrative.shared.domain.ProjectId;
 import com.microservice.administrative.module.domain.Module;
+import com.microservice.administrative.shared.domain.Service;
 
+@Service
 public final class ModuleCreator {
     private final ProjectQueryRepository queryRepository;
     private final ProjectCommandRepository commandRepository;

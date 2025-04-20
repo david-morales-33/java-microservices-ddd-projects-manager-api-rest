@@ -7,7 +7,9 @@ import com.microservice.administrative.project.domain.ProjectNotFound;
 import com.microservice.administrative.project.domain.ProjectRoot;
 import com.microservice.administrative.project.domain.ProjectRootRepository;
 import com.microservice.administrative.shared.domain.ProjectId;
+import com.microservice.administrative.shared.domain.Service;
 
+@Service
 public final class CardCreator {
     private final ProjectRootRepository repository;
 

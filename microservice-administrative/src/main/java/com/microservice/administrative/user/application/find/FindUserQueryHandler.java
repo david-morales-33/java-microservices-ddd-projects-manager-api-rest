@@ -1,10 +1,12 @@
 package com.microservice.administrative.user.application.find;
 
+import com.microservice.administrative.shared.domain.Service;
 import com.microservice.administrative.shared.domain.UserId;
 import com.microservice.administrative.shared.domain.bus.query.QueryHandler;
 import com.microservice.administrative.user.domain.UserNotFindException;
 
-public class FindUserQueryHandler implements QueryHandler<FindUserQuery, UserResponse> {
+@Service
+public final class FindUserQueryHandler implements QueryHandler<FindUserQuery, UserResponse> {
     private final UserFinder finder;
 
     public FindUserQueryHandler(UserFinder finder) {

@@ -7,9 +7,11 @@ import com.microservice.administrative.project.domain.ProjectNotFound;
 import com.microservice.administrative.project.domain.ProjectQueryRepository;
 import com.microservice.administrative.shared.domain.ModuleId;
 import com.microservice.administrative.shared.domain.ProjectId;
+import com.microservice.administrative.shared.domain.Service;
 
 import java.util.Optional;
 
+@Service
 public final class FuncionalityCreator {
     private final ProjectCommandRepository commandRepository;
     private final ProjectQueryRepository queryRepository;

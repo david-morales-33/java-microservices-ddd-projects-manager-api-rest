@@ -6,7 +6,9 @@ import com.microservice.administrative.project.domain.ProjectModulesContainer;
 import com.microservice.administrative.project.domain.ProjectNotFound;
 import com.microservice.administrative.project.domain.ProjectQueryRepository;
 import com.microservice.administrative.shared.domain.ProjectId;
+import com.microservice.administrative.shared.domain.Service;
 
+@Service
 public final class ProjectFinder {
     private final ProjectQueryRepository queryRepository;
 

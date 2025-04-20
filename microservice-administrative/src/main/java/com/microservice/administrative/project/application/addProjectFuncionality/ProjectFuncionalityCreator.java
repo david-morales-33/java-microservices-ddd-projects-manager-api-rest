@@ -6,9 +6,11 @@ import com.microservice.administrative.project.domain.ProjectFuncionalitiesConta
 import com.microservice.administrative.project.domain.ProjectNotFound;
 import com.microservice.administrative.project.domain.ProjectQueryRepository;
 import com.microservice.administrative.shared.domain.ProjectId;
+import com.microservice.administrative.shared.domain.Service;
 
 import java.util.Optional;
 
+@Service
 public final class ProjectFuncionalityCreator {
     private final ProjectCommandRepository commandRepository;
     private final ProjectQueryRepository queryRepository;

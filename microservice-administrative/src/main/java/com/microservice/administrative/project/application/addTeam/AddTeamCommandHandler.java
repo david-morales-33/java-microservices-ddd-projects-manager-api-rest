@@ -6,6 +6,7 @@ import java.util.HashMap;
 import com.microservice.administrative.role.domain.Role;
 import com.microservice.administrative.role.domain.RoleDTO;
 import com.microservice.administrative.shared.domain.ProjectId;
+import com.microservice.administrative.shared.domain.Service;
 import com.microservice.administrative.shared.domain.TeamId;
 import com.microservice.administrative.shared.domain.bus.command.CommandHandler;
 import com.microservice.administrative.team.domain.Team;
@@ -14,6 +15,7 @@ import com.microservice.administrative.team.domain.TeamName;
 import com.microservice.administrative.team.domain.TeamState;
 import com.microservice.administrative.user.domain.User;
 
+@Service
 public final class AddTeamCommandHandler implements CommandHandler<AddTeamCommand> {
     private final TeamCreator creator;
 

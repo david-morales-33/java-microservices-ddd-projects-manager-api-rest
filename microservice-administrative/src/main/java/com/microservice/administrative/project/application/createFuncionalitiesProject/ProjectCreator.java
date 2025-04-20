@@ -1,6 +1,5 @@
 package com.microservice.administrative.project.application.createFuncionalitiesProject;
 
-import java.util.HashMap;
 import java.util.Optional;
 
 import com.microservice.administrative.project.domain.ProjectAlreadyExists;
@@ -11,7 +10,9 @@ import com.microservice.administrative.project.domain.ProjectName;
 import com.microservice.administrative.project.domain.ProjectRoot;
 import com.microservice.administrative.project.domain.ProjectRootRepository;
 import com.microservice.administrative.shared.domain.ProjectId;
+import com.microservice.administrative.shared.domain.Service;
 
+@Service
 public final class ProjectCreator {
     private final ProjectCommandRepository commandRepository;
     private final ProjectRootRepository projectRootRepository;

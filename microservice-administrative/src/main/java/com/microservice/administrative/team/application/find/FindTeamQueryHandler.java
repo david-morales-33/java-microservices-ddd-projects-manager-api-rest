@@ -1,9 +1,11 @@
 package com.microservice.administrative.team.application.find;
 
+import com.microservice.administrative.shared.domain.Service;
 import com.microservice.administrative.shared.domain.TeamId;
 import com.microservice.administrative.shared.domain.bus.query.QueryHandler;
 import com.microservice.administrative.team.domain.TeamNotFoundException;
 
+@Service
 public final class FindTeamQueryHandler implements QueryHandler<FindTeamQuery, TeamResponse> {
     private final TeamFinder finder;
 

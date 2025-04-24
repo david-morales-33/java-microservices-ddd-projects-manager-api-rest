@@ -205,4 +205,3 @@ Este proyecto está bajo la Licencia MIT. Ver el archivo [LICENSE](LICENSE) para
 ## 👨‍💻 Autor
 
 Desarrollado por [David Morales](https://github.com/david-morales-33)
-

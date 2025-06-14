@@ -5,7 +5,6 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 > API REST para la gestión de proyectos desarrollada con Java, arquitectura de microservicios y Domain-Driven Design (DDD). Ideal como base para aplicaciones empresariales escalables y modulares.
----
 
 ## 🧭 Tabla de Contenidos
 

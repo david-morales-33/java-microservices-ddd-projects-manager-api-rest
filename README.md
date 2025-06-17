@@ -110,7 +110,6 @@ Al tener contratos claros (puertos) y comunicaciones definidas, podés exponer e
 ├── pom.xml                                    # Configuración Maven principal
 └── README.md
 ```
-
 ---
 
 ## ⚙️ Tecnologías utilizadas

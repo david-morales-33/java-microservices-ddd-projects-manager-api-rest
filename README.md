@@ -17,7 +17,6 @@
   - [🔧 Configuración](#-configuración)
   - [▶️ Uso](#️-uso)
   - [🧪 Pruebas](#-pruebas)
-  - [📄 Licencia](#-licencia)
   - [🤝 Contribuciones](#-contribuciones)
   - [👨‍💻 Autor](#-autor)
 
@@ -179,12 +178,6 @@ Las pruebas están organizadas por:
 - ✅ **Dominio**: lógica de negocio pura
 - ⚙️ **Aplicación**: casos de uso
 - 🌐 **Infraestructura**: adaptadores, controladores, etc.
-
----
-
-## 📄 Licencia
-
-Este proyecto está bajo la Licencia MIT. Ver el archivo [LICENSE](LICENSE) para más información.
 
 ---
 
